@@ -1,0 +1,199 @@
+// All the pool's scoring rules, as plain functions (no internet needed).
+// tools/update.js feeds these with ESPN data; tools/test.js checks them.
+'use strict';
+
+const ROUNDS = ['R64', 'R32', 'S16', 'E8', 'F4', 'C'];
+const ROUND_NAMES = {
+  PI: 'Play-in', R64: 'Round of 64', R32: 'Round of 32', S16: 'Sweet 16',
+  E8: 'Elite 8', F4: 'Final Four', C: 'Championship',
+};
+
+// ---------- reading ESPN schedule events ----------
+
+function headlineOf(event) {
+  const c = event.competitions && event.competitions[0];
+  const n = c && c.notes && c.notes[0];
+  return (n && n.headline) || '';
+}
+
+function sides(event, teamId) {
+  const c = event.competitions[0];
+  const me = c.competitors.find((x) => String(x.id) === String(teamId));
+  const opp = c.competitors.find((x) => String(x.id) !== String(teamId));
+  return { c, me, opp };
+}
+
+function isCompleted(event) {
+  const s = event.competitions[0].status || event.status || {};
+  return !!(s.type && s.type.completed);
+}
+
+function seedOf(competitor) {
+  const r = competitor && competitor.curatedRank && competitor.curatedRank.current;
+  return Number.isInteger(r) && r >= 1 && r <= 16 ? r : null;
+}
+
+// Is this postseason game part of the real NCAA Tournament (not the NIT, Crown, CBI...)?
+function isNcaaTournament(event) {
+  const c = event.competitions[0];
+  if (c.tournamentId === 22) return true;
+  const h = headlineOf(event);
+  if (/\b(NIT|Crown|CBI|CIT|Women)/i.test(h)) return false;
+  return /NCAA Men's Basketball Championship|Men's Basketball Championship|NCAA Tournament/i.test(h);
+}
+
+// Regular season = every finished game ESPN files under "Regular Season",
+// which includes conference tournaments (checked against 2025-26 data).
+function regularRecord(events, teamId) {
+  let w = 0, l = 0;
+  const notes = [];
+  for (const e of events) {
+    if (e.seasonType && e.seasonType.type !== 2) continue;
+    if (!isCompleted(e)) continue;
+    const { me } = sides(e, teamId);
+    if (!me) continue;
+    if (me.winner === true) w++;
+    else if (me.winner === false) l++;
+    else notes.push(`Finished game on ${String(e.date).slice(0, 10)} has no winner; skipped.`);
+  }
+  return { w, l, notes };
+}
+
+// Which round a headline names (used as a cross-check / fallback only).
+function roundFromHeadline(h) {
+  const last = String(h).split(' - ').pop();
+  if (/first four|opening round|play-?in/i.test(last)) return 'PI';
+  if (/\b(1st|first) round|round of 64/i.test(last)) return 'R64';
+  if (/\b(2nd|second) round|round of 32/i.test(last)) return 'R32';
+  if (/sweet 16|sweet sixteen|regional semi/i.test(last)) return 'S16';
+  if (/elite 8|elite eight|regional final/i.test(last)) return 'E8';
+  if (/final four|national semi/i.test(last)) return 'F4';
+  if (/national championship|championship game/i.test(last)) return 'C';
+  return null;
+}
+
+// Works out a team's NCAA Tournament seed and the rounds it has won.
+// Rounds come from the bracket itself, not ESPN's round names (which may change
+// with the 76-team field): the Round of 64 is the team's first game against the
+// seed that adds up to 17 with its own (1 v 16, 8 v 9, ...). Every game before
+// that is a play-in; every game after it is the next round.
+function tournamentResult(events, teamId) {
+  const games = events
+    .filter(isNcaaTournament)
+    .map((e) => {
+      const { me, opp } = sides(e, teamId);
+      return me && {
+        date: e.date, headline: headlineOf(e), completed: isCompleted(e),
+        won: me.winner === true, seed: seedOf(me), oppSeed: seedOf(opp),
+      };
+    })
+    .filter(Boolean)
+    .sort((a, b) => String(a.date).localeCompare(String(b.date)));
+
+  const seed = games.map((g) => g.seed).find((s) => s) || null;
+  const roundsWon = [];
+  const notes = [];
+  const problems = [];
+  let r64 = -1;
+  games.forEach((g, i) => {
+    let round = null;
+    if (r64 >= 0) round = ROUNDS[i - r64] || null;
+    else if (seed && g.oppSeed && seed + g.oppSeed === 17) { r64 = i; round = 'R64'; }
+    else if (seed && g.oppSeed) round = 'PI';
+    else round = roundFromHeadline(g.headline);
+    g.round = round;
+    if (!g.completed) return;
+    const named = roundFromHeadline(g.headline);
+    if (named && round && named !== round) notes.push(`ESPN calls the ${String(g.date).slice(0, 10)} game "${g.headline}"; scored as ${ROUND_NAMES[round]}.`);
+    if (!round) { problems.push(`Can't tell which round the ${String(g.date).slice(0, 10)} game is ("${g.headline}"). Add it to config/overrides.json.`); return; }
+    if (g.won) roundsWon.push(round);
+  });
+  return { seed, roundsWon, games, notes, problems };
+}
+
+// ---------- points ----------
+
+function regularPoints(rec, scoring) {
+  return rec.w * scoring.win + rec.l * scoring.loss;
+}
+
+function tournamentPoints(seed, roundsWon, scoring) {
+  const s = seed ? scoring.seedBonus[String(seed)] || 0 : 0;
+  const r = roundsWon.reduce((sum, k) => sum + (scoring.roundBonus[k] || 0), 0);
+  return { seedPts: s, winPts: r, total: s + r };
+}
+
+// Ties share a rank: 10, 8, 8, 5 -> 1, 2, 2, 4
+function ranks(values) {
+  return values.map((v) => 1 + values.filter((x) => x > v).length);
+}
+
+// Prize money if the standings ended now. Ties split the places they cover.
+function payouts(values, amounts) {
+  const order = values.map((v, i) => i).sort((a, b) => values[b] - values[a]);
+  const out = values.map(() => 0);
+  let pos = 0;
+  while (pos < order.length && pos < amounts.length) {
+    const v = values[order[pos]];
+    const group = order.filter((i) => values[i] === v);
+    const pot = amounts.slice(pos, pos + group.length).reduce((a, b) => a + b, 0);
+    group.forEach((i) => { out[i] = Math.round((pot / group.length) * 100) / 100; });
+    pos += group.length;
+  }
+  return out;
+}
+
+// teamsByName: { name: { regPts, tourPts, salary, ... } }
+function scoreEntries(entries, teamsByName, cfg) {
+  const rows = entries.map((en) => {
+    const teams = en.teams.map((n) => teamsByName[n]);
+    // Lowest regular-season team is dropped (if tied, the cheaper one).
+    const sorted = teams.slice().sort((a, b) => b.regPts - a.regPts || b.salary - a.salary);
+    const kept = sorted.slice(0, cfg.scoring.countBest);
+    const dropped = sorted.slice(cfg.scoring.countBest).map((t) => t.name);
+    return {
+      name: en.name,
+      teams: en.teams,
+      dropped,
+      salary: teams.reduce((s, t) => s + t.salary, 0),
+      regPts: kept.reduce((s, t) => s + t.regPts, 0),
+      tourPts: teams.reduce((s, t) => s + t.tourPts, 0),
+    };
+  });
+  const rr = ranks(rows.map((r) => r.regPts));
+  const tr = ranks(rows.map((r) => r.tourPts));
+  const rp = payouts(rows.map((r) => r.regPts), cfg.payouts.regular);
+  const tp = payouts(rows.map((r) => r.tourPts), cfg.payouts.tournament);
+  rows.forEach((r, i) => {
+    r.regRank = rr[i]; r.tourRank = tr[i];
+    r.regPayout = rp[i]; r.tourPayout = tp[i];
+  });
+  return rows;
+}
+
+// Checks the pool setup itself: rosters, salaries, names.
+function checkConfig(cfg) {
+  const problems = [];
+  const names = new Set(cfg.teams.map((t) => t.name));
+  const ids = new Set(cfg.teams.map((t) => t.espnId));
+  if (names.size !== cfg.teams.length) problems.push('A team is listed twice in pool.json.');
+  if (ids.size !== cfg.teams.length) problems.push('Two teams share the same ESPN id in pool.json.');
+  const salary = Object.fromEntries(cfg.teams.map((t) => [t.name, t.salary]));
+  const entryNames = new Set();
+  for (const en of cfg.entries) {
+    if (entryNames.has(en.name)) problems.push(`Two entries are both named "${en.name}".`);
+    entryNames.add(en.name);
+    const bad = en.teams.filter((n) => !names.has(n));
+    if (bad.length) problems.push(`${en.name}: unknown team ${bad.join(', ')} (check spelling against the team list).`);
+    if (en.teams.length !== 6) problems.push(`${en.name}: has ${en.teams.length} teams, not 6.`);
+    if (new Set(en.teams).size !== en.teams.length) problems.push(`${en.name}: has the same team twice.`);
+    const total = en.teams.reduce((s, n) => s + (salary[n] || 0), 0);
+    if (total > cfg.salaryCap) problems.push(`${en.name}: salary $${total} is over the $${cfg.salaryCap} cap.`);
+  }
+  return problems;
+}
+
+module.exports = {
+  ROUNDS, ROUND_NAMES, regularRecord, tournamentResult, isNcaaTournament, roundFromHeadline,
+  regularPoints, tournamentPoints, ranks, payouts, scoreEntries, checkConfig,
+};

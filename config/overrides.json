@@ -1,0 +1,6 @@
+{
+  "_help": "Only use this if ESPN is wrong or missing something. Anything you put here REPLACES what ESPN says for that team. Use the pool's team names exactly as in pool.json. Examples: \"seeds\": { \"Duke\": 1, \"High Point\": 12 }   \"roundsWon\": { \"High Point\": [\"PI\", \"R64\"] } (PI = play-in win; also R64, R32, S16, E8, F4, C. List PI twice for two play-in wins.)   \"records\": { \"Duke\": \"25-6\" } (regular-season wins-losses). Leave a section as {} when not needed.",
+  "seeds": {},
+  "roundsWon": {},
+  "records": {}
+}

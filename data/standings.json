@@ -1,0 +1,1484 @@
+{
+ "title": "College Hoops Salary-Cap Pool",
+ "season": "2026-27",
+ "checkedAt": "2026-11-02T23:48:04.674Z",
+ "entryFee": 25,
+ "pot": {
+  "total": 450,
+  "regular": [
+   200,
+   100
+  ],
+  "tournament": [
+   100,
+   50
+  ]
+ },
+ "defaultEntry": "Kyle S.",
+ "tournamentStarted": false,
+ "gamesPlayed": 2,
+ "entries": [
+  {
+   "name": "Rich K.",
+   "teams": [
+    "Louisville",
+    "Saint John's",
+    "Gonzaga",
+    "Iowa State",
+    "VCU",
+    "High Point"
+   ],
+   "dropped": [
+    "VCU"
+   ],
+   "salary": 99,
+   "regPts": 2,
+   "tourPts": 0,
+   "regRank": 1,
+   "tourRank": 1,
+   "regPayout": 37.5,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Matt W.",
+   "teams": [
+    "Arizona",
+    "Gonzaga",
+    "Michigan",
+    "Vanderbilt",
+    "Saint Louis",
+    "Grand Canyon"
+   ],
+   "dropped": [
+    "Grand Canyon"
+   ],
+   "salary": 101,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Jack D.",
+   "teams": [
+    "Duke",
+    "Texas Tech",
+    "Iowa State",
+    "Purdue",
+    "Villanova",
+    "Wisconsin"
+   ],
+   "dropped": [
+    "Villanova"
+   ],
+   "salary": 100,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Tyler B.",
+   "teams": [
+    "Arizona",
+    "Houston",
+    "Michigan",
+    "North Carolina",
+    "VCU",
+    "Creighton"
+   ],
+   "dropped": [
+    "Creighton"
+   ],
+   "salary": 101,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Pete H.",
+   "teams": [
+    "Illinois",
+    "Miami",
+    "Michigan",
+    "Kentucky",
+    "Wisconsin",
+    "Maryland"
+   ],
+   "dropped": [
+    "Maryland"
+   ],
+   "salary": 101,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "John S.",
+   "teams": [
+    "Duke",
+    "Iowa State",
+    "Michigan",
+    "Purdue",
+    "Nebraska",
+    "Cincinnati"
+   ],
+   "dropped": [
+    "Cincinnati"
+   ],
+   "salary": 101,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Kyle S.",
+   "teams": [
+    "Duke",
+    "Illinois",
+    "Grand Canyon",
+    "High Point",
+    "McNeese",
+    "New Mexico"
+   ],
+   "dropped": [
+    "New Mexico"
+   ],
+   "salary": 101,
+   "regPts": 2,
+   "tourPts": 0,
+   "regRank": 1,
+   "tourRank": 1,
+   "regPayout": 37.5,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Tom B.",
+   "teams": [
+    "Michigan State",
+    "Virginia",
+    "Kentucky",
+    "UCLA",
+    "BYU",
+    "Purdue"
+   ],
+   "dropped": [
+    "Purdue"
+   ],
+   "salary": 101,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Sarge M.",
+   "teams": [
+    "Houston",
+    "Gonzaga",
+    "Saint John's",
+    "Kentucky",
+    "UCLA",
+    "Utah State"
+   ],
+   "dropped": [
+    "Utah State"
+   ],
+   "salary": 99,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Matt C.",
+   "teams": [
+    "Arizona",
+    "Gonzaga",
+    "Kansas",
+    "Vanderbilt",
+    "Indiana",
+    "New Mexico"
+   ],
+   "dropped": [
+    "New Mexico"
+   ],
+   "salary": 101,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Walt S.",
+   "teams": [
+    "UConn",
+    "Tennessee",
+    "BYU",
+    "Purdue",
+    "Saint Louis",
+    "Virginia Tech"
+   ],
+   "dropped": [
+    "Virginia Tech"
+   ],
+   "salary": 92,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Andrew S.",
+   "teams": [
+    "Michigan State",
+    "Arkansas",
+    "Saint John's",
+    "North Carolina",
+    "TCU",
+    "High Point"
+   ],
+   "dropped": [
+    "TCU"
+   ],
+   "salary": 97,
+   "regPts": 2,
+   "tourPts": 0,
+   "regRank": 1,
+   "tourRank": 1,
+   "regPayout": 37.5,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Lilly V.",
+   "teams": [
+    "Illinois",
+    "Gonzaga",
+    "Vanderbilt",
+    "BYU",
+    "Purdue",
+    "Texas A&M"
+   ],
+   "dropped": [
+    "Texas A&M"
+   ],
+   "salary": 98,
+   "regPts": 0,
+   "tourPts": 0,
+   "regRank": 9,
+   "tourRank": 1,
+   "regPayout": 0,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Lucas V.",
+   "teams": [
+    "Illinois",
+    "Gonzaga",
+    "Saint John's",
+    "Saint Louis",
+    "McNeese",
+    "High Point"
+   ],
+   "dropped": [
+    "McNeese"
+   ],
+   "salary": 99,
+   "regPts": 2,
+   "tourPts": 0,
+   "regRank": 1,
+   "tourRank": 1,
+   "regPayout": 37.5,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Dan V.",
+   "teams": [
+    "Illinois",
+    "Gonzaga",
+    "Saint John's",
+    "Santa Clara",
+    "Grand Canyon",
+    "High Point"
+   ],
+   "dropped": [
+    "Grand Canyon"
+   ],
+   "salary": 100,
+   "regPts": 2,
+   "tourPts": 0,
+   "regRank": 1,
+   "tourRank": 1,
+   "regPayout": 37.5,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Jack S.",
+   "teams": [
+    "Houston",
+    "Virginia",
+    "Michigan",
+    "Alabama",
+    "Clemson",
+    "High Point"
+   ],
+   "dropped": [
+    "Clemson"
+   ],
+   "salary": 101,
+   "regPts": 2,
+   "tourPts": 0,
+   "regRank": 1,
+   "tourRank": 1,
+   "regPayout": 37.5,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Rob W.",
+   "teams": [
+    "Duke",
+    "UConn",
+    "High Point",
+    "Utah State",
+    "Grand Canyon",
+    "Texas A&M"
+   ],
+   "dropped": [
+    "Grand Canyon"
+   ],
+   "salary": 100,
+   "regPts": 2,
+   "tourPts": 0,
+   "regRank": 1,
+   "tourRank": 1,
+   "regPayout": 37.5,
+   "tourPayout": 8.33
+  },
+  {
+   "name": "Dan H.",
+   "teams": [
+    "Duke",
+    "Illinois",
+    "VCU",
+    "Providence",
+    "High Point",
+    "Oklahoma"
+   ],
+   "dropped": [
+    "Oklahoma"
+   ],
+   "salary": 101,
+   "regPts": 2,
+   "tourPts": 0,
+   "regRank": 1,
+   "tourRank": 1,
+   "regPayout": 37.5,
+   "tourPayout": 8.33
+  }
+ ],
+ "teams": [
+  {
+   "name": "Duke",
+   "conf": "ACC",
+   "salary": 49,
+   "espnId": 150,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-02T23:30Z",
+    "opp": "Army",
+    "home": true
+   },
+   "owners": 5,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Illinois",
+   "conf": "B10",
+   "salary": 47,
+   "espnId": 356,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T01:00Z",
+    "opp": "FDU",
+    "home": true
+   },
+   "owners": 6,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Arizona",
+   "conf": "B12",
+   "salary": 43,
+   "espnId": 12,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T03:00Z",
+    "opp": "UCLA",
+    "home": false
+   },
+   "owners": 3,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "UConn",
+   "conf": "BE",
+   "salary": 43,
+   "espnId": 41,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T02:00Z",
+    "opp": "Gardner-Webb",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Michigan State",
+   "conf": "B10",
+   "salary": 41,
+   "espnId": 127,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "Quinnipiac",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Houston",
+   "conf": "B12",
+   "salary": 32,
+   "espnId": 248,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T02:00Z",
+    "opp": "La Salle",
+    "home": true
+   },
+   "owners": 3,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Tennessee",
+   "conf": "SEC",
+   "salary": 32,
+   "espnId": 2633,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T23:00Z",
+    "opp": "Wofford",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Virginia",
+   "conf": "ACC",
+   "salary": 30,
+   "espnId": 258,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-04T00:30Z",
+    "opp": "Drexel",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Louisville",
+   "conf": "ACC",
+   "salary": 28,
+   "espnId": 97,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T02:00Z",
+    "opp": "Chattanooga",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Arkansas",
+   "conf": "SEC",
+   "salary": 26,
+   "espnId": 8,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-04T01:00Z",
+    "opp": "AR-Pine Bluff",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Gonzaga",
+   "conf": "P12",
+   "salary": 24,
+   "espnId": 2250,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:30Z",
+    "opp": "Purdue",
+    "home": false
+   },
+   "owners": 7,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Saint John's",
+   "conf": "BE",
+   "salary": 24,
+   "espnId": 2599,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-02T23:30Z",
+    "opp": "Monmouth",
+    "home": true
+   },
+   "owners": 5,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Miami",
+   "conf": "ACC",
+   "salary": 22,
+   "espnId": 2390,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-02T23:00Z",
+    "opp": "Florida",
+    "home": false
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Iowa State",
+   "conf": "B12",
+   "salary": 20,
+   "espnId": 66,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "Memphis",
+    "home": true
+   },
+   "owners": 3,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Texas Tech",
+   "conf": "B12",
+   "salary": 20,
+   "espnId": 2641,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "Jackson St",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Kansas",
+   "conf": "B12",
+   "salary": 20,
+   "espnId": 2305,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T01:00Z",
+    "opp": "Fordham",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Michigan",
+   "conf": "B10",
+   "salary": 19,
+   "espnId": 130,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-02T23:00Z",
+    "opp": "Oakland",
+    "home": true
+   },
+   "owners": 5,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Alabama",
+   "conf": "SEC",
+   "salary": 18,
+   "espnId": 333,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-04T00:30Z",
+    "opp": "Sam Houston",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Vanderbilt",
+   "conf": "SEC",
+   "salary": 11,
+   "espnId": 238,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "Bellarmine",
+    "home": true
+   },
+   "owners": 3,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Kentucky",
+   "conf": "SEC",
+   "salary": 9,
+   "espnId": 96,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-04T00:00Z",
+    "opp": "Manhattan",
+    "home": true
+   },
+   "owners": 3,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "UCLA",
+   "conf": "B10",
+   "salary": 8,
+   "espnId": 26,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T03:00Z",
+    "opp": "Arizona",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "BYU",
+   "conf": "B12",
+   "salary": 7,
+   "espnId": 252,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T02:00Z",
+    "opp": "Ohio State",
+    "home": true
+   },
+   "owners": 3,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Purdue",
+   "conf": "B10",
+   "salary": 6,
+   "espnId": 2509,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:30Z",
+    "opp": "Gonzaga",
+    "home": true
+   },
+   "owners": 5,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Nebraska",
+   "conf": "B10",
+   "salary": 5,
+   "espnId": 158,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:30Z",
+    "opp": "Le Moyne",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "North Carolina",
+   "conf": "ACC",
+   "salary": 3,
+   "espnId": 153,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "W Carolina",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Villanova",
+   "conf": "BE",
+   "salary": 3,
+   "espnId": 222,
+   "w": 0,
+   "l": 1,
+   "regPts": -1,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-07T00:00Z",
+    "opp": "Holy Cross",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": -0.33
+  },
+  {
+   "name": "Texas A&M",
+   "conf": "SEC",
+   "salary": 3,
+   "espnId": 245,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-04T01:00Z",
+    "opp": "Alabama St",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "VCU",
+   "conf": "A10",
+   "salary": 2,
+   "espnId": 2670,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "Little Rock",
+    "home": true
+   },
+   "owners": 3,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Saint Louis",
+   "conf": "A10",
+   "salary": 2,
+   "espnId": 139,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T01:00Z",
+    "opp": "Lehigh",
+    "home": true
+   },
+   "owners": 3,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Grand Canyon",
+   "conf": "MWC",
+   "salary": 2,
+   "espnId": 2253,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T02:00Z",
+    "opp": "Texas Southern",
+    "home": true
+   },
+   "owners": 4,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Wisconsin",
+   "conf": "B10",
+   "salary": 2,
+   "espnId": 275,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:30Z",
+    "opp": "Denver",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Creighton",
+   "conf": "BE",
+   "salary": 2,
+   "espnId": 156,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T01:00Z",
+    "opp": "Kansas City",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Maryland",
+   "conf": "B10",
+   "salary": 2,
+   "espnId": 120,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "Bucknell",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Cincinnati",
+   "conf": "B12",
+   "salary": 2,
+   "espnId": 2132,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "American",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Utah State",
+   "conf": "P12",
+   "salary": 2,
+   "espnId": 328,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T02:30Z",
+    "opp": "Idaho St",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Indiana",
+   "conf": "B10",
+   "salary": 2,
+   "espnId": 84,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "E Illinois",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Virginia Tech",
+   "conf": "ACC",
+   "salary": 2,
+   "espnId": 259,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-04T00:00Z",
+    "opp": "Coppin St",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "TCU",
+   "conf": "B12",
+   "salary": 2,
+   "espnId": 2628,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T01:00Z",
+    "opp": "Lindenwood",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Santa Clara",
+   "conf": "WCC",
+   "salary": 2,
+   "espnId": 2541,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T03:00Z",
+    "opp": "Towson",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "High Point",
+   "conf": "BSth",
+   "salary": 1,
+   "espnId": 2272,
+   "w": 1,
+   "l": 0,
+   "regPts": 2,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-05T00:00Z",
+    "opp": "MD Eastern",
+    "home": true
+   },
+   "owners": 8,
+   "ptsPerDollar": 2
+  },
+  {
+   "name": "McNeese",
+   "conf": "Slnd",
+   "salary": 1,
+   "espnId": 2377,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-02T22:30Z",
+    "opp": "UAB",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "New Mexico",
+   "conf": "MWC",
+   "salary": 1,
+   "espnId": 167,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T02:00Z",
+    "opp": "Utah Tech",
+    "home": true
+   },
+   "owners": 2,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Clemson",
+   "conf": "ACC",
+   "salary": 1,
+   "espnId": 228,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "Stetson",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Providence",
+   "conf": "BE",
+   "salary": 1,
+   "espnId": 2507,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T00:00Z",
+    "opp": "Maine",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  },
+  {
+   "name": "Oklahoma",
+   "conf": "SEC",
+   "salary": 1,
+   "espnId": 201,
+   "w": 0,
+   "l": 0,
+   "regPts": 0,
+   "seed": null,
+   "roundsWon": [],
+   "seedPts": 0,
+   "winPts": 0,
+   "tourPts": 0,
+   "inTournament": false,
+   "eliminated": false,
+   "overridden": [],
+   "next": {
+    "date": "2026-11-03T01:00Z",
+    "opp": "East Texas A&M",
+    "home": true
+   },
+   "owners": 1,
+   "ptsPerDollar": 0
+  }
+ ],
+ "notes": [],
+ "problems": []
+}

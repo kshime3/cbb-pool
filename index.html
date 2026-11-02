@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1a1a19" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f5f2" media="(prefers-color-scheme: light)">
+<title>Hoops Pool</title>
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css?v=20261102b">
+</head>
+<body>
+<header class="top">
+  <h1 id="title">College Hoops Pool</h1>
+  <p class="sub"><span id="season"></span> · Updated <time id="updated">…</time></p>
+</header>
+<main>
+  <div id="alerts"></div>
+
+  <section class="tiles" aria-label="Summary">
+    <div class="tile"><div class="k">Regular-season leader</div><div class="v" id="t-reg">…</div><div class="s" id="t-reg-s"></div></div>
+    <div class="tile"><div class="k">Tournament leader</div><div class="v" id="t-tour">…</div><div class="s" id="t-tour-s"></div></div>
+    <div class="tile"><div class="k">Entries</div><div class="v" id="t-entries">…</div><div class="s" id="t-entries-s"></div></div>
+    <div class="tile"><div class="k">Pot</div><div class="v" id="t-pot">…</div><div class="s" id="t-pot-s"></div></div>
+  </section>
+
+  <section class="card">
+    <h2>Regular-season points</h2>
+    <p class="hint">Best 5 of 6 teams. Tap a name to see that roster.</p>
+    <div id="chart" class="bars" role="list"></div>
+  </section>
+
+  <section class="card">
+    <h2>Standings</h2>
+    <p class="hint">Tap a column heading to sort. Tap a row to see the roster.</p>
+    <div class="scroll"><table id="standings" class="grid"></table></div>
+  </section>
+
+  <section class="card" id="roster-card">
+    <h2>Roster</h2>
+    <label class="pick">Entry <select id="entry-pick"></select></label>
+    <div class="scroll"><table id="roster" class="grid"></table></div>
+    <p class="hint" id="roster-note"></p>
+  </section>
+
+  <section class="card">
+    <h2>Every drafted team</h2>
+    <p class="hint">Tap a column heading to sort.</p>
+    <div class="scroll"><table id="teams" class="grid"></table></div>
+  </section>
+
+  <section class="card rules">
+    <h2>Rules</h2>
+    <p><b>Regular season</b> (all games before the NCAA Tournament, conference tournaments included): +2 per win, −1 per loss. Each entry's lowest team is dropped; the best 5 count.</p>
+    <p><b>Tournament</b> (real NCAA Tournament only; all 6 teams count). Seed bonus: 1–2 seed +8, 3–4 +7, 5–6 +6, 7–8 +5, 9–10 +4, 11–12 +3, 13–14 +2, 15–16 +1. Win bonus: play-in +1, Round of 64 +2, Round of 32 +4, Sweet 16 +6, Elite 8 +8, Final Four +10, Championship +12.</p>
+    <p><b>Payouts</b>: <span id="payout-text"></span> Ties split the money.</p>
+    <p class="hint">Scores from ESPN, checked every morning. NIT and other postseason events don't count.</p>
+  </section>
+</main>
+<script src="js/app.js?v=20261102b"></script>
+</body>
+</html>
