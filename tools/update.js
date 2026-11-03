@@ -14,7 +14,6 @@ const S = require('./scoring');
 
 const ROOT = path.join(__dirname, '..');
 const BASE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball';
-const BART = 'https://barttorvik.com';
 
 function arg(name) {
   const i = process.argv.indexOf(name);
@@ -65,17 +64,6 @@ async function main() {
   }
 
   const notes = [];
-
-  // Barttorvik win odds for every scheduled game (projections only: if this
-  // fails, scores still update and the page just hides projections).
-  let sked = null;
-  try {
-    sked = await getJSON(`${BART}/${season}_super_sked.json`, 3);
-    if (!Array.isArray(sked) || !sked.length) throw new Error('empty schedule');
-  } catch (err) {
-    sked = null;
-    notes.push(`Barttorvik projections unavailable this run (${err.message}).`);
-  }
   const problems = [];
 
   const teams = await inBatches(cfg.teams, 6, async (t) => {
@@ -106,12 +94,6 @@ async function main() {
     else tour.problems.forEach((p) => problems.push(`${t.name}: ${p}`));
 
     const regPts = S.regularPoints({ w, l }, cfg.scoring);
-    let proj = { gamesLeft: rec.left, projW: null, projL: null, projPts: null };
-    if (sked) {
-      const future = S.bartFutureGames(sked, t.bartName || t.name);
-      if (!future.length && rec.left > 3) notes.push(`${t.name}: no upcoming games found on Barttorvik (check bartName in pool.json).`);
-      proj = S.projectTeam({ w, l }, rec.left, future, cfg.scoring);
-    }
     const tp = S.tournamentPoints(seed, roundsWon, cfg.scoring);
     const nextGame = (reg.events || []).concat(post.events || [])
       .filter((e) => !(e.competitions[0].status || {}).type?.completed && new Date(e.date) > Date.now() - 6 * 3600e3)
@@ -129,9 +111,14 @@ async function main() {
       seedPts: tp.seedPts, winPts: tp.winPts, tourPts: tp.total,
       inTournament: !!seed, eliminated: tour.games.some((g) => g.completed && !g.won),
       overridden, next,
-      gamesLeft: proj.gamesLeft, projW: proj.projW, projL: proj.projL, projPts: proj.projPts,
+      gamesLeft: rec.left, upcoming: rec.upcoming, projW: null, projL: null, projPts: null,
     };
   });
+
+  // ---------- projections: ESPN Matchup Predictor (BPI) odds for each remaining game ----------
+  // Saved in data/odds.json so each game is only re-checked when it's within two
+  // weeks or the saved odds are over a week old. A failure only hides projections.
+  const projections = await project(teams, cfg, notes);
 
   const owners = {};
   cfg.entries.forEach((en) => en.teams.forEach((n) => { owners[n] = (owners[n] || 0) + 1; }));
@@ -149,7 +136,7 @@ async function main() {
     entryFee: cfg.entryFee,
     pot: { total: cfg.entries.length * cfg.entryFee, regular: cfg.payouts.regular, tournament: cfg.payouts.tournament },
     tournamentStarted: teams.some((t) => t.seed),
-    projections: sked ? 'Barttorvik (barttorvik.com)' : null,
+    projections,
     gamesPlayed: teams.reduce((s, t) => s + t.w + t.l, 0),
     entries, teams, notes, problems,
   };
@@ -161,6 +148,64 @@ async function main() {
     console.error('PROBLEMS (page shows a warning):\n- ' + problems.join('\n- '));
     process.exit(2);
   }
+}
+
+async function project(teams, cfg, notes) {
+  const oddsFile = path.join(ROOT, 'data/odds.json');
+  let cache = {};
+  try { cache = JSON.parse(fs.readFileSync(oddsFile, 'utf8')); } catch (e) { cache = {}; }
+  const now = Date.now(), DAY = 864e5;
+  const games = new Map();
+  teams.forEach((t) => t.upcoming.forEach((g) => games.set(g.id, g)));
+  const stale = [...games.values()].filter((g) => {
+    const c = cache[g.id];
+    if (!c) return true;
+    const soon = new Date(g.date) - now < 14 * DAY;
+    return soon ? now - c.at > 0.5 * DAY : now - c.at > 7 * DAY;
+  });
+  let failed = 0;
+  await inBatches(stale, 8, async (g) => {
+    try {
+      const sum = await getJSON(`${BASE}/summary?event=${g.id}`, 2);
+      cache[g.id] = { at: now, odds: S.predictorOdds(sum) };
+    } catch (e) { failed++; }
+  });
+  // keep only games that are still to be played
+  const fresh = {};
+  for (const id of games.keys()) if (cache[id]) fresh[id] = cache[id];
+  fs.writeFileSync(oddsFile, JSON.stringify(fresh) + '\n');
+
+  let d1 = null;
+  try {
+    const list = await getJSON(`${BASE}/teams?limit=500`);
+    d1 = new Set(list.sports[0].leagues[0].teams.map((x) => String(x.team.id)));
+  } catch (e) { /* treat every missing-odds game as a likely win */ }
+
+  let missing = 0, total = 0;
+  for (const t of teams) {
+    const future = [];
+    for (const g of t.upcoming) {
+      total++;
+      const odds = fresh[g.id] && fresh[g.id].odds;
+      let p = odds ? odds[String(t.espnId)] : undefined;
+      if (typeof p !== 'number') {
+        const nonD1 = d1 && g.oppId && !d1.has(g.oppId);
+        if (!nonD1) missing++;
+        p = nonD1 || !d1 ? S.NON_D1_WIN : 0.5;
+      }
+      future.push({ p });
+    }
+    Object.assign(t, S.projectTeam({ w: t.w, l: t.l }, t.gamesLeft, future, cfg.scoring));
+    delete t.upcoming;
+  }
+  if (failed) notes.push(`ESPN odds: ${failed} game(s) couldn't be downloaded this run; using saved odds where possible.`);
+  if (total && missing / total > 0.25) {
+    notes.push(`ESPN odds missing for ${missing} of ${total} remaining games; projections hidden this run.`);
+    teams.forEach((t) => { t.projW = t.projL = t.projPts = null; });
+    return null;
+  }
+  if (missing) notes.push(`ESPN odds missing for ${missing} game(s); counted as 50/50.`);
+  return 'ESPN Matchup Predictor (BPI)';
 }
 
 main().catch((err) => {

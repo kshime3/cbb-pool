@@ -1,7 +1,7 @@
 {
  "title": "College Hoops Salary-Cap Pool",
  "season": "2026-27",
- "checkedAt": "2026-11-03T23:49:59.181Z",
+ "checkedAt": "2026-11-03T23:55:12.136Z",
  "entryFee": 25,
  "pot": {
   "total": 450,
@@ -15,7 +15,7 @@
   ]
  },
  "tournamentStarted": false,
- "projections": null,
+ "projections": "ESPN Matchup Predictor (BPI)",
  "gamesPlayed": 38,
  "entries": [
   {
@@ -35,8 +35,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 173,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 208.6,
+   "projRank": 6,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -59,8 +59,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 177,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 198.1,
+   "projRank": 7,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -83,8 +83,8 @@
    "regPts": 4,
    "tourPts": 0,
    "gamesLeft": 179,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 176.9,
+   "projRank": 15,
    "regRank": 18,
    "tourRank": 1,
    "regPayout": 0,
@@ -107,8 +107,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 175,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 166.5,
+   "projRank": 18,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -131,8 +131,8 @@
    "regPts": 8,
    "tourPts": 0,
    "gamesLeft": 180,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 167.8,
+   "projRank": 17,
    "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
@@ -155,8 +155,8 @@
    "regPts": 7,
    "tourPts": 0,
    "gamesLeft": 182,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 191,
+   "projRank": 9,
    "regRank": 15,
    "tourRank": 1,
    "regPayout": 0,
@@ -179,8 +179,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 183,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 240,
+   "projRank": 1,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -203,8 +203,8 @@
    "regPts": 6,
    "tourPts": 0,
    "gamesLeft": 184,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 176.5,
+   "projRank": 16,
    "regRank": 16,
    "tourRank": 1,
    "regPayout": 0,
@@ -227,8 +227,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 179,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 191.5,
+   "projRank": 8,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -251,8 +251,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 178,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 185.5,
+   "projRank": 12,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -275,8 +275,8 @@
    "regPts": 6,
    "tourPts": 0,
    "gamesLeft": 183,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 185.5,
+   "projRank": 12,
    "regRank": 16,
    "tourRank": 1,
    "regPayout": 0,
@@ -299,8 +299,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 183,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 182.7,
+   "projRank": 14,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -323,8 +323,8 @@
    "regPts": 8,
    "tourPts": 0,
    "gamesLeft": 182,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 189.7,
+   "projRank": 10,
    "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
@@ -347,8 +347,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 179,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 229.5,
+   "projRank": 2,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -371,8 +371,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 180,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 223.3,
+   "projRank": 4,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -395,8 +395,8 @@
    "regPts": 8,
    "tourPts": 0,
    "gamesLeft": 179,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 187.2,
+   "projRank": 11,
    "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
@@ -419,8 +419,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 186,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 228.2,
+   "projRank": 3,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -443,8 +443,8 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 181,
-   "projRegPts": null,
-   "projRank": null,
+   "projRegPts": 216.3,
+   "projRank": 5,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -474,9 +474,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 27.8,
+   "projL": 4.2,
+   "projPts": 51.3,
    "owners": 5,
    "ptsPerDollar": 0.04
   },
@@ -502,9 +502,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 26.2,
+   "projL": 5.8,
+   "projPts": 46.5,
    "owners": 6,
    "ptsPerDollar": 0.04
   },
@@ -530,9 +530,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 21,
+   "projL": 9,
+   "projPts": 33.1,
    "owners": 3,
    "ptsPerDollar": -0.02
   },
@@ -558,9 +558,9 @@
     "home": false
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 24.9,
+   "projL": 7.1,
+   "projPts": 42.6,
    "owners": 2,
    "ptsPerDollar": 0.05
   },
@@ -586,9 +586,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 23.5,
+   "projL": 8.5,
+   "projPts": 38.6,
    "owners": 2,
    "ptsPerDollar": 0.05
   },
@@ -614,9 +614,9 @@
     "home": false
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 23.5,
+   "projL": 6.5,
+   "projPts": 40.6,
    "owners": 3,
    "ptsPerDollar": 0.06
   },
@@ -642,9 +642,9 @@
     "home": true
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 22.9,
+   "projL": 7.1,
+   "projPts": 38.6,
    "owners": 1,
    "ptsPerDollar": 0
   },
@@ -670,9 +670,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 20.7,
+   "projL": 10.3,
+   "projPts": 31.1,
    "owners": 2,
    "ptsPerDollar": 0
   },
@@ -698,9 +698,9 @@
     "home": true
    },
    "gamesLeft": 28,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 19.9,
+   "projL": 9.1,
+   "projPts": 30.7,
    "owners": 1,
    "ptsPerDollar": 0.07
   },
@@ -726,9 +726,9 @@
     "home": true
    },
    "gamesLeft": 32,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 21.5,
+   "projL": 10.5,
+   "projPts": 32.5,
    "owners": 1,
    "ptsPerDollar": 0
   },
@@ -754,9 +754,9 @@
     "home": true
    },
    "gamesLeft": 28,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 24.3,
+   "projL": 4.7,
+   "projPts": 43.9,
    "owners": 7,
    "ptsPerDollar": 0.08
   },
@@ -782,9 +782,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 19.9,
+   "projL": 10.1,
+   "projPts": 29.6,
    "owners": 5,
    "ptsPerDollar": 0.08
   },
@@ -810,9 +810,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 23.5,
+   "projL": 6.5,
+   "projPts": 40.5,
    "owners": 1,
    "ptsPerDollar": -0.05
   },
@@ -838,9 +838,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 23.2,
+   "projL": 6.8,
+   "projPts": 39.6,
    "owners": 3,
    "ptsPerDollar": -0.05
   },
@@ -866,9 +866,9 @@
     "home": true
    },
    "gamesLeft": 28,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 21.7,
+   "projL": 7.3,
+   "projPts": 36.2,
    "owners": 1,
    "ptsPerDollar": 0.1
   },
@@ -894,9 +894,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 21.1,
+   "projL": 8.9,
+   "projPts": 33.3,
    "owners": 1,
    "ptsPerDollar": 0.1
   },
@@ -922,9 +922,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 18.4,
+   "projL": 11.6,
+   "projPts": 25.1,
    "owners": 5,
    "ptsPerDollar": 0.11
   },
@@ -950,9 +950,9 @@
     "home": true
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 20.2,
+   "projL": 9.8,
+   "projPts": 30.6,
    "owners": 1,
    "ptsPerDollar": 0
   },
@@ -978,9 +978,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 22.8,
+   "projL": 9.2,
+   "projPts": 36.6,
    "owners": 3,
    "ptsPerDollar": 0.18
   },
@@ -1006,9 +1006,9 @@
     "home": true
    },
    "gamesLeft": 32,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 21.5,
+   "projL": 10.5,
+   "projPts": 32.4,
    "owners": 3,
    "ptsPerDollar": 0
   },
@@ -1034,9 +1034,9 @@
     "home": true
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 23.4,
+   "projL": 7.6,
+   "projPts": 39.1,
    "owners": 2,
    "ptsPerDollar": 0.25
   },
@@ -1062,9 +1062,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 21.8,
+   "projL": 8.2,
+   "projPts": 35.3,
    "owners": 3,
    "ptsPerDollar": 0.29
   },
@@ -1090,9 +1090,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 19.4,
+   "projL": 12.6,
+   "projPts": 26.1,
    "owners": 5,
    "ptsPerDollar": -0.17
   },
@@ -1118,9 +1118,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 23.3,
+   "projL": 8.7,
+   "projPts": 37.8,
    "owners": 1,
    "ptsPerDollar": 0.4
   },
@@ -1146,9 +1146,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 19.7,
+   "projL": 12.3,
+   "projPts": 27,
    "owners": 2,
    "ptsPerDollar": 0.67
   },
@@ -1174,9 +1174,9 @@
     "home": true
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 18.2,
+   "projL": 12.8,
+   "projPts": 23.7,
    "owners": 1,
    "ptsPerDollar": -0.33
   },
@@ -1202,9 +1202,9 @@
     "home": true
    },
    "gamesLeft": 32,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 19.8,
+   "projL": 12.2,
+   "projPts": 27.4,
    "owners": 2,
    "ptsPerDollar": 0
   },
@@ -1230,9 +1230,9 @@
     "home": false
    },
    "gamesLeft": 28,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 22.8,
+   "projL": 6.2,
+   "projPts": 39.4,
    "owners": 3,
    "ptsPerDollar": 1
   },
@@ -1258,9 +1258,9 @@
     "home": false
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 23.9,
+   "projL": 7.1,
+   "projPts": 40.7,
    "owners": 3,
    "ptsPerDollar": 1
   },
@@ -1286,9 +1286,9 @@
     "home": true
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 24.9,
+   "projL": 6.1,
+   "projPts": 43.8,
    "owners": 4,
    "ptsPerDollar": 1
   },
@@ -1314,9 +1314,9 @@
     "home": true
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 18.1,
+   "projL": 12.9,
+   "projPts": 23.3,
    "owners": 2,
    "ptsPerDollar": 1
   },
@@ -1342,9 +1342,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 18.8,
+   "projL": 11.2,
+   "projPts": 26.4,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1370,9 +1370,9 @@
     "home": false
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 16.8,
+   "projL": 13.2,
+   "projPts": 20.3,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1398,9 +1398,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 22.7,
+   "projL": 9.3,
+   "projPts": 36.2,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1426,9 +1426,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 22.5,
+   "projL": 9.5,
+   "projPts": 35.5,
    "owners": 2,
    "ptsPerDollar": 1
   },
@@ -1454,9 +1454,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 21,
+   "projL": 11,
+   "projPts": 31,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1482,9 +1482,9 @@
     "home": true
    },
    "gamesLeft": 32,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 20.1,
+   "projL": 11.9,
+   "projPts": 28.3,
    "owners": 1,
    "ptsPerDollar": 0
   },
@@ -1510,9 +1510,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 18.8,
+   "projL": 11.2,
+   "projPts": 26.5,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1538,9 +1538,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 22,
+   "projL": 10,
+   "projPts": 34.1,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1566,9 +1566,9 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 29,
+   "projL": 3,
+   "projPts": 55,
    "owners": 8,
    "ptsPerDollar": 2
   },
@@ -1594,9 +1594,9 @@
     "home": false
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 24.8,
+   "projL": 6.2,
+   "projPts": 43.4,
    "owners": 2,
    "ptsPerDollar": 2
   },
@@ -1622,9 +1622,9 @@
     "home": true
    },
    "gamesLeft": 30,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 23.2,
+   "projL": 7.8,
+   "projPts": 38.6,
    "owners": 2,
    "ptsPerDollar": 2
   },
@@ -1650,9 +1650,9 @@
     "home": true
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 20,
+   "projL": 10,
+   "projPts": 29.9,
    "owners": 1,
    "ptsPerDollar": 2
   },
@@ -1706,15 +1706,15 @@
     "home": true
    },
    "gamesLeft": 31,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 18.7,
+   "projL": 13.3,
+   "projPts": 24.1,
    "owners": 1,
    "ptsPerDollar": -1
   }
  ],
  "notes": [
-  "Barttorvik projections unavailable this run (https://barttorvik.com/2027_super_sked.json: HTTP 403)."
+  "ESPN odds missing for 1 game(s); counted as 50/50."
  ],
  "problems": []
 }

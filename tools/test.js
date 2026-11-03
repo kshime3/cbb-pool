@@ -135,17 +135,17 @@ test('projection: expected wins from win odds; +2/-1 scoring', () => {
   assert.deepStrictEqual(p, { gamesLeft: 3, projW: 3.5, projL: 2.5, projPts: 4.5 });
 });
 
-test('projection: games Barttorvik lacks (non-D1) count at 95%; results ESPN has first are dropped', () => {
+test('projection: games without odds (non-D1) count at 95%; extra odds entries are ignored', () => {
   const extra = S.projectTeam({ w: 0, l: 0 }, 2, [{ date: 1, p: 0.5 }], cfg.scoring);
   assert.strictEqual(extra.projW, 1.5); // 0.5 + 0.95, rounded
   const ahead = S.projectTeam({ w: 1, l: 0 }, 1, [{ date: 1, p: 0.2 }, { date: 2, p: 0.8 }], cfg.scoring);
   assert.strictEqual(ahead.projW, 1.8); // the 0.2 game already finished on ESPN
 });
 
-test('projection: Barttorvik schedule rows -> unplayed games for one team', () => {
-  const row = (d, a, pa, b, pb, played) => { const g = []; g[1] = d; g[8] = a; g[12] = pa; g[14] = b; g[18] = pb; g[23] = played; return g; };
-  const sked = [row('11/2/26', 'Army', 0, 'Duke', 1, 1), row('11/5/26', 'Coastal Carolina', 0.01, 'Duke', 0.99, 0), row('11/9/26', 'Duke', 0.6, 'Kansas', 0.4, 0)];
-  assert.deepStrictEqual(S.bartFutureGames(sked, 'Duke').map((g) => g.p), [0.99, 0.6]);
+test('projection: ESPN Matchup Predictor -> win chance per team', () => {
+  const sum = { predictor: { homeTeam: { id: '150', gameProjection: '90.9' }, awayTeam: { id: '152', gameProjection: '9.1' } } };
+  assert.deepStrictEqual(S.predictorOdds(sum), { 150: 0.909, 152: 0.091 });
+  assert.strictEqual(S.predictorOdds({}), null);
 });
 
 test('entries: games left counts all 6 teams; projection keeps the best 5', () => {

@@ -46,12 +46,17 @@ function isNcaaTournament(event) {
 // which includes conference tournaments (checked against 2025-26 data).
 function regularRecord(events, teamId) {
   let w = 0, l = 0, left = 0;
+  const upcoming = [];
   const notes = [];
   for (const e of events) {
     if (e.seasonType && e.seasonType.type !== 2) continue;
     if (!isCompleted(e)) {
       const st = ((e.competitions[0].status || {}).type || {}).name || '';
-      if (!/POSTPONED|CANCELED|CANCELLED|FORFEIT/i.test(st)) left++;
+      if (!/POSTPONED|CANCELED|CANCELLED|FORFEIT/i.test(st)) {
+        left++;
+        const { opp } = sides(e, teamId);
+        upcoming.push({ id: String(e.id), date: e.date, oppId: opp ? String(opp.id) : null });
+      }
       continue;
     }
     const { me } = sides(e, teamId);
@@ -60,32 +65,30 @@ function regularRecord(events, teamId) {
     else if (me.winner === false) l++;
     else notes.push(`Finished game on ${String(e.date).slice(0, 10)} has no winner; skipped.`);
   }
-  return { w, l, left, notes };
+  upcoming.sort((x, y) => String(x.date).localeCompare(String(y.date)));
+  return { w, l, left, upcoming, notes };
 }
 
-// ---------- projections (Barttorvik win odds) ----------
-const NON_D1_WIN = 0.95; // games Barttorvik doesn't list (non-Division I opponents)
+// ---------- projections (ESPN Matchup Predictor / BPI win odds) ----------
+const NON_D1_WIN = 0.95; // ESPN gives no odds vs non-Division I opponents
 
-// Barttorvik's super_sked rows -> this team's unplayed games, oldest first: [{ date, p }]
-function bartFutureGames(sked, bartName) {
-  const out = [];
-  for (const g of sked) {
-    if (g[23] === 1) continue; // already played
-    let p = null;
-    if (g[8] === bartName) p = Number(g[12]);
-    else if (g[14] === bartName) p = Number(g[18]);
-    if (p === null || !Number.isFinite(p)) continue;
-    const [m, d, y] = String(g[1]).split('/').map(Number);
-    out.push({ date: Date.UTC(2000 + y, m - 1, d), p });
+// ESPN game summary -> { teamId: winChance 0..1 }, or null if ESPN has no prediction.
+function predictorOdds(summary) {
+  const pr = summary && summary.predictor;
+  if (!pr || !pr.homeTeam || !pr.awayTeam) return null;
+  const out = {};
+  for (const side of [pr.homeTeam, pr.awayTeam]) {
+    const p = parseFloat(side.gameProjection);
+    if (!side.id || !Number.isFinite(p)) return null;
+    out[String(side.id)] = p / 100;
   }
-  return out.sort((a, b) => a.date - b.date);
+  return out;
 }
 
-// Expected end-of-regular-season record and points. ESPN decides how many games
-// are left; Barttorvik supplies the win chance for each of them.
+// Expected end-of-regular-season record and points. future = [{ p }] for each
+// remaining game (oldest first); extra games without odds count at NON_D1_WIN.
 function projectTeam(rec, gamesLeft, future, scoring) {
   let games = future.slice();
-  // ESPN already shows a result Barttorvik hasn't posted yet: drop the oldest.
   while (games.length > gamesLeft) games.shift();
   const extra = gamesLeft - games.length;
   const expW = games.reduce((s, g) => s + g.p, 0) + extra * NON_D1_WIN;
@@ -237,6 +240,6 @@ function checkConfig(cfg) {
 }
 
 module.exports = {
-  ROUNDS, ROUND_NAMES, regularRecord, bartFutureGames, projectTeam, NON_D1_WIN, tournamentResult, isNcaaTournament, roundFromHeadline,
+  ROUNDS, ROUND_NAMES, regularRecord, predictorOdds, projectTeam, NON_D1_WIN, tournamentResult, isNcaaTournament, roundFromHeadline,
   regularPoints, tournamentPoints, ranks, payouts, scoreEntries, checkConfig,
 };
