@@ -1,7 +1,7 @@
 {
  "title": "College Hoops Salary-Cap Pool",
  "season": "2026-27",
- "checkedAt": "2026-11-03T23:55:12.136Z",
+ "checkedAt": "2026-11-03T23:55:52.250Z",
  "entryFee": 25,
  "pot": {
   "total": 450,
@@ -1678,9 +1678,9 @@
     "home": false
    },
    "gamesLeft": 29,
-   "projW": null,
-   "projL": null,
-   "projPts": null,
+   "projW": 17.9,
+   "projL": 12.1,
+   "projPts": 23.6,
    "owners": 1,
    "ptsPerDollar": 2
   },
