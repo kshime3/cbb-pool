@@ -11,3 +11,4 @@ College basketball salary-cap pool (2026-27, 18 entries × $25). The owner is no
 - Running locally here needs `NODE_USE_ENV_PROXY=1 NODE_EXTRA_CA_CERTS=/root/.ccr/ca-bundle.crt`.
 - Cache-busting: bump `?v=` in index.html when css/js change.
 - Hosted at kshime3.github.io/cbb-pool (Pages source = GitHub Actions). The workflow commits `data/standings.json` daily (this also keeps the scheduled run from being auto-disabled after 60 quiet days).
+- Page layout: bottom tab bar (Standings, Roster, Teams, Tourney, Rules), one panel shown at a time, tab kept in the URL hash (#roster). Tourney data lives only on the Tourney tab (shows a "starts in March" card until seeds exist). Style: "Bracket night" (Illini Grades family: hardwood, arena header, LED scoreboard; midnight + gold).

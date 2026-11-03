@@ -88,15 +88,12 @@
       $('t-tour-s').textContent = `${t.best} pts · ${money(tMoney)} if it ended now`;
     } else {
       $('t-tour').textContent = '—';
-      $('t-tour-s').textContent = 'Starts on Selection Sunday';
+      $('t-tour-s').textContent = 'Starts in March';
     }
     $('t-entries').textContent = D.entries.length;
     $('t-entries-s').textContent = `${money(D.entryFee)} each`;
-    const sum = (a) => a.reduce((x, y) => x + y, 0);
     $('t-pot').textContent = money(D.pot.total);
     $('t-pot-s').textContent = `Regular ${money(sum(D.pot.regular))} · Tourney ${money(sum(D.pot.tournament))}`;
-    const place = (a) => a.map((v, i) => `${['1st', '2nd', '3rd'][i]} ${money(v)}`).join(', ');
-    $('payout-text').textContent = `Regular season ${money(sum(D.pot.regular))} (${place(D.pot.regular)}); tournament ${money(sum(D.pot.tournament))} (${place(D.pot.tournament)}).`;
   }
 
   function chart() {
@@ -120,43 +117,60 @@
     }).join('');
   }
 
+  const ROUND_SHORT = { PI: 'Play-in', R64: 'R64', R32: 'R32', S16: 'S16', E8: 'E8', F4: 'F4', C: 'Title' };
+  const sum = (a) => a.reduce((x, y) => x + y, 0);
+  const place = (a) => a.map((v, i) => `${['1st', '2nd', '3rd'][i]} ${money(v)}`).join(', ');
+  const byName = () => Object.fromEntries(D.teams.map((t) => [t.name, t]));
+  function status(t) {
+    if (!t.seed) return '<span class="st out">Not in field</span>';
+    return t.eliminated ? '<span class="st out">Out</span>' : '<span class="st alive">Alive</span>';
+  }
+  function aliveCount(en) {
+    const T = byName();
+    return en.teams.filter((n) => T[n].seed && !T[n].eliminated).length;
+  }
+
+  // ---------- Standings tab ----------
   let standingsTable;
   function standings() {
-    const rr = D.entries.map((e) => e.regRank), tr = D.entries.map((e) => e.tourRank);
+    const rr = D.entries.map((e) => e.regRank);
     const cols = [
       { key: 'name', label: 'Entry', cls: 'l', asc: true, html: (r) => esc(r.name) },
-      { key: 'regRank', label: 'Reg<br>rank', asc: true, html: (r) => rankPill(r.regRank, rr) },
-      { key: 'regPts', label: 'Reg<br>pts', html: (r) => r.regPts + (r.regPayout && D.gamesPlayed ? `<span class="money">${money(r.regPayout)}</span>` : '') },
-      { key: 'tourRank', label: 'Tourn<br>rank', asc: true, html: (r) => (D.tournamentStarted ? rankPill(r.tourRank, tr) : '—') },
-      { key: 'tourPts', label: 'Tourn<br>pts', html: (r) => r.tourPts + (r.tourPayout && D.tournamentStarted ? `<span class="money">${money(r.tourPayout)}</span>` : '') },
+      { key: 'regRank', label: 'Rank', asc: true, html: (r) => rankPill(r.regRank, rr) },
+      { key: 'regPts', label: 'Pts', html: (r) => r.regPts + (r.regPayout && D.gamesPlayed ? `<span class="money">${money(r.regPayout)}</span>` : '') },
       { key: 'dropped', label: 'Dropped', cls: 'l', sort: (r) => r.dropped.join(), html: (r) => esc(r.dropped.join(', ')) },
       { key: 'salary', label: 'Salary', html: (r) => money(r.salary) },
     ];
     standingsTable = sortableTable($('standings'), cols, D.entries, {
       sortKey: 'regRank', dir: 1,
       rowClass: (r) => 'click' + (r.name === selected ? ' sel' : ''),
-      onRow: (n) => select(n, true),
+      onRow: (n) => { select(n); showTab('roster'); },
     });
   }
 
+  // ---------- Roster tab ----------
   function roster() {
     const en = D.entries.find((e) => e.name === selected);
-    const byName = Object.fromEntries(D.teams.map((t) => [t.name, t]));
-    const teams = en.teams.map((n) => byName[n]).sort((a, b) => b.regPts - a.regPts);
+    const T = byName();
+    const teams = en.teams.map((n) => T[n]).sort((a, b) => b.regPts - a.regPts);
     const when = (iso) => new Date(iso).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
     const row = (t) => {
       const drop = en.dropped.includes(t.name);
       const next = t.next ? `<span class="nextg">Next: ${t.next.home ? 'vs' : 'at'} ${esc(t.next.opp)}, ${when(t.next.date)}</span>` : '';
       return `<tr class="${drop ? 'dropped' : ''}"><td class="l"><span class="team">${esc(t.name)}</span>${drop ? '<span class="tag-drop">Dropped</span>' : ''}${next}</td>
-        <td>${t.w}-${t.l}</td><td class="rp">${drop ? signed(t.regPts) : ptsHtml(t.regPts)}</td><td>${seedHtml(t.seed)}</td><td>${t.tourPts}</td></tr>`;
+        <td>${money(t.salary)}</td><td>${t.w}-${t.l}</td><td class="rp">${drop ? signed(t.regPts) : ptsHtml(t.regPts)}</td></tr>`;
     };
-    $('roster').innerHTML = `<thead><tr><th class="l">Team</th><th>Record</th><th>Pts</th><th>Seed</th><th>Tourn<br>pts</th></tr></thead>
+    $('roster').innerHTML = `<thead><tr><th class="l">Team</th><th>Salary</th><th>Record</th><th>Pts</th></tr></thead>
       <tbody>${teams.map(row).join('')}</tbody>
-      <tfoot><tr><td class="l">Total</td><td></td><td>${en.regPts}</td><td></td><td>${en.tourPts}</td></tr></tfoot>`;
+      <tfoot><tr><td class="l">Total (best 5)</td><td>${money(en.salary)}</td><td></td><td>${en.regPts}</td></tr></tfoot>`;
     const rr = D.entries.map((e) => e.regRank);
-    $('roster-note').textContent = `Regular-season rank ${rankLabel(en.regRank, rr)} of ${D.entries.length} · salary ${money(en.salary)}. The crossed-out team is the lowest scorer and doesn't count in the regular season (it still counts in the tournament).`;
+    $('roster-summary').innerHTML = `
+      <div><b>${rankLabel(en.regRank, rr)}</b><span>of ${D.entries.length}</span></div>
+      <div><b>${en.regPts}</b><span>points</span></div>
+      <div><b>${en.regPayout ? money(en.regPayout) : '$0'}</b><span>if it ended now</span></div>`;
   }
 
+  // ---------- Teams tab ----------
   function teamsTable() {
     const cols = [
       { key: 'name', label: 'Team', cls: 'l', asc: true, html: (r) => esc(r.name) + (r.overridden && r.overridden.length ? '<span class="tag" title="Entered by hand">✎</span>' : '') },
@@ -166,33 +180,76 @@
       { key: 'regPts', label: 'Pts', html: (r) => ptsHtml(r.regPts) },
       { key: 'ptsPerDollar', label: 'Pts<br>per $', html: (r) => r.ptsPerDollar.toFixed(2) },
       { key: 'owners', label: 'Owned<br>by' },
-      { key: 'seed', label: 'Seed', asc: true, sort: (r) => r.seed ?? 99, html: (r) => seedHtml(r.seed) },
-      { key: 'tourPts', label: 'Tourn<br>pts' },
     ];
     sortableTable($('teams'), cols, D.teams, { sortKey: 'regPts' });
   }
 
-  function select(name, scroll) {
+  // ---------- Tourney tab ----------
+  let tourTable;
+  function tourney() {
+    $('tour-payout-text').textContent = `${money(sum(D.pot.tournament))} total (${place(D.pot.tournament)})`;
+    $('tour-waiting').hidden = D.tournamentStarted;
+    $('tour-live').hidden = !D.tournamentStarted;
+    if (!D.tournamentStarted) return;
+    const tr = D.entries.map((e) => e.tourRank);
+    const rows = D.entries.map((e) => Object.assign({}, e, { alive: aliveCount(e) }));
+    tourTable = sortableTable($('tour-standings'), [
+      { key: 'name', label: 'Entry', cls: 'l', asc: true, html: (r) => esc(r.name) },
+      { key: 'tourRank', label: 'Rank', asc: true, html: (r) => rankPill(r.tourRank, tr) },
+      { key: 'tourPts', label: 'Pts', html: (r) => r.tourPts + (r.tourPayout ? `<span class="money">${money(r.tourPayout)}</span>` : '') },
+      { key: 'alive', label: 'Teams<br>alive', html: (r) => `${r.alive} of 6` },
+    ], rows, {
+      sortKey: 'tourRank', dir: 1,
+      rowClass: (r) => 'click' + (r.name === selected ? ' sel' : ''),
+      onRow: (n) => { select(n); $('tour-pick').closest('.card').scrollIntoView({ behavior: 'smooth', block: 'start' }); },
+    });
+    const field = D.teams.filter((t) => t.seed);
+    sortableTable($('tour-teams'), [
+      { key: 'name', label: 'Team', cls: 'l', asc: true, html: (r) => esc(r.name) + (r.overridden && r.overridden.length ? '<span class="tag" title="Entered by hand">✎</span>' : '') },
+      { key: 'seed', label: 'Seed', asc: true, html: (r) => seedHtml(r.seed) },
+      { key: 'wins', label: 'Wins', sort: (r) => r.roundsWon.length, html: (r) => r.roundsWon.length },
+      { key: 'tourPts', label: 'Pts' },
+      { key: 'owners', label: 'Owned<br>by' },
+      { key: 'st', label: 'Status', cls: 'l', sort: (r) => (r.eliminated ? 0 : 1), html: status },
+    ], field, { sortKey: 'tourPts' });
+  }
+
+  function tourRoster() {
+    if (!D.tournamentStarted) return;
+    const en = D.entries.find((e) => e.name === selected);
+    const T = byName();
+    const teams = en.teams.map((n) => T[n]).sort((a, b) => b.tourPts - a.tourPts);
+    const wins = (t) => (t.roundsWon.length ? t.roundsWon.map((r) => `<span class="rd">${ROUND_SHORT[r] || r}</span>`).join('') : '<span class="muted">—</span>');
+    $('tour-roster').innerHTML = `<thead><tr><th class="l">Team</th><th>Seed</th><th class="l">Wins</th><th>Pts</th></tr></thead>
+      <tbody>${teams.map((t) => `<tr><td class="l">${esc(t.name)}<span class="under">${status(t)}</span></td><td>${seedHtml(t.seed)}</td><td class="l wins">${wins(t)}</td>
+        <td title="Seed ${t.seedPts} + wins ${t.winPts}">${t.tourPts}</td></tr>`).join('')}</tbody>
+      <tfoot><tr><td class="l">Total</td><td></td><td></td><td>${en.tourPts}</td></tr></tfoot>`;
+  }
+
+  // ---------- selection + tabs ----------
+  function select(name) {
     selected = name;
     $('entry-pick').value = name;
+    $('tour-pick').value = name;
     try { localStorage.setItem('cbbpool_entry', name); } catch (e) { /* private mode */ }
     chart();
     standingsTable.redraw();
+    if (tourTable) tourTable.redraw();
     roster();
-    if (scroll) $('roster-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    tourRoster();
   }
 
-  // Lights up the section button for the part of the page you're looking at.
-  function jumpHighlight() {
-    if (!('IntersectionObserver' in window)) return;
-    const links = Array.from(document.querySelectorAll('.jump a'));
-    const io = new IntersectionObserver((items) => {
-      items.forEach((it) => {
-        if (!it.isIntersecting) return;
-        links.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + it.target.id));
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    links.forEach((a) => { const el = document.querySelector(a.getAttribute('href')); if (el) io.observe(el); });
+  const TABS = ['standings', 'roster', 'teams', 'tourney', 'rules'];
+  function showTab(name, fromHash) {
+    if (!TABS.includes(name)) name = 'standings';
+    TABS.forEach((t) => {
+      $('tab-' + t).hidden = t !== name;
+      $('btn-' + t).setAttribute('aria-selected', String(t === name));
+    });
+    if (!fromHash && location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+    // If you've scrolled past the header, jump back to the top of the new tab.
+    const mainTop = document.querySelector('main').getBoundingClientRect().top + window.scrollY;
+    if (window.scrollY > mainTop) window.scrollTo(0, mainTop - 8);
   }
 
   function render() {
@@ -201,17 +258,27 @@
     const t = new Date(D.checkedAt);
     $('updated').dateTime = D.checkedAt;
     $('updated').textContent = t.toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+    $('reg-payout-text').textContent = `${money(sum(D.pot.regular))} total (${place(D.pot.regular)})`;
     let saved = null;
     try { saved = localStorage.getItem('cbbpool_entry'); } catch (e) { /* ignore */ }
     const names = D.entries.map((e) => e.name);
     selected = names.includes(saved) ? saved : names.includes(D.defaultEntry) ? D.defaultEntry : names[0];
-    $('entry-pick').innerHTML = names.slice().sort().map((n) => `<option>${esc(n)}</option>`).join('');
-    $('entry-pick').onchange = (e) => select(e.target.value, false);
-    $('chart').onclick = (e) => { const b = e.target.closest('.bar-row'); if (b) select(b.dataset.name, true); };
-    alerts(); tiles(); chart(); standings(); teamsTable();
-    jumpHighlight();
-    select(selected, false);
+    const opts = names.slice().sort().map((n) => `<option>${esc(n)}</option>`).join('');
+    $('entry-pick').innerHTML = opts;
+    $('tour-pick').innerHTML = opts;
+    $('entry-pick').onchange = (e) => select(e.target.value);
+    $('tour-pick').onchange = (e) => select(e.target.value);
+    $('chart').onclick = (e) => { const b = e.target.closest('.bar-row'); if (b) { select(b.dataset.name); showTab('roster'); } };
+    alerts(); tiles(); chart(); standings(); teamsTable(); tourney();
+    select(selected);
   }
+
+  document.querySelector('.tabbar').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-tab]');
+    if (b) showTab(b.dataset.tab);
+  });
+  window.addEventListener('hashchange', () => showTab(location.hash.slice(1), true));
+  showTab(location.hash.slice(1), true);
 
   fetch('data/standings.json?t=' + Date.now(), { cache: 'no-store' })
     .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })

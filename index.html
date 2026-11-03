@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261103a">
+<link rel="stylesheet" href="css/style.css?v=20261103c">
 </head>
 <body>
 <header class="hero">
@@ -30,51 +30,119 @@
   </div>
 </header>
 
-<nav class="jump" aria-label="Sections">
-  <a href="#sec-chart">📊<span>Points</span></a>
-  <a href="#sec-standings">🏆<span>Standings</span></a>
-  <a href="#roster-card">🧢<span>Roster</span></a>
-  <a href="#sec-teams">🏀<span>Teams</span></a>
-  <a href="#sec-rules">📜<span>Rules</span></a>
-</nav>
-
 <main>
   <div id="alerts"></div>
 
-  <section class="card" id="sec-chart">
-    <h2>Regular-season points <small>best 5 of 6</small></h2>
-    <p class="hint">Tap a name to see that roster.</p>
-    <div id="chart" class="bars" role="list"></div>
-  </section>
+  <!-- STANDINGS (regular season) -->
+  <div class="panel" id="tab-standings" role="tabpanel" aria-labelledby="btn-standings">
+    <section class="card">
+      <h2>Regular-season points <small>best 5 of 6 teams</small></h2>
+      <p class="hint">Tap a name to see that roster.</p>
+      <div id="chart" class="bars" role="list"></div>
+    </section>
+    <section class="card">
+      <h2>Standings</h2>
+      <p class="hint">Tap a column heading to sort. Tap a row to see the roster.</p>
+      <div class="scroll"><table id="standings" class="grid"></table></div>
+    </section>
+  </div>
 
-  <section class="card flush" id="sec-standings">
-    <h2>Standings</h2>
-    <p class="hint">Tap a column heading to sort. Tap a row to see the roster.</p>
-    <div class="scroll"><table id="standings" class="grid"></table></div>
-  </section>
+  <!-- ROSTER -->
+  <div class="panel" id="tab-roster" role="tabpanel" aria-labelledby="btn-roster" hidden>
+    <section class="card">
+      <h2>Roster</h2>
+      <label class="pick">Entry <select id="entry-pick"></select></label>
+      <div id="roster-summary" class="mini-stats"></div>
+      <div class="scroll"><table id="roster" class="grid"></table></div>
+      <p class="hint after">The crossed-out team is the lowest scorer and doesn't count in the regular season. It still counts in the tourney.</p>
+    </section>
+  </div>
 
-  <section class="card" id="roster-card">
-    <h2>Roster</h2>
-    <label class="pick">Entry <select id="entry-pick"></select></label>
-    <div class="scroll"><table id="roster" class="grid"></table></div>
-    <p class="hint after" id="roster-note"></p>
-  </section>
+  <!-- TEAMS -->
+  <div class="panel" id="tab-teams" role="tabpanel" aria-labelledby="btn-teams" hidden>
+    <section class="card">
+      <h2>Every drafted team</h2>
+      <p class="hint">Tap a column heading to sort.</p>
+      <div class="scroll"><table id="teams" class="grid"></table></div>
+    </section>
+  </div>
 
-  <section class="card flush" id="sec-teams">
-    <h2>Every drafted team</h2>
-    <p class="hint">Tap a column heading to sort.</p>
-    <div class="scroll"><table id="teams" class="grid"></table></div>
-  </section>
+  <!-- TOURNEY -->
+  <div class="panel" id="tab-tourney" role="tabpanel" aria-labelledby="btn-tourney" hidden>
+    <section class="card waiting" id="tour-waiting">
+      <div class="big" aria-hidden="true">🎟️</div>
+      <h2>Tourney starts in March</h2>
+      <p>Seeds show up here on Selection Sunday, and points update every morning through the championship. All 6 of your teams count.</p>
+    </section>
+    <div id="tour-live">
+      <section class="card">
+        <h2>Tourney standings <small>all 6 teams count</small></h2>
+        <p class="hint">Tap a column heading to sort. Tap a row to see that bracket.</p>
+        <div class="scroll"><table id="tour-standings" class="grid"></table></div>
+      </section>
+      <section class="card">
+        <h2>Bracket</h2>
+        <label class="pick">Entry <select id="tour-pick"></select></label>
+        <div class="scroll"><table id="tour-roster" class="grid"></table></div>
+      </section>
+      <section class="card">
+        <h2>Drafted teams in the field</h2>
+        <div class="scroll"><table id="tour-teams" class="grid"></table></div>
+      </section>
+    </div>
+    <section class="card">
+      <h2>Tourney scoring</h2>
+      <div class="score-grid">
+        <div>
+          <h3>Seed bonus</h3>
+          <table class="mini"><tbody>
+            <tr><td>1–2 seed</td><td>+8</td></tr><tr><td>3–4</td><td>+7</td></tr>
+            <tr><td>5–6</td><td>+6</td></tr><tr><td>7–8</td><td>+5</td></tr>
+            <tr><td>9–10</td><td>+4</td></tr><tr><td>11–12</td><td>+3</td></tr>
+            <tr><td>13–14</td><td>+2</td></tr><tr><td>15–16</td><td>+1</td></tr>
+          </tbody></table>
+        </div>
+        <div>
+          <h3>Each win</h3>
+          <table class="mini"><tbody>
+            <tr><td>Play-in</td><td>+1</td></tr><tr><td>Round of 64</td><td>+2</td></tr>
+            <tr><td>Round of 32</td><td>+4</td></tr><tr><td>Sweet 16</td><td>+6</td></tr>
+            <tr><td>Elite 8</td><td>+8</td></tr><tr><td>Final Four</td><td>+10</td></tr>
+            <tr><td>Championship</td><td>+12</td></tr>
+          </tbody></table>
+        </div>
+      </div>
+      <p class="hint after">No penalty for losses. Only the real NCAA Tournament counts. Prize money: <span id="tour-payout-text"></span>.</p>
+    </section>
+  </div>
 
-  <section class="card rules" id="sec-rules">
-    <h2>Rules</h2>
-    <p><b>Regular season</b> (all games before the NCAA Tournament, conference tournaments included): +2 per win, −1 per loss. Each entry's lowest team is dropped; the best 5 count.</p>
-    <p><b>Tournament</b> (real NCAA Tournament only; all 6 teams count). Seed bonus: 1–2 seed +8, 3–4 +7, 5–6 +6, 7–8 +5, 9–10 +4, 11–12 +3, 13–14 +2, 15–16 +1. Win bonus: play-in +1, Round of 64 +2, Round of 32 +4, Sweet 16 +6, Elite 8 +8, Final Four +10, Championship +12.</p>
-    <p><b>Payouts</b>: <span id="payout-text"></span> Ties split the money.</p>
-    <p class="hint">Scores from ESPN, checked every morning. NIT and other postseason events don't count.</p>
-  </section>
+  <!-- RULES -->
+  <div class="panel rules" id="tab-rules" role="tabpanel" aria-labelledby="btn-rules" hidden>
+    <section class="card">
+      <h2>Regular season <small>2/3 of the pot</small></h2>
+      <p>+2 per win, −1 per loss. Every game before the NCAA Tournament counts, including conference tournaments.</p>
+      <p>Each entry has 6 teams. The lowest-scoring team is dropped, so the best 5 count.</p>
+      <p><b>Prize money:</b> <span id="reg-payout-text"></span>.</p>
+    </section>
+    <section class="card">
+      <h2>Tourney <small>1/3 of the pot</small></h2>
+      <p>All 6 teams count: a seed bonus plus points for each NCAA Tournament win. The full table is on the Tourney tab. NIT and other postseason events don't count.</p>
+    </section>
+    <section class="card">
+      <h2>Fine print</h2>
+      <p>Ties share a rank and split the prize money for the places they cover.</p>
+      <p>Salary cap $101. Scores come from ESPN and are checked every morning.</p>
+    </section>
+  </div>
 </main>
-<footer><p class="foot">See you in March 🏆</p></footer>
-<script src="js/app.js?v=20261103a"></script>
+
+<nav class="tabbar" role="tablist" aria-label="Pages">
+  <button role="tab" id="btn-standings" data-tab="standings" aria-controls="tab-standings">🏆<span>Standings</span></button>
+  <button role="tab" id="btn-roster" data-tab="roster" aria-controls="tab-roster">🧢<span>Roster</span></button>
+  <button role="tab" id="btn-teams" data-tab="teams" aria-controls="tab-teams">🏀<span>Teams</span></button>
+  <button role="tab" id="btn-tourney" data-tab="tourney" aria-controls="tab-tourney">🎟️<span>Tourney</span></button>
+  <button role="tab" id="btn-rules" data-tab="rules" aria-controls="tab-rules">📜<span>Rules</span></button>
+</nav>
+<script src="js/app.js?v=20261103c"></script>
 </body>
 </html>
