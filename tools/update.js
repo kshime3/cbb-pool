@@ -129,7 +129,6 @@ async function main() {
     checkedAt: new Date().toISOString(),
     entryFee: cfg.entryFee,
     pot: { total: cfg.entries.length * cfg.entryFee, regular: cfg.payouts.regular, tournament: cfg.payouts.tournament },
-    defaultEntry: cfg.defaultEntry,
     tournamentStarted: teams.some((t) => t.seed),
     gamesPlayed: teams.reduce((s, t) => s + t.w + t.l, 0),
     entries, teams, notes, problems,

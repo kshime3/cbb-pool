@@ -5,7 +5,6 @@
   "seasonLabel": "2026-27",
   "salaryCap": 101,
   "entryFee": 25,
-  "defaultEntry": "Kyle S.",
   "payouts": {
     "regular": [200, 100],
     "tournament": [100, 50]

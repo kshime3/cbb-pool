@@ -109,7 +109,7 @@
       const neg = r.regPts < 0;
       const left = neg ? zero - w : zero;
       const lab = neg ? `right:${100 - left + 1}%` : `left:${zero + w + 1.5}%`;
-      return `<button type="button" role="listitem" class="bar-row${r.name === selected ? ' sel' : ''}" data-name="${esc(r.name)}" aria-label="${esc(r.name)}: ${r.regPts} points">
+      return `<button type="button" role="listitem" class="bar-row" data-name="${esc(r.name)}" aria-label="${esc(r.name)}: ${r.regPts} points">
         <span class="bar-rank">${rankLabel(r.regRank, rankList)}</span>
         <span class="bar-name">${esc(r.name)}</span>
         <span class="bar-track"><span class="bar-zero" style="left:${zero}%"></span>${w ? `<span class="bar${neg ? ' neg' : ''}" style="left:${left}%;width:${w}%"></span>` : ''}<span class="bar-val" style="${lab}">${r.regPts}</span></span>
@@ -143,7 +143,7 @@
     ];
     standingsTable = sortableTable($('standings'), cols, D.entries, {
       sortKey: 'regRank', dir: 1,
-      rowClass: (r) => 'click' + (r.name === selected ? ' sel' : ''),
+      rowClass: () => 'click',
       onRow: (n) => { select(n); showTab('roster'); },
     });
   }
@@ -200,7 +200,7 @@
       { key: 'alive', label: 'Teams<br>alive', html: (r) => `${r.alive} of 6` },
     ], rows, {
       sortKey: 'tourRank', dir: 1,
-      rowClass: (r) => 'click' + (r.name === selected ? ' sel' : ''),
+      rowClass: () => 'click',
       onRow: (n) => { select(n); $('tour-pick').closest('.card').scrollIntoView({ behavior: 'smooth', block: 'start' }); },
     });
     const field = D.teams.filter((t) => t.seed);
@@ -232,9 +232,6 @@
     $('entry-pick').value = name;
     $('tour-pick').value = name;
     try { localStorage.setItem('cbbpool_entry', name); } catch (e) { /* private mode */ }
-    chart();
-    standingsTable.redraw();
-    if (tourTable) tourTable.redraw();
     roster();
     tourRoster();
   }
@@ -262,7 +259,8 @@
     let saved = null;
     try { saved = localStorage.getItem('cbbpool_entry'); } catch (e) { /* ignore */ }
     const names = D.entries.map((e) => e.name);
-    selected = names.includes(saved) ? saved : names.includes(D.defaultEntry) ? D.defaultEntry : names[0];
+    const leader = D.entries.slice().sort((a, b) => a.regRank - b.regRank || a.name.localeCompare(b.name))[0].name;
+    selected = names.includes(saved) ? saved : leader;
     const opts = names.slice().sort().map((n) => `<option>${esc(n)}</option>`).join('');
     $('entry-pick').innerHTML = opts;
     $('tour-pick').innerHTML = opts;

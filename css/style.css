@@ -133,13 +133,11 @@ footer { text-align: center; padding: 4px 16px 36px; }
   background: none; color: inherit; font: inherit; text-align: left; cursor: pointer;
 }
 .bar-row:hover, .bar-row:focus-visible { background: #f1f4fb; outline: none; }
-.bar-row.sel { background: var(--hl); box-shadow: inset 4px 0 0 var(--gold); }
 .bar-rank { font-family: "Bebas Neue", sans-serif; font-size: 20px; color: var(--muted); text-align: center; line-height: 1; }
 .bar-name { font-weight: 600; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .bar-track { position: relative; height: 18px; }
 .bar-zero { position: absolute; top: -3px; bottom: -3px; width: 1px; background: #d5dae6; }
 .bar { position: absolute; top: 0; height: 18px; background: var(--blue); border-radius: 0 4px 4px 0; }
-.bar-row.sel .bar { background: var(--gold-deep); }
 .bar.neg { background: #a3abbf; border-radius: 4px 0 0 4px; }
 .bar-val { position: absolute; top: -1px; line-height: 20px; font-family: "Bebas Neue", sans-serif; font-size: 19px; color: var(--ink); white-space: nowrap; letter-spacing: .5px; }
 
@@ -161,8 +159,6 @@ table.grid { border-collapse: separate; border-spacing: 0; width: 100%; font-siz
 .grid th .arrow { font-size: 9px; width: 8px; }
 .grid tbody tr.click { cursor: pointer; }
 .grid tbody tr.click:hover td { background: #eef2fb; }
-.grid tr.sel td, .grid tbody tr.sel:nth-child(even) td { background: var(--hl); }
-.grid tr.sel td:first-child { box-shadow: inset 4px 0 0 var(--gold); }
 .grid td.l, .grid th.l { text-align: left; }
 .grid td:first-child { font-weight: 600; }
 .grid tfoot td { font-weight: 800; background: var(--hl); border-bottom: 0; border-top: 2px solid var(--gold); }
