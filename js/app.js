@@ -6,6 +6,8 @@
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const money = (n) => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
   const signed = (n) => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n);
+  const ptsHtml = (n) => `<span class="${n > 0 ? 'up' : n < 0 ? 'down' : ''}">${signed(n)}</span>`;
+  const seedHtml = (s) => (s ? `<span class="seed">${s}</span>` : '—');
   let D = null;
   let selected = null;
 
@@ -15,6 +17,9 @@
   function leaders(key) {
     const best = Math.max(...D.entries.map((e) => e[key]));
     return { best, names: D.entries.filter((e) => e[key] === best).map((e) => e.name) };
+  }
+  function rankPill(rank, all) {
+    return `<span class="rank-pill${rank <= 2 ? ' p' + rank : ''}">${rankLabel(rank, all)}</span>`;
   }
   function joinNames(n) {
     return n.length <= 2 ? n.join(' & ') : `${n.length}-way tie`;
@@ -75,12 +80,12 @@
     const reg = leaders('regPts');
     const regMoney = D.entries.find((e) => e.name === reg.names[0]).regPayout;
     $('t-reg').textContent = D.gamesPlayed ? joinNames(reg.names) : '—';
-    $('t-reg-s').textContent = D.gamesPlayed ? `${reg.best} pts · ${money(regMoney)} if it ended today` : 'No games yet';
+    $('t-reg-s').textContent = D.gamesPlayed ? `${reg.best} pts · ${money(regMoney)} if it ended now` : 'No games yet';
     if (D.tournamentStarted) {
       const t = leaders('tourPts');
       const tMoney = D.entries.find((e) => e.name === t.names[0]).tourPayout;
       $('t-tour').textContent = joinNames(t.names);
-      $('t-tour-s').textContent = `${t.best} pts · ${money(tMoney)} if it ended today`;
+      $('t-tour-s').textContent = `${t.best} pts · ${money(tMoney)} if it ended now`;
     } else {
       $('t-tour').textContent = '—';
       $('t-tour-s').textContent = 'Starts on Selection Sunday';
@@ -96,6 +101,7 @@
 
   function chart() {
     const rows = D.entries.slice().sort((a, b) => b.regPts - a.regPts || a.name.localeCompare(b.name));
+    const rankList = D.entries.map((e) => e.regRank);
     const max = Math.max(0, ...rows.map((r) => r.regPts));
     const min = Math.min(0, ...rows.map((r) => r.regPts));
     const span = max - min || 1;
@@ -107,6 +113,7 @@
       const left = neg ? zero - w : zero;
       const lab = neg ? `right:${100 - left + 1}%` : `left:${zero + w + 1.5}%`;
       return `<button type="button" role="listitem" class="bar-row${r.name === selected ? ' sel' : ''}" data-name="${esc(r.name)}" aria-label="${esc(r.name)}: ${r.regPts} points">
+        <span class="bar-rank">${rankLabel(r.regRank, rankList)}</span>
         <span class="bar-name">${esc(r.name)}</span>
         <span class="bar-track"><span class="bar-zero" style="left:${zero}%"></span>${w ? `<span class="bar${neg ? ' neg' : ''}" style="left:${left}%;width:${w}%"></span>` : ''}<span class="bar-val" style="${lab}">${r.regPts}</span></span>
       </button>`;
@@ -118,9 +125,9 @@
     const rr = D.entries.map((e) => e.regRank), tr = D.entries.map((e) => e.tourRank);
     const cols = [
       { key: 'name', label: 'Entry', cls: 'l', asc: true, html: (r) => esc(r.name) },
-      { key: 'regRank', label: 'Reg<br>rank', asc: true, html: (r) => rankLabel(r.regRank, rr) },
+      { key: 'regRank', label: 'Reg<br>rank', asc: true, html: (r) => rankPill(r.regRank, rr) },
       { key: 'regPts', label: 'Reg<br>pts', html: (r) => r.regPts + (r.regPayout && D.gamesPlayed ? `<span class="money">${money(r.regPayout)}</span>` : '') },
-      { key: 'tourRank', label: 'Tourn<br>rank', asc: true, html: (r) => (D.tournamentStarted ? rankLabel(r.tourRank, tr) : '—') },
+      { key: 'tourRank', label: 'Tourn<br>rank', asc: true, html: (r) => (D.tournamentStarted ? rankPill(r.tourRank, tr) : '—') },
       { key: 'tourPts', label: 'Tourn<br>pts', html: (r) => r.tourPts + (r.tourPayout && D.tournamentStarted ? `<span class="money">${money(r.tourPayout)}</span>` : '') },
       { key: 'dropped', label: 'Dropped', cls: 'l', sort: (r) => r.dropped.join(), html: (r) => esc(r.dropped.join(', ')) },
       { key: 'salary', label: 'Salary', html: (r) => money(r.salary) },
@@ -140,8 +147,8 @@
     const row = (t) => {
       const drop = en.dropped.includes(t.name);
       const next = t.next ? `<span class="nextg">Next: ${t.next.home ? 'vs' : 'at'} ${esc(t.next.opp)}, ${when(t.next.date)}</span>` : '';
-      return `<tr class="${drop ? 'dropped' : ''}"><td class="l"><span class="team">${esc(t.name)}</span>${drop ? '<span class="tag">dropped</span>' : ''}${next}</td>
-        <td>${t.w}-${t.l}</td><td class="rp">${signed(t.regPts)}</td><td>${t.seed || '—'}</td><td>${t.tourPts}</td></tr>`;
+      return `<tr class="${drop ? 'dropped' : ''}"><td class="l"><span class="team">${esc(t.name)}</span>${drop ? '<span class="tag-drop">Dropped</span>' : ''}${next}</td>
+        <td>${t.w}-${t.l}</td><td class="rp">${drop ? signed(t.regPts) : ptsHtml(t.regPts)}</td><td>${seedHtml(t.seed)}</td><td>${t.tourPts}</td></tr>`;
     };
     $('roster').innerHTML = `<thead><tr><th class="l">Team</th><th>Record</th><th>Pts</th><th>Seed</th><th>Tourn<br>pts</th></tr></thead>
       <tbody>${teams.map(row).join('')}</tbody>
@@ -156,10 +163,10 @@
       { key: 'conf', label: 'Conf', cls: 'l', asc: true },
       { key: 'salary', label: 'Salary', html: (r) => money(r.salary) },
       { key: 'record', label: 'Record', sort: (r) => r.w - r.l, html: (r) => `${r.w}-${r.l}` },
-      { key: 'regPts', label: 'Pts', html: (r) => signed(r.regPts) },
+      { key: 'regPts', label: 'Pts', html: (r) => ptsHtml(r.regPts) },
       { key: 'ptsPerDollar', label: 'Pts<br>per $', html: (r) => r.ptsPerDollar.toFixed(2) },
       { key: 'owners', label: 'Owned<br>by' },
-      { key: 'seed', label: 'Seed', asc: true, sort: (r) => r.seed ?? 99, html: (r) => r.seed || '—' },
+      { key: 'seed', label: 'Seed', asc: true, sort: (r) => r.seed ?? 99, html: (r) => seedHtml(r.seed) },
       { key: 'tourPts', label: 'Tourn<br>pts' },
     ];
     sortableTable($('teams'), cols, D.teams, { sortKey: 'regPts' });
@@ -175,10 +182,22 @@
     if (scroll) $('roster-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  // Lights up the section button for the part of the page you're looking at.
+  function jumpHighlight() {
+    if (!('IntersectionObserver' in window)) return;
+    const links = Array.from(document.querySelectorAll('.jump a'));
+    const io = new IntersectionObserver((items) => {
+      items.forEach((it) => {
+        if (!it.isIntersecting) return;
+        links.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + it.target.id));
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    links.forEach((a) => { const el = document.querySelector(a.getAttribute('href')); if (el) io.observe(el); });
+  }
+
   function render() {
     document.title = D.title;
-    $('title').textContent = D.title;
-    $('season').textContent = D.season + ' season';
+    $('season').textContent = D.season;
     const t = new Date(D.checkedAt);
     $('updated').dateTime = D.checkedAt;
     $('updated').textContent = t.toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
@@ -190,6 +209,7 @@
     $('entry-pick').onchange = (e) => select(e.target.value, false);
     $('chart').onclick = (e) => { const b = e.target.closest('.bar-row'); if (b) select(b.dataset.name, true); };
     alerts(); tiles(); chart(); standings(); teamsTable();
+    jumpHighlight();
     select(selected, false);
   }
 
