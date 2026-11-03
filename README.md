@@ -8,6 +8,7 @@ from ESPN. Nothing needs to be running on your computer.
 ## How it works
 
 - Every day at about 6:15 am Eastern, GitHub runs `tools/update.js`. It downloads every drafted team's games from ESPN, scores the pool and saves the result in `data/standings.json`. Then it republishes the page.
+- Projections (games left, projected points and finish) use win odds from Barttorvik (`barttorvik.com/2027_super_sked.json`). If Barttorvik is down, scores still update and the projection columns just disappear until it's back.
 - The page shows **Updated <date and time>** at the top. That is the last time ESPN was checked successfully.
 
 ## Update right now

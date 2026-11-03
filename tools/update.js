@@ -14,6 +14,7 @@ const S = require('./scoring');
 
 const ROOT = path.join(__dirname, '..');
 const BASE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball';
+const BART = 'https://barttorvik.com';
 
 function arg(name) {
   const i = process.argv.indexOf(name);
@@ -64,6 +65,17 @@ async function main() {
   }
 
   const notes = [];
+
+  // Barttorvik win odds for every scheduled game (projections only: if this
+  // fails, scores still update and the page just hides projections).
+  let sked = null;
+  try {
+    sked = await getJSON(`${BART}/${season}_super_sked.json`, 3);
+    if (!Array.isArray(sked) || !sked.length) throw new Error('empty schedule');
+  } catch (err) {
+    sked = null;
+    notes.push(`Barttorvik projections unavailable this run (${err.message}).`);
+  }
   const problems = [];
 
   const teams = await inBatches(cfg.teams, 6, async (t) => {
@@ -94,6 +106,12 @@ async function main() {
     else tour.problems.forEach((p) => problems.push(`${t.name}: ${p}`));
 
     const regPts = S.regularPoints({ w, l }, cfg.scoring);
+    let proj = { gamesLeft: rec.left, projW: null, projL: null, projPts: null };
+    if (sked) {
+      const future = S.bartFutureGames(sked, t.bartName || t.name);
+      if (!future.length && rec.left > 3) notes.push(`${t.name}: no upcoming games found on Barttorvik (check bartName in pool.json).`);
+      proj = S.projectTeam({ w, l }, rec.left, future, cfg.scoring);
+    }
     const tp = S.tournamentPoints(seed, roundsWon, cfg.scoring);
     const nextGame = (reg.events || []).concat(post.events || [])
       .filter((e) => !(e.competitions[0].status || {}).type?.completed && new Date(e.date) > Date.now() - 6 * 3600e3)
@@ -111,6 +129,7 @@ async function main() {
       seedPts: tp.seedPts, winPts: tp.winPts, tourPts: tp.total,
       inTournament: !!seed, eliminated: tour.games.some((g) => g.completed && !g.won),
       overridden, next,
+      gamesLeft: proj.gamesLeft, projW: proj.projW, projL: proj.projL, projPts: proj.projPts,
     };
   });
 
@@ -130,6 +149,7 @@ async function main() {
     entryFee: cfg.entryFee,
     pot: { total: cfg.entries.length * cfg.entryFee, regular: cfg.payouts.regular, tournament: cfg.payouts.tournament },
     tournamentStarted: teams.some((t) => t.seed),
+    projections: sked ? 'Barttorvik (barttorvik.com)' : null,
     gamesPlayed: teams.reduce((s, t) => s + t.w + t.l, 0),
     entries, teams, notes, problems,
   };

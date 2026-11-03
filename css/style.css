@@ -218,3 +218,14 @@ table.mini tr:last-child td { border-bottom: 0; }
 .owner small { font: 800 9px Inter, sans-serif; letter-spacing: .6px; text-transform: uppercase; margin-left: 6px; color: #ffb3b3; }
 .owner:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 .owners-hint { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+/* ---------- Projections ---------- */
+.proj { color: #4b5fa8; font-style: italic; }
+.grid tfoot .proj, .grid tfoot td .proj { font-style: normal; }
+.mini-stats { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.mini-stats div { padding: 8px 4px; }
+.mini-stats b { font-size: 26px; }
+body.no-proj .proj-note { display: none; }
+.rules a { color: var(--blue); }
+#roster th, #roster td { padding-left: 6px; padding-right: 6px; }
+#roster td:first-child { min-width: 118px; }

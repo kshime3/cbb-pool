@@ -45,18 +45,54 @@ function isNcaaTournament(event) {
 // Regular season = every finished game ESPN files under "Regular Season",
 // which includes conference tournaments (checked against 2025-26 data).
 function regularRecord(events, teamId) {
-  let w = 0, l = 0;
+  let w = 0, l = 0, left = 0;
   const notes = [];
   for (const e of events) {
     if (e.seasonType && e.seasonType.type !== 2) continue;
-    if (!isCompleted(e)) continue;
+    if (!isCompleted(e)) {
+      const st = ((e.competitions[0].status || {}).type || {}).name || '';
+      if (!/POSTPONED|CANCELED|CANCELLED|FORFEIT/i.test(st)) left++;
+      continue;
+    }
     const { me } = sides(e, teamId);
     if (!me) continue;
     if (me.winner === true) w++;
     else if (me.winner === false) l++;
     else notes.push(`Finished game on ${String(e.date).slice(0, 10)} has no winner; skipped.`);
   }
-  return { w, l, notes };
+  return { w, l, left, notes };
+}
+
+// ---------- projections (Barttorvik win odds) ----------
+const NON_D1_WIN = 0.95; // games Barttorvik doesn't list (non-Division I opponents)
+
+// Barttorvik's super_sked rows -> this team's unplayed games, oldest first: [{ date, p }]
+function bartFutureGames(sked, bartName) {
+  const out = [];
+  for (const g of sked) {
+    if (g[23] === 1) continue; // already played
+    let p = null;
+    if (g[8] === bartName) p = Number(g[12]);
+    else if (g[14] === bartName) p = Number(g[18]);
+    if (p === null || !Number.isFinite(p)) continue;
+    const [m, d, y] = String(g[1]).split('/').map(Number);
+    out.push({ date: Date.UTC(2000 + y, m - 1, d), p });
+  }
+  return out.sort((a, b) => a.date - b.date);
+}
+
+// Expected end-of-regular-season record and points. ESPN decides how many games
+// are left; Barttorvik supplies the win chance for each of them.
+function projectTeam(rec, gamesLeft, future, scoring) {
+  let games = future.slice();
+  // ESPN already shows a result Barttorvik hasn't posted yet: drop the oldest.
+  while (games.length > gamesLeft) games.shift();
+  const extra = gamesLeft - games.length;
+  const expW = games.reduce((s, g) => s + g.p, 0) + extra * NON_D1_WIN;
+  const expL = gamesLeft - expW;
+  const projW = rec.w + expW, projL = rec.l + expL;
+  const round1 = (x) => Math.round(x * 10) / 10;
+  return { gamesLeft, projW: round1(projW), projL: round1(projL), projPts: round1(projW * scoring.win + projL * scoring.loss) };
 }
 
 // Which round a headline names (used as a cross-check / fallback only).
@@ -158,8 +194,15 @@ function scoreEntries(entries, teamsByName, cfg) {
       salary: teams.reduce((s, t) => s + t.salary, 0),
       regPts: kept.reduce((s, t) => s + t.regPts, 0),
       tourPts: teams.reduce((s, t) => s + t.tourPts, 0),
+      gamesLeft: teams.reduce((s, t) => s + (t.gamesLeft || 0), 0),
+      projRegPts: teams.every((t) => typeof t.projPts === 'number')
+        ? Math.round(teams.map((t) => t.projPts).sort((a, b) => b - a).slice(0, cfg.scoring.countBest).reduce((s, x) => s + x, 0) * 10) / 10
+        : null,
     };
   });
+  const hasProj = rows.every((r) => r.projRegPts !== null);
+  const pr = hasProj ? ranks(rows.map((r) => r.projRegPts)) : rows.map(() => null);
+  rows.forEach((r, i) => { r.projRank = pr[i]; });
   const rr = ranks(rows.map((r) => r.regPts));
   const tr = ranks(rows.map((r) => r.tourPts));
   const rp = payouts(rows.map((r) => r.regPts), cfg.payouts.regular);
@@ -194,6 +237,6 @@ function checkConfig(cfg) {
 }
 
 module.exports = {
-  ROUNDS, ROUND_NAMES, regularRecord, tournamentResult, isNcaaTournament, roundFromHeadline,
+  ROUNDS, ROUND_NAMES, regularRecord, bartFutureGames, projectTeam, NON_D1_WIN, tournamentResult, isNcaaTournament, roundFromHeadline,
   regularPoints, tournamentPoints, ranks, payouts, scoreEntries, checkConfig,
 };

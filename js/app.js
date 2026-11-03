@@ -8,6 +8,9 @@
   const signed = (n) => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n);
   const ptsHtml = (n) => `<span class="${n > 0 ? 'up' : n < 0 ? 'down' : ''}">${signed(n)}</span>`;
   const seedHtml = (s) => (s ? `<span class="seed">${s}</span>` : '—');
+  const hasProj = () => !!D.projections;
+  const proj = (n) => (typeof n === 'number' ? String(Math.round(n)) : '—');
+  const badge = (n) => `<span class="money">$${Math.round(n)}</span>`;
   let D = null;
   let selected = null;
 
@@ -148,7 +151,12 @@
     const cols = [
       { key: 'name', label: 'Entry', cls: 'l', asc: true, html: (r) => esc(r.name) },
       { key: 'regRank', label: 'Rank', asc: true, html: (r) => rankPill(r.regRank, rr) },
-      { key: 'regPts', label: 'Pts', html: (r) => r.regPts + (r.regPayout && D.gamesPlayed ? `<span class="money">${money(r.regPayout)}</span>` : '') },
+      { key: 'regPts', label: 'Pts', html: (r) => r.regPts + (r.regPayout && D.gamesPlayed ? badge(r.regPayout) : '') },
+      ...(hasProj() ? [
+        { key: 'projRegPts', label: 'Proj<br>pts', html: (r) => `<span class="proj">${proj(r.projRegPts)}</span>` },
+        { key: 'projRank', label: 'Proj<br>rank', asc: true, html: (r) => `<span class="proj">${rankLabel(r.projRank, D.entries.map((e) => e.projRank))}</span>` },
+      ] : []),
+      { key: 'gamesLeft', label: 'Games<br>left' },
       { key: 'dropped', label: 'Dropped', cls: 'l', sort: (r) => r.dropped.join(), html: (r) => esc(r.dropped.join(', ')) },
       { key: 'salary', label: 'Salary', html: (r) => money(r.salary) },
     ];
@@ -167,18 +175,19 @@
     const when = (iso) => new Date(iso).toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
     const row = (t) => {
       const drop = en.dropped.includes(t.name);
-      const next = t.next ? `<span class="nextg">Next: ${t.next.home ? 'vs' : 'at'} ${esc(t.next.opp)}, ${when(t.next.date)}</span>` : '';
+      const next = `<span class="nextg">${money(t.salary)}${t.next ? ` · Next: ${t.next.home ? 'vs' : 'at'} ${esc(t.next.opp)}, ${when(t.next.date)}` : ''}</span>`;
       return `<tr class="${drop ? 'dropped' : ''}"><td class="l"><span class="team">${esc(t.name)}</span>${drop ? '<span class="tag-drop">Dropped</span>' : ''}${next}</td>
-        <td>${money(t.salary)}</td><td>${t.w}-${t.l}</td><td class="rp">${drop ? signed(t.regPts) : ptsHtml(t.regPts)}</td></tr>`;
+        <td>${t.w}-${t.l}</td><td class="rp">${drop ? signed(t.regPts) : ptsHtml(t.regPts)}</td>${hasProj() ? `<td class="proj">${proj(t.projPts)}</td>` : ''}<td>${t.gamesLeft}</td></tr>`;
     };
-    $('roster').innerHTML = `<thead><tr><th class="l">Team</th><th>Salary</th><th>Record</th><th>Pts</th></tr></thead>
+    $('roster').innerHTML = `<thead><tr><th class="l">Team</th><th>Record</th><th>Pts</th>${hasProj() ? '<th>Proj<br>pts</th>' : ''}<th>Games<br>left</th></tr></thead>
       <tbody>${teams.map(row).join('')}</tbody>
-      <tfoot><tr><td class="l">Total (best 5)</td><td>${money(en.salary)}</td><td></td><td>${en.regPts}</td></tr></tfoot>`;
+      <tfoot><tr><td class="l">Total <span class="nextg">best 5 · salary ${money(en.salary)}</span></td><td></td><td>${en.regPts}</td>${hasProj() ? `<td>${proj(en.projRegPts)}</td>` : ''}<td>${en.gamesLeft}</td></tr></tfoot>`;
     const rr = D.entries.map((e) => e.regRank);
     $('roster-summary').innerHTML = `
       <div><b>${rankLabel(en.regRank, rr)}</b><span>of ${D.entries.length}</span></div>
       <div><b>${en.regPts}</b><span>points</span></div>
-      <div><b>${en.regPayout ? money(en.regPayout) : '$0'}</b><span>if it ended now</span></div>`;
+      <div><b>${en.gamesLeft}</b><span>games left</span></div>
+      ${hasProj() ? `<div><b>${rankLabel(en.projRank, D.entries.map((e) => e.projRank))}</b><span>proj. finish</span></div>` : ''}`;
   }
 
   // Who drafted a team (tap a team on the Teams or Tourney tab).
@@ -193,12 +202,17 @@
   function teamsTable() {
     const cols = [
       { key: 'name', label: 'Team', cls: 'l', asc: true, html: (r) => esc(r.name) + (r.overridden && r.overridden.length ? '<span class="tag" title="Entered by hand">✎</span>' : '') },
-      { key: 'conf', label: 'Conf', cls: 'l', asc: true },
-      { key: 'salary', label: 'Salary', html: (r) => money(r.salary) },
       { key: 'record', label: 'Record', sort: (r) => r.w - r.l, html: (r) => `${r.w}-${r.l}` },
       { key: 'regPts', label: 'Pts', html: (r) => ptsHtml(r.regPts) },
+      ...(hasProj() ? [
+        { key: 'projPts', label: 'Proj<br>pts', html: (r) => `<span class="proj">${proj(r.projPts)}</span>` },
+        { key: 'projRec', label: 'Proj<br>record', sort: (r) => r.projW - r.projL, html: (r) => `<span class="proj">${Math.round(r.projW)}-${Math.round(r.projL)}</span>` },
+      ] : []),
+      { key: 'gamesLeft', label: 'Games<br>left' },
+      { key: 'salary', label: 'Salary', html: (r) => money(r.salary) },
       { key: 'ptsPerDollar', label: 'Pts<br>per $', html: (r) => r.ptsPerDollar.toFixed(2) },
       { key: 'owners', label: 'Owned<br>by' },
+      { key: 'conf', label: 'Conf', cls: 'l', asc: true },
     ];
     sortableTable($('teams'), cols, D.teams, { sortKey: 'regPts', detail: ownersPanel });
   }
@@ -286,6 +300,7 @@
     $('entry-pick').onchange = (e) => select(e.target.value);
     $('tour-pick').onchange = (e) => select(e.target.value);
     $('chart').onclick = (e) => { const b = e.target.closest('.bar-row'); if (b) { select(b.dataset.name); showTab('roster'); } };
+    document.body.classList.toggle('no-proj', !hasProj());
     alerts(); tiles(); chart(); standings(); teamsTable(); tourney();
     select(selected);
   }

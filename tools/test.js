@@ -129,4 +129,32 @@ test('entries: lowest team dropped from regular season only; all 6 count in tour
   assert.strictEqual(row.salary, 30);
 });
 
+test('projection: expected wins from win odds; +2/-1 scoring', () => {
+  // 2-1 now (3 pts), 3 games left at 90%, 50%, 10% -> 1.5 expected wins
+  const p = S.projectTeam({ w: 2, l: 1 }, 3, [{ date: 1, p: 0.9 }, { date: 2, p: 0.5 }, { date: 3, p: 0.1 }], cfg.scoring);
+  assert.deepStrictEqual(p, { gamesLeft: 3, projW: 3.5, projL: 2.5, projPts: 4.5 });
+});
+
+test('projection: games Barttorvik lacks (non-D1) count at 95%; results ESPN has first are dropped', () => {
+  const extra = S.projectTeam({ w: 0, l: 0 }, 2, [{ date: 1, p: 0.5 }], cfg.scoring);
+  assert.strictEqual(extra.projW, 1.5); // 0.5 + 0.95, rounded
+  const ahead = S.projectTeam({ w: 1, l: 0 }, 1, [{ date: 1, p: 0.2 }, { date: 2, p: 0.8 }], cfg.scoring);
+  assert.strictEqual(ahead.projW, 1.8); // the 0.2 game already finished on ESPN
+});
+
+test('projection: Barttorvik schedule rows -> unplayed games for one team', () => {
+  const row = (d, a, pa, b, pb, played) => { const g = []; g[1] = d; g[8] = a; g[12] = pa; g[14] = b; g[18] = pb; g[23] = played; return g; };
+  const sked = [row('11/2/26', 'Army', 0, 'Duke', 1, 1), row('11/5/26', 'Coastal Carolina', 0.01, 'Duke', 0.99, 0), row('11/9/26', 'Duke', 0.6, 'Kansas', 0.4, 0)];
+  assert.deepStrictEqual(S.bartFutureGames(sked, 'Duke').map((g) => g.p), [0.99, 0.6]);
+});
+
+test('entries: games left counts all 6 teams; projection keeps the best 5', () => {
+  const teams = {};
+  ['A', 'B', 'C', 'D', 'E', 'F'].forEach((n, i) => { teams[n] = { name: n, regPts: 0, tourPts: 0, salary: 1, gamesLeft: 10, projPts: i * 10 }; });
+  const [row] = S.scoreEntries([{ name: 'X', teams: ['A', 'B', 'C', 'D', 'E', 'F'] }], teams, cfg);
+  assert.strictEqual(row.gamesLeft, 60);
+  assert.strictEqual(row.projRegPts, 10 + 20 + 30 + 40 + 50);
+  assert.strictEqual(row.projRank, 1);
+});
+
 console.log(`\n${passed} checks passed.`);

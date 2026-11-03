@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261103e">
+<link rel="stylesheet" href="css/style.css?v=20261103g">
 </head>
 <body>
 <header class="hero">
@@ -44,6 +44,7 @@
       <h2>Standings</h2>
       <p class="hint">Tap a column heading to sort. Tap a row to see the roster.</p>
       <div class="scroll"><table id="standings" class="grid"></table></div>
+      <p class="hint after proj-note">Games left counts all 6 teams. <b>Proj</b> = expected points at the end of the regular season, using Barttorvik win odds for every scheduled game. Conference tournament games are added once they're scheduled in March.</p>
     </section>
   </div>
 
@@ -54,7 +55,7 @@
       <label class="pick">Entry <select id="entry-pick"></select></label>
       <div id="roster-summary" class="mini-stats"></div>
       <div class="scroll"><table id="roster" class="grid"></table></div>
-      <p class="hint after">The crossed-out team is the lowest scorer and doesn't count in the regular season. It still counts in the tourney.</p>
+      <p class="hint after">The crossed-out team is the lowest scorer and doesn't count in the regular season. It still counts in the tourney. <span class="proj-note"><b>Proj</b> = expected end-of-regular-season points (Barttorvik win odds).</span></p>
     </section>
   </div>
 
@@ -133,6 +134,7 @@
       <h2>Fine print</h2>
       <p>Ties share a rank and split the prize money for the places they cover.</p>
       <p>Salary cap $101. Scores come from ESPN and are checked every morning.</p>
+      <p class="proj-note"><b>Projections</b> use win odds from <a href="https://barttorvik.com/" rel="noopener">Barttorvik (T-Rank)</a> for every remaining scheduled game: each game adds its chance of a win × 2 minus its chance of a loss × 1. Games against non-Division I teams count as 95% wins. Conference tournaments are added once they're scheduled in March. Just for fun: prize money goes by actual points.</p>
     </section>
   </div>
 </main>
@@ -144,6 +146,6 @@
   <button role="tab" id="btn-tourney" data-tab="tourney" aria-controls="tab-tourney">🎟️<span>Tourney</span></button>
   <button role="tab" id="btn-rules" data-tab="rules" aria-controls="tab-rules">📜<span>Rules</span></button>
 </nav>
-<script src="js/app.js?v=20261103e"></script>
+<script src="js/app.js?v=20261103g"></script>
 </body>
 </html>

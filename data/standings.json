@@ -1,7 +1,7 @@
 {
  "title": "College Hoops Salary-Cap Pool",
  "season": "2026-27",
- "checkedAt": "2026-11-03T22:14:34.640Z",
+ "checkedAt": "2026-11-03T23:47:50.422Z",
  "entryFee": 25,
  "pot": {
   "total": 450,
@@ -15,6 +15,7 @@
   ]
  },
  "tournamentStarted": false,
+ "projections": "Barttorvik (barttorvik.com)",
  "gamesPlayed": 38,
  "entries": [
   {
@@ -33,6 +34,9 @@
    "salary": 99,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 173,
+   "projRegPts": 198.7,
+   "projRank": 5,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -54,6 +58,9 @@
    "salary": 101,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 177,
+   "projRegPts": 189.5,
+   "projRank": 8,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -75,6 +82,9 @@
    "salary": 100,
    "regPts": 4,
    "tourPts": 0,
+   "gamesLeft": 179,
+   "projRegPts": 160,
+   "projRank": 17,
    "regRank": 18,
    "tourRank": 1,
    "regPayout": 0,
@@ -96,6 +106,9 @@
    "salary": 101,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 175,
+   "projRegPts": 164.9,
+   "projRank": 15,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -117,6 +130,9 @@
    "salary": 101,
    "regPts": 8,
    "tourPts": 0,
+   "gamesLeft": 180,
+   "projRegPts": 158.9,
+   "projRank": 18,
    "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
@@ -138,6 +154,9 @@
    "salary": 101,
    "regPts": 7,
    "tourPts": 0,
+   "gamesLeft": 182,
+   "projRegPts": 176.2,
+   "projRank": 12,
    "regRank": 15,
    "tourRank": 1,
    "regPayout": 0,
@@ -159,6 +178,9 @@
    "salary": 101,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 183,
+   "projRegPts": 226.3,
+   "projRank": 1,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -180,6 +202,9 @@
    "salary": 101,
    "regPts": 6,
    "tourPts": 0,
+   "gamesLeft": 184,
+   "projRegPts": 173.2,
+   "projRank": 13,
    "regRank": 16,
    "tourRank": 1,
    "regPayout": 0,
@@ -201,6 +226,9 @@
    "salary": 99,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 179,
+   "projRegPts": 178.8,
+   "projRank": 11,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -222,6 +250,9 @@
    "salary": 101,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 178,
+   "projRegPts": 187.6,
+   "projRank": 9,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -243,6 +274,9 @@
    "salary": 92,
    "regPts": 6,
    "tourPts": 0,
+   "gamesLeft": 183,
+   "projRegPts": 164.1,
+   "projRank": 16,
    "regRank": 16,
    "tourRank": 1,
    "regPayout": 0,
@@ -264,6 +298,9 @@
    "salary": 97,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 183,
+   "projRegPts": 171.1,
+   "projRank": 14,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -285,6 +322,9 @@
    "salary": 98,
    "regPts": 8,
    "tourPts": 0,
+   "gamesLeft": 182,
+   "projRegPts": 179.6,
+   "projRank": 10,
    "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
@@ -306,6 +346,9 @@
    "salary": 99,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 179,
+   "projRegPts": 215.5,
+   "projRank": 2,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -327,6 +370,9 @@
    "salary": 100,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 180,
+   "projRegPts": 208.1,
+   "projRank": 3,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -348,6 +394,9 @@
    "salary": 101,
    "regPts": 8,
    "tourPts": 0,
+   "gamesLeft": 179,
+   "projRegPts": 192.4,
+   "projRank": 7,
    "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
@@ -369,6 +418,9 @@
    "salary": 100,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 186,
+   "projRegPts": 206.2,
+   "projRank": 4,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -390,6 +442,9 @@
    "salary": 101,
    "regPts": 10,
    "tourPts": 0,
+   "gamesLeft": 181,
+   "projRegPts": 196.1,
+   "projRank": 6,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 27.27,
@@ -418,6 +473,10 @@
     "opp": "Coastal",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 25.8,
+   "projL": 6.2,
+   "projPts": 45.4,
    "owners": 5,
    "ptsPerDollar": 0.04
   },
@@ -442,6 +501,10 @@
     "opp": "Penn",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 23.8,
+   "projL": 8.2,
+   "projPts": 39.4,
    "owners": 6,
    "ptsPerDollar": 0.04
   },
@@ -466,6 +529,10 @@
     "opp": "Cal Poly",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 21.8,
+   "projL": 8.2,
+   "projPts": 35.5,
    "owners": 3,
    "ptsPerDollar": -0.02
   },
@@ -490,6 +557,10 @@
     "opp": "Michigan",
     "home": false
    },
+   "gamesLeft": 31,
+   "projW": 21.8,
+   "projL": 10.2,
+   "projPts": 33.5,
    "owners": 2,
    "ptsPerDollar": 0.05
   },
@@ -514,6 +585,10 @@
     "opp": "Toledo",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 22.6,
+   "projL": 9.4,
+   "projPts": 35.8,
    "owners": 2,
    "ptsPerDollar": 0.05
   },
@@ -538,6 +613,10 @@
     "opp": "California",
     "home": false
    },
+   "gamesLeft": 29,
+   "projW": 23.4,
+   "projL": 6.6,
+   "projPts": 40.2,
    "owners": 3,
    "ptsPerDollar": 0.06
   },
@@ -562,6 +641,10 @@
     "opp": "Wofford",
     "home": true
    },
+   "gamesLeft": 30,
+   "projW": 20.7,
+   "projL": 9.3,
+   "projPts": 32,
    "owners": 1,
    "ptsPerDollar": 0
   },
@@ -586,6 +669,10 @@
     "opp": "Drexel",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 24.1,
+   "projL": 6.9,
+   "projPts": 41.2,
    "owners": 2,
    "ptsPerDollar": 0
   },
@@ -610,6 +697,10 @@
     "opp": "Morehead St",
     "home": true
    },
+   "gamesLeft": 28,
+   "projW": 21.4,
+   "projL": 7.6,
+   "projPts": 35.2,
    "owners": 1,
    "ptsPerDollar": 0.07
   },
@@ -634,6 +725,10 @@
     "opp": "AR-Pine Bluff",
     "home": true
    },
+   "gamesLeft": 32,
+   "projW": 20.9,
+   "projL": 11.1,
+   "projPts": 30.6,
    "owners": 1,
    "ptsPerDollar": 0
   },
@@ -658,6 +753,10 @@
     "opp": "New Mexico St",
     "home": true
    },
+   "gamesLeft": 28,
+   "projW": 23.9,
+   "projL": 5.1,
+   "projPts": 42.8,
    "owners": 7,
    "ptsPerDollar": 0.08
   },
@@ -682,6 +781,10 @@
     "opp": "Iona",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 19.2,
+   "projL": 10.8,
+   "projPts": 27.5,
    "owners": 5,
    "ptsPerDollar": 0.08
   },
@@ -706,6 +809,10 @@
     "opp": "Wagner",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 22.1,
+   "projL": 7.9,
+   "projPts": 36.2,
    "owners": 1,
    "ptsPerDollar": -0.05
   },
@@ -730,6 +837,10 @@
     "opp": "Southern Miss",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 21.3,
+   "projL": 8.7,
+   "projPts": 33.8,
    "owners": 3,
    "ptsPerDollar": -0.05
   },
@@ -754,6 +865,10 @@
     "opp": "Bethune",
     "home": true
    },
+   "gamesLeft": 28,
+   "projW": 19.9,
+   "projL": 9.1,
+   "projPts": 30.8,
    "owners": 1,
    "ptsPerDollar": 0.1
   },
@@ -778,6 +893,10 @@
     "opp": "MTSU",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 22.8,
+   "projL": 7.2,
+   "projPts": 38.4,
    "owners": 1,
    "ptsPerDollar": 0.1
   },
@@ -802,6 +921,10 @@
     "opp": "UConn",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 20.2,
+   "projL": 9.8,
+   "projPts": 30.6,
    "owners": 5,
    "ptsPerDollar": 0.11
   },
@@ -826,6 +949,10 @@
     "opp": "Sam Houston",
     "home": true
    },
+   "gamesLeft": 30,
+   "projW": 19.2,
+   "projL": 10.8,
+   "projPts": 27.6,
    "owners": 1,
    "ptsPerDollar": 0
   },
@@ -850,6 +977,10 @@
     "opp": "Wake Forest",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 22.1,
+   "projL": 9.9,
+   "projPts": 34.2,
    "owners": 3,
    "ptsPerDollar": 0.18
   },
@@ -874,6 +1005,10 @@
     "opp": "Manhattan",
     "home": true
    },
+   "gamesLeft": 32,
+   "projW": 20.4,
+   "projL": 11.6,
+   "projPts": 29.1,
    "owners": 3,
    "ptsPerDollar": 0
   },
@@ -898,6 +1033,10 @@
     "opp": "North Florida",
     "home": true
    },
+   "gamesLeft": 30,
+   "projW": 21.7,
+   "projL": 9.3,
+   "projPts": 34,
    "owners": 2,
    "ptsPerDollar": 0.25
   },
@@ -922,6 +1061,10 @@
     "opp": "Omaha",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 21,
+   "projL": 9,
+   "projPts": 33.1,
    "owners": 3,
    "ptsPerDollar": 0.29
   },
@@ -946,6 +1089,10 @@
     "opp": "Valparaiso",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 18.6,
+   "projL": 13.4,
+   "projPts": 23.8,
    "owners": 5,
    "ptsPerDollar": -0.17
   },
@@ -970,6 +1117,10 @@
     "opp": "Providence",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 23,
+   "projL": 9,
+   "projPts": 37,
    "owners": 1,
    "ptsPerDollar": 0.4
   },
@@ -994,6 +1145,10 @@
     "opp": "Wofford",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 18.6,
+   "projL": 13.4,
+   "projPts": 23.7,
    "owners": 2,
    "ptsPerDollar": 0.67
   },
@@ -1018,6 +1173,10 @@
     "opp": "Holy Cross",
     "home": true
    },
+   "gamesLeft": 30,
+   "projW": 19.1,
+   "projL": 11.9,
+   "projPts": 26.2,
    "owners": 1,
    "ptsPerDollar": -0.33
   },
@@ -1042,6 +1201,10 @@
     "opp": "Alabama St",
     "home": true
    },
+   "gamesLeft": 32,
+   "projW": 20.7,
+   "projL": 11.3,
+   "projPts": 30.1,
    "owners": 2,
    "ptsPerDollar": 0
   },
@@ -1066,6 +1229,10 @@
     "opp": "Memphis",
     "home": false
    },
+   "gamesLeft": 28,
+   "projW": 21.3,
+   "projL": 7.7,
+   "projPts": 34.9,
    "owners": 3,
    "ptsPerDollar": 1
   },
@@ -1090,6 +1257,10 @@
     "opp": "Missouri",
     "home": false
    },
+   "gamesLeft": 30,
+   "projW": 21.8,
+   "projL": 9.2,
+   "projPts": 34.4,
    "owners": 3,
    "ptsPerDollar": 1
   },
@@ -1114,6 +1285,10 @@
     "opp": "Bethune",
     "home": true
    },
+   "gamesLeft": 30,
+   "projW": 24.5,
+   "projL": 6.5,
+   "projPts": 42.6,
    "owners": 4,
    "ptsPerDollar": 1
   },
@@ -1138,6 +1313,10 @@
     "opp": "Delaware",
     "home": true
    },
+   "gamesLeft": 30,
+   "projW": 17.8,
+   "projL": 13.2,
+   "projPts": 22.5,
    "owners": 2,
    "ptsPerDollar": 1
   },
@@ -1162,6 +1341,10 @@
     "opp": "Le Moyne",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 17.1,
+   "projL": 12.9,
+   "projPts": 21.4,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1186,6 +1369,10 @@
     "opp": "Georgetown",
     "home": false
    },
+   "gamesLeft": 29,
+   "projW": 17.9,
+   "projL": 12.1,
+   "projPts": 23.6,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1210,6 +1397,10 @@
     "opp": "Green Bay",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 20.5,
+   "projL": 11.5,
+   "projPts": 29.4,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1234,6 +1425,10 @@
     "opp": "Omaha",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 21.6,
+   "projL": 10.4,
+   "projPts": 32.7,
    "owners": 2,
    "ptsPerDollar": 1
   },
@@ -1258,6 +1453,10 @@
     "opp": "Bellarmine",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 21.5,
+   "projL": 10.5,
+   "projPts": 32.6,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1282,6 +1481,10 @@
     "opp": "Coppin St",
     "home": true
    },
+   "gamesLeft": 32,
+   "projW": 21,
+   "projL": 11,
+   "projPts": 31.1,
    "owners": 1,
    "ptsPerDollar": 0
   },
@@ -1306,6 +1509,10 @@
     "opp": "Southern",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 18.4,
+   "projL": 11.6,
+   "projPts": 25.2,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1330,6 +1537,10 @@
     "opp": "Milwaukee",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 21.1,
+   "projL": 10.9,
+   "projPts": 31.3,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1354,6 +1565,10 @@
     "opp": "MD Eastern",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 28,
+   "projL": 4,
+   "projPts": 52,
    "owners": 8,
    "ptsPerDollar": 2
   },
@@ -1378,6 +1593,10 @@
     "opp": "North Texas",
     "home": false
    },
+   "gamesLeft": 30,
+   "projW": 26,
+   "projL": 5,
+   "projPts": 46.9,
    "owners": 2,
    "ptsPerDollar": 2
   },
@@ -1402,6 +1621,10 @@
     "opp": "N Arizona",
     "home": true
    },
+   "gamesLeft": 30,
+   "projW": 22.6,
+   "projL": 8.4,
+   "projPts": 36.7,
    "owners": 2,
    "ptsPerDollar": 2
   },
@@ -1426,6 +1649,10 @@
     "opp": "American",
     "home": true
    },
+   "gamesLeft": 29,
+   "projW": 19.5,
+   "projL": 10.5,
+   "projPts": 28.4,
    "owners": 1,
    "ptsPerDollar": 2
   },
@@ -1450,6 +1677,10 @@
     "opp": "Nebraska",
     "home": false
    },
+   "gamesLeft": 29,
+   "projW": 17.9,
+   "projL": 12.1,
+   "projPts": 23.6,
    "owners": 1,
    "ptsPerDollar": 2
   },
@@ -1474,6 +1705,10 @@
     "opp": "Miss Valley St",
     "home": true
    },
+   "gamesLeft": 31,
+   "projW": 18.8,
+   "projL": 13.2,
+   "projPts": 24.4,
    "owners": 1,
    "ptsPerDollar": -1
   }
