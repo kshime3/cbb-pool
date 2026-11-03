@@ -29,6 +29,7 @@
   // cols: [{ key, label, cls, html(row), sort(row) }]
   function sortableTable(el, cols, rows, opts) {
     let sortKey = opts.sortKey, dir = opts.dir || -1;
+    let open = null; // row whose detail panel is showing
     function draw() {
       const col = cols.find((c) => c.key === sortKey);
       const val = col.sort || ((r) => r[col.key]);
@@ -44,7 +45,13 @@
         const aria = on ? ` aria-sort="${dir > 0 ? 'ascending' : 'descending'}"` : '';
         return `<th class="${c.cls || ''}"${aria}><button type="button" data-k="${c.key}">${c.label}<span class="arrow">${on ? (dir > 0 ? '▲' : '▼') : ''}</span></button></th>`;
       }).join('');
-      const body = sorted.map((r) => `<tr class="${opts.rowClass ? opts.rowClass(r) : ''}" data-name="${esc(r.name)}">${cols.map((c) => `<td class="${c.cls || ''}">${c.html ? c.html(r) : esc(r[c.key] ?? '—')}</td>`).join('')}</tr>`).join('');
+      const body = sorted.map((r) => {
+        const isOpen = opts.detail && open === r.name;
+        const cls = [opts.rowClass ? opts.rowClass(r) : '', opts.detail ? 'click' : '', isOpen ? 'open' : ''].join(' ').trim();
+        const aria = opts.detail ? ` aria-expanded="${isOpen}"` : '';
+        const main = `<tr class="${cls}" data-name="${esc(r.name)}"${aria}>${cols.map((c) => `<td class="${c.cls || ''}">${c.html ? c.html(r) : esc(r[c.key] ?? '—')}</td>`).join('')}</tr>`;
+        return isOpen ? main + `<tr class="detail"><td colspan="${cols.length}"><div class="detail-in">${opts.detail(r)}</div></td></tr>` : main;
+      }).join('');
       el.innerHTML = `<thead><tr>${head}</tr></thead><tbody>${body}</tbody>`;
     }
     el.addEventListener('click', (ev) => {
@@ -56,8 +63,12 @@
         draw();
         return;
       }
-      const tr = ev.target.closest('tbody tr');
-      if (tr && opts.onRow) opts.onRow(tr.dataset.name);
+      const chip = ev.target.closest('[data-entry]');
+      if (chip) { select(chip.dataset.entry); showTab('roster'); return; }
+      const tr = ev.target.closest('tbody tr[data-name]');
+      if (!tr) return;
+      if (opts.detail) { open = open === tr.dataset.name ? null : tr.dataset.name; draw(); return; }
+      if (opts.onRow) opts.onRow(tr.dataset.name);
     });
     draw();
     return { redraw: draw };
@@ -170,6 +181,14 @@
       <div><b>${en.regPayout ? money(en.regPayout) : '$0'}</b><span>if it ended now</span></div>`;
   }
 
+  // Who drafted a team (tap a team on the Teams or Tourney tab).
+  function ownersPanel(t) {
+    const owners = D.entries.filter((e) => e.teams.includes(t.name)).sort((a, b) => a.name.localeCompare(b.name));
+    if (!owners.length) return '<span class="muted">Nobody drafted this team.</span>';
+    const chips = owners.map((e) => `<button type="button" class="owner" data-entry="${esc(e.name)}">${esc(e.name)}${e.dropped.includes(t.name) ? '<small>dropped</small>' : ''}</button>`).join('');
+    return `<div class="owners-head">Owned by ${owners.length} of ${D.entries.length} entries</div><div class="owners">${chips}</div><div class="owners-hint">Tap a name to see that roster.</div>`;
+  }
+
   // ---------- Teams tab ----------
   function teamsTable() {
     const cols = [
@@ -181,7 +200,7 @@
       { key: 'ptsPerDollar', label: 'Pts<br>per $', html: (r) => r.ptsPerDollar.toFixed(2) },
       { key: 'owners', label: 'Owned<br>by' },
     ];
-    sortableTable($('teams'), cols, D.teams, { sortKey: 'regPts' });
+    sortableTable($('teams'), cols, D.teams, { sortKey: 'regPts', detail: ownersPanel });
   }
 
   // ---------- Tourney tab ----------
@@ -211,7 +230,7 @@
       { key: 'tourPts', label: 'Pts' },
       { key: 'owners', label: 'Owned<br>by' },
       { key: 'st', label: 'Status', cls: 'l', sort: (r) => (r.eliminated ? 0 : 1), html: status },
-    ], field, { sortKey: 'tourPts' });
+    ], field, { sortKey: 'tourPts', detail: ownersPanel });
   }
 
   function tourRoster() {
