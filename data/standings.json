@@ -1,7 +1,7 @@
 {
  "title": "College Hoops Salary-Cap Pool",
  "season": "2026-27",
- "checkedAt": "2026-11-04T12:03:18.890Z",
+ "checkedAt": "2026-11-05T12:09:43.424Z",
  "entryFee": 25,
  "pot": {
   "total": 450,
@@ -16,7 +16,7 @@
  },
  "tournamentStarted": false,
  "projections": "ESPN Matchup Predictor (BPI)",
- "gamesPlayed": 45,
+ "gamesPlayed": 47,
  "entries": [
   {
    "name": "Rich K.",
@@ -32,14 +32,14 @@
     "Iowa State"
    ],
    "salary": 99,
-   "regPts": 10,
+   "regPts": 12,
    "tourPts": 0,
-   "gamesLeft": 173,
-   "projRegPts": 208.6,
+   "gamesLeft": 172,
+   "projRegPts": 208.4,
    "projRank": 6,
-   "regRank": 1,
+   "regRank": 2,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 14.29,
    "tourPayout": 8.33
   },
   {
@@ -59,11 +59,11 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 177,
-   "projRegPts": 197.8,
+   "projRegPts": 197.7,
    "projRank": 7,
-   "regRank": 1,
+   "regRank": 9,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 0,
    "tourPayout": 8.33
   },
   {
@@ -107,11 +107,11 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 175,
-   "projRegPts": 166.6,
+   "projRegPts": 166.4,
    "projRank": 18,
-   "regRank": 1,
+   "regRank": 9,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 0,
    "tourPayout": 8.33
   },
   {
@@ -133,9 +133,9 @@
    "gamesLeft": 179,
    "projRegPts": 167.8,
    "projRank": 17,
-   "regRank": 1,
+   "regRank": 9,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 0,
    "tourPayout": 8.33
   },
   {
@@ -155,7 +155,7 @@
    "regPts": 7,
    "tourPts": 0,
    "gamesLeft": 182,
-   "projRegPts": 191,
+   "projRegPts": 190.9,
    "projRank": 9,
    "regRank": 17,
    "tourRank": 1,
@@ -176,14 +176,14 @@
     "New Mexico"
    ],
    "salary": 101,
-   "regPts": 10,
+   "regPts": 12,
    "tourPts": 0,
-   "gamesLeft": 183,
-   "projRegPts": 240,
+   "gamesLeft": 182,
+   "projRegPts": 239.7,
    "projRank": 1,
-   "regRank": 1,
+   "regRank": 2,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 14.29,
    "tourPayout": 8.33
   },
   {
@@ -205,9 +205,9 @@
    "gamesLeft": 182,
    "projRegPts": 176.6,
    "projRank": 16,
-   "regRank": 1,
+   "regRank": 9,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 0,
    "tourPayout": 8.33
   },
   {
@@ -227,11 +227,11 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 178,
-   "projRegPts": 191.5,
+   "projRegPts": 191.3,
    "projRank": 8,
-   "regRank": 1,
+   "regRank": 9,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 0,
    "tourPayout": 8.33
   },
   {
@@ -251,11 +251,11 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 178,
-   "projRegPts": 185.4,
+   "projRegPts": 185.3,
    "projRank": 13,
-   "regRank": 1,
+   "regRank": 9,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 0,
    "tourPayout": 8.33
   },
   {
@@ -275,11 +275,11 @@
    "regPts": 10,
    "tourPts": 0,
    "gamesLeft": 181,
-   "projRegPts": 186.8,
-   "projRank": 12,
-   "regRank": 1,
+   "projRegPts": 186.9,
+   "projRank": 11,
+   "regRank": 9,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 0,
    "tourPayout": 8.33
   },
   {
@@ -293,17 +293,17 @@
     "High Point"
    ],
    "dropped": [
-    "High Point"
+    "TCU"
    ],
    "salary": 97,
-   "regPts": 10,
+   "regPts": 12,
    "tourPts": 0,
-   "gamesLeft": 182,
-   "projRegPts": 183,
+   "gamesLeft": 181,
+   "projRegPts": 182.8,
    "projRank": 14,
-   "regRank": 1,
+   "regRank": 2,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 14.29,
    "tourPayout": 8.33
   },
   {
@@ -325,9 +325,9 @@
    "gamesLeft": 181,
    "projRegPts": 189.6,
    "projRank": 10,
-   "regRank": 1,
+   "regRank": 9,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 0,
    "tourPayout": 8.33
   },
   {
@@ -341,17 +341,17 @@
     "High Point"
    ],
    "dropped": [
-    "High Point"
+    "McNeese"
    ],
    "salary": 99,
-   "regPts": 10,
+   "regPts": 12,
    "tourPts": 0,
-   "gamesLeft": 179,
-   "projRegPts": 229.3,
+   "gamesLeft": 178,
+   "projRegPts": 229.2,
    "projRank": 2,
-   "regRank": 1,
+   "regRank": 2,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 14.29,
    "tourPayout": 8.33
   },
   {
@@ -365,17 +365,17 @@
     "High Point"
    ],
    "dropped": [
-    "High Point"
+    "Grand Canyon"
    ],
    "salary": 100,
-   "regPts": 10,
+   "regPts": 14,
    "tourPts": 0,
-   "gamesLeft": 180,
+   "gamesLeft": 178,
    "projRegPts": 223.3,
    "projRank": 4,
    "regRank": 1,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 200,
    "tourPayout": 8.33
   },
   {
@@ -389,17 +389,17 @@
     "High Point"
    ],
    "dropped": [
-    "High Point"
+    "Clemson"
    ],
    "salary": 101,
-   "regPts": 10,
+   "regPts": 12,
    "tourPts": 0,
-   "gamesLeft": 177,
-   "projRegPts": 187.2,
+   "gamesLeft": 176,
+   "projRegPts": 186.9,
    "projRank": 11,
-   "regRank": 1,
+   "regRank": 2,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 14.29,
    "tourPayout": 8.33
   },
   {
@@ -413,17 +413,17 @@
     "Texas A&M"
    ],
    "dropped": [
-    "High Point"
+    "Grand Canyon"
    ],
    "salary": 100,
-   "regPts": 10,
+   "regPts": 12,
    "tourPts": 0,
-   "gamesLeft": 185,
-   "projRegPts": 228.2,
+   "gamesLeft": 184,
+   "projRegPts": 227.8,
    "projRank": 3,
-   "regRank": 1,
+   "regRank": 2,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 14.29,
    "tourPayout": 8.33
   },
   {
@@ -440,14 +440,14 @@
     "Oklahoma"
    ],
    "salary": 101,
-   "regPts": 10,
+   "regPts": 12,
    "tourPts": 0,
-   "gamesLeft": 181,
-   "projRegPts": 216.3,
+   "gamesLeft": 180,
+   "projRegPts": 216.1,
    "projRank": 5,
-   "regRank": 1,
+   "regRank": 2,
    "tourRank": 1,
-   "regPayout": 18.75,
+   "regPayout": 14.29,
    "tourPayout": 8.33
   }
  ],
@@ -532,7 +532,7 @@
    "gamesLeft": 29,
    "projW": 21,
    "projL": 9,
-   "projPts": 33.1,
+   "projPts": 33,
    "owners": 3,
    "ptsPerDollar": -0.02
   },
@@ -616,7 +616,7 @@
    "gamesLeft": 29,
    "projW": 23.5,
    "projL": 6.5,
-   "projPts": 40.6,
+   "projPts": 40.5,
    "owners": 3,
    "ptsPerDollar": 0.06
   },
@@ -1258,9 +1258,9 @@
     "home": false
    },
    "gamesLeft": 30,
-   "projW": 23.8,
-   "projL": 7.2,
-   "projPts": 40.5,
+   "projW": 23.9,
+   "projL": 7.1,
+   "projPts": 40.6,
    "owners": 3,
    "ptsPerDollar": 1
   },
@@ -1288,7 +1288,7 @@
    "gamesLeft": 30,
    "projW": 24.9,
    "projL": 6.1,
-   "projPts": 43.8,
+   "projPts": 43.7,
    "owners": 4,
    "ptsPerDollar": 1
   },
@@ -1400,7 +1400,7 @@
    "gamesLeft": 31,
    "projW": 22.7,
    "projL": 9.3,
-   "projPts": 36.2,
+   "projPts": 36.1,
    "owners": 1,
    "ptsPerDollar": 1
   },
@@ -1428,7 +1428,7 @@
    "gamesLeft": 31,
    "projW": 22.5,
    "projL": 9.5,
-   "projPts": 35.5,
+   "projPts": 35.4,
    "owners": 2,
    "ptsPerDollar": 1
   },
@@ -1521,9 +1521,9 @@
    "conf": "WCC",
    "salary": 2,
    "espnId": 2541,
-   "w": 1,
+   "w": 2,
    "l": 0,
-   "regPts": 2,
+   "regPts": 4,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1533,25 +1533,25 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-05T03:00Z",
-    "opp": "Milwaukee",
+    "date": "2026-11-08T03:00Z",
+    "opp": "Sacramento St",
     "home": true
    },
-   "gamesLeft": 31,
-   "projW": 22,
-   "projL": 10,
-   "projPts": 34.1,
+   "gamesLeft": 30,
+   "projW": 22.1,
+   "projL": 9.9,
+   "projPts": 34.4,
    "owners": 1,
-   "ptsPerDollar": 1
+   "ptsPerDollar": 2
   },
   {
    "name": "High Point",
    "conf": "BSth",
    "salary": 1,
    "espnId": 2272,
-   "w": 1,
+   "w": 2,
    "l": 0,
-   "regPts": 2,
+   "regPts": 4,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1561,16 +1561,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-05T00:00Z",
-    "opp": "MD Eastern",
+    "date": "2026-11-07T22:00Z",
+    "opp": "Washington St",
     "home": true
    },
-   "gamesLeft": 31,
-   "projW": 29,
-   "projL": 3,
-   "projPts": 55,
+   "gamesLeft": 30,
+   "projW": 28.9,
+   "projL": 3.1,
+   "projPts": 54.8,
    "owners": 8,
-   "ptsPerDollar": 2
+   "ptsPerDollar": 4
   },
   {
    "name": "McNeese",
