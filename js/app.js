@@ -259,6 +259,128 @@
       <tfoot><tr><td class="l">Total</td><td></td><td></td><td>${en.tourPts}</td></tr></tfoot>`;
   }
 
+  // ---------- Tonight tab ----------
+  const NIGHT = { day: 0, games: null, error: null, loading: false, open: null, timer: null, loadedFor: null };
+  const DAY_LABELS = { '-1': 'Yesterday', 0: 'Today', 1: 'Tomorrow' };
+  function poolTeamsById() {
+    const owners = {};
+    D.entries.forEach((e) => e.teams.forEach((n) => { (owners[n] = owners[n] || []).push(e.name); }));
+    const out = {};
+    D.teams.forEach((t) => { out[String(t.espnId)] = { name: t.name, owners: (owners[t.name] || []).sort() }; });
+    return out;
+  }
+  function nightFilter() {
+    try { return localStorage.getItem('cbbpool_tonight_filter') || ''; } catch (e) { return ''; }
+  }
+  function loadTonight(force) {
+    if (!D || !window.Tonight) return;
+    const ymd = Tonight.easternDate(NIGHT.day);
+    if (!force && NIGHT.loadedFor === ymd && NIGHT.games) { drawTonight(); return; }
+    NIGHT.loading = true; drawTonight();
+    fetch(Tonight.scoreboardUrl(ymd), { cache: 'no-store' })
+      .then((r) => { if (!r.ok) throw new Error('ESPN ' + r.status); return r.json(); })
+      .then((json) => { NIGHT.games = Tonight.parseGames(json, poolTeamsById()); NIGHT.error = null; NIGHT.loadedFor = ymd; })
+      .catch((err) => { NIGHT.error = err.message; if (NIGHT.loadedFor !== ymd) NIGHT.games = null; })
+      .finally(() => { NIGHT.loading = false; drawTonight(); scheduleTonight(); });
+  }
+  // Re-check every 60 s while a game is live, the tab is showing and the phone screen is on.
+  function scheduleTonight() {
+    clearTimeout(NIGHT.timer);
+    const live = NIGHT.games && NIGHT.games.some((g) => g.state === 'in');
+    if (live && NIGHT.day === 0 && !$('tab-tonight').hidden) {
+      NIGHT.timer = setTimeout(() => { if (document.visibilityState === 'visible') loadTonight(true); else scheduleTonight(); }, 60000);
+    }
+  }
+  // If ESPN can't be reached: the morning update's "next game" for each team.
+  function fallbackGames() {
+    const ymd = Tonight.easternDate(NIGHT.day);
+    return D.teams.filter((t) => t.next && Tonight.easternDate(0, new Date(t.next.date).getTime()) === ymd)
+      .sort((a, b) => String(a.next.date).localeCompare(String(b.next.date)));
+  }
+  function drawTonight() {
+    if (!D) return;
+    $('night-days').innerHTML = [-1, 0, 1].map((d) => `<button type="button" data-day="${d}" aria-pressed="${d === NIGHT.day}">${DAY_LABELS[d]}</button>`).join('');
+    const filter = nightFilter();
+    const entry = D.entries.find((e) => e.name === filter);
+    const fsel = $('night-filter');
+    fsel.innerHTML = `<option value="">All pool teams</option>` + D.entries.map((e) => e.name).sort().map((n) => `<option${n === filter ? ' selected' : ''}>${esc(n)}</option>`).join('');
+    const box = $('night-games');
+    if (NIGHT.loading && !NIGHT.games) { box.innerHTML = '<p class="night-msg">Loading games…</p>'; $('night-summary').textContent = ''; return; }
+    const tipTime = (iso) => new Date(iso).toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit' });
+    if (!NIGHT.games) {
+      const fb = fallbackGames().filter((t) => !entry || entry.teams.includes(t.name));
+      $('night-summary').textContent = '';
+      box.innerHTML = `<div class="alert">Live scores aren't available right now. ${fb.length ? 'Here are the scheduled games from this morning\'s update:' : ''}</div>` +
+        fb.map((t) => `<div class="game led"><div class="g-top"><span class="g-status">${tipTime(t.next.date)}</span></div>
+          <div class="g-team"><span class="g-name">${esc(t.name)}</span><span class="g-own">${t.owners} own</span></div>
+          <div class="g-team"><span class="g-name dim">${t.next.home ? 'vs' : 'at'} ${esc(t.next.opp)}</span></div></div>`).join('');
+      return;
+    }
+    let games = NIGHT.games;
+    if (entry) games = games.filter((g) => g.sides.some((s) => s.pool && entry.teams.includes(s.pool.name)));
+    const live = games.filter((g) => g.state === 'in').length;
+    const teamsPlaying = new Set(games.flatMap((g) => g.sides.filter((s) => s.pool).map((s) => s.pool.name))).size;
+    $('night-summary').innerHTML = games.length
+      ? `${games.length} game${games.length > 1 ? 's' : ''} · ${teamsPlaying} pool team${teamsPlaying > 1 ? 's' : ''}${live ? ` · <b class="live-txt">${live} live</b>` : ''}`
+      : '';
+    if (!games.length) {
+      box.innerHTML = `<p class="night-msg">${entry ? `None of ${esc(entry.name)}'s teams play` : 'No pool teams play'} ${DAY_LABELS[NIGHT.day].toLowerCase()}.</p>`;
+      return;
+    }
+    box.innerHTML = games.map((g) => {
+      const status = g.canceled ? 'POSTPONED'
+        : g.state === 'pre' ? `${tipTime(g.date)}`
+        : g.state === 'in' ? `<span class="dot"></span>LIVE · ${esc(g.detail)}`
+        : esc(g.detail.toUpperCase() || 'FINAL');
+      const rows = g.sides.map((s) => `<div class="g-team${g.state === 'post' && s.winner ? ' win' : ''}${!s.pool ? ' other' : ''}">
+          ${s.rank ? `<span class="g-rank">${s.rank}</span>` : '<span class="g-rank"></span>'}
+          <span class="g-name">${esc(s.name)}</span>
+          ${s.pool ? `<span class="g-own">${s.pool.owners.length} own</span>` : ''}
+          <span class="g-score">${g.state === 'pre' || s.score === null ? '' : s.score}</span>
+        </div>`).join('');
+      const impact = g.sides.filter((s) => s.pool && s.pool.owners.length).map((s) => {
+        const n = s.pool.owners.length, who = `${n} entr${n > 1 ? 'ies' : 'y'}`;
+        if (g.state === 'post' && !g.canceled) return s.winner ? `${esc(s.name)} won: <b class="up">+2</b> for ${who}` : `${esc(s.name)} lost: <b class="down">−1</b> for ${who}`;
+        return `${esc(s.name)}: win <b class="up">+2</b> / loss <b class="down">−1</b> for ${who}`;
+      }).join('<br>');
+      const open = NIGHT.open === g.id;
+      const owners = open ? `<div class="g-owners">${g.sides.filter((s) => s.pool).map((s) => `<div class="owners-head">${esc(s.name)} · owned by ${s.pool.owners.length}</div>
+          <div class="owners">${s.pool.owners.map((n) => `<button type="button" class="owner" data-entry="${esc(n)}">${esc(n)}</button>`).join('') || '<span class="muted">Nobody</span>'}</div>`).join('')}
+          <div class="owners-hint">Tap a name to see that roster.</div></div>` : '';
+      return `<div class="game led${g.state === 'in' ? ' is-live' : ''}${open ? ' open' : ''}" data-game="${g.id}" role="button" tabindex="0" aria-expanded="${open}">
+        <div class="g-top"><span class="g-status">${status}</span><span class="g-tv">${esc(g.tv)}</span></div>
+        ${rows}
+        ${g.note ? `<div class="g-note">${esc(g.note)}</div>` : ''}
+        <div class="g-impact">${impact}</div>${owners}
+      </div>`;
+    }).join('') + (NIGHT.error ? `<p class="night-msg">Couldn't refresh just now (${esc(NIGHT.error)}); showing the last scores.</p>` : '');
+  }
+  function wireTonight() {
+    $('night-days').onclick = (e) => {
+      const b = e.target.closest('button[data-day]');
+      if (!b) return;
+      NIGHT.day = Number(b.dataset.day); NIGHT.games = null; NIGHT.open = null; NIGHT.loadedFor = null;
+      loadTonight(true);
+    };
+    $('night-filter').onchange = (e) => {
+      try { localStorage.setItem('cbbpool_tonight_filter', e.target.value); } catch (err) { /* ignore */ }
+      drawTonight();
+    };
+    const toggle = (e) => {
+      const chip = e.target.closest('[data-entry]');
+      if (chip) { select(chip.dataset.entry); showTab('roster'); return; }
+      const card = e.target.closest('[data-game]');
+      if (!card) return;
+      NIGHT.open = NIGHT.open === card.dataset.game ? null : card.dataset.game;
+      drawTonight();
+    };
+    $('night-games').onclick = toggle;
+    $('night-games').onkeydown = (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-game]')) { e.preventDefault(); toggle(e); } };
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible' && !$('tab-tonight').hidden && NIGHT.day === 0) loadTonight(true);
+    });
+  }
+
   // ---------- selection + tabs ----------
   function select(name) {
     selected = name;
@@ -269,7 +391,7 @@
     tourRoster();
   }
 
-  const TABS = ['standings', 'roster', 'teams', 'tourney', 'rules'];
+  const TABS = ['standings', 'tonight', 'roster', 'teams', 'tourney', 'rules'];
   function showTab(name, fromHash) {
     if (!TABS.includes(name)) name = 'standings';
     TABS.forEach((t) => {
@@ -277,6 +399,7 @@
       $('btn-' + t).setAttribute('aria-selected', String(t === name));
     });
     if (!fromHash && location.hash !== '#' + name) history.replaceState(null, '', '#' + name);
+    if (name === 'tonight') loadTonight(false); else clearTimeout(NIGHT.timer);
     // If you've scrolled past the header, jump back to the top of the new tab.
     const mainTop = document.querySelector('main').getBoundingClientRect().top + window.scrollY;
     if (window.scrollY > mainTop) window.scrollTo(0, mainTop - 8);
@@ -303,6 +426,8 @@
     document.body.classList.toggle('no-proj', !hasProj());
     alerts(); tiles(); chart(); standings(); teamsTable(); tourney();
     select(selected);
+    wireTonight();
+    if (!$('tab-tonight').hidden) loadTonight(false);
   }
 
   document.querySelector('.tabbar').addEventListener('click', (e) => {

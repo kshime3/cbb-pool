@@ -157,4 +157,22 @@ test('entries: games left counts all 6 teams; projection keeps the best 5', () =
   assert.strictEqual(row.projRank, 1);
 });
 
+test('tonight: scoreboard -> only games with pool teams, live first, away team listed first', () => {
+  const T = require('../js/tonight');
+  const comp = (id, homeAway, score, extra) => Object.assign({ id, homeAway, score, team: { shortDisplayName: 'Team ' + id, abbreviation: 'T' + id } }, extra || {});
+  const ev = (id, date, state, competitors, name) => ({ id, date, competitions: [{ status: { type: { state, shortDetail: state === 'in' ? '8:14 - 2nd Half' : 'x', name: name || '' } }, broadcasts: [{ names: ['ESPN'] }], competitors }] });
+  const json = { events: [
+    ev('1', '2026-11-11T00:00Z', 'pre', [comp('150', 'home', '0'), comp('127', 'away', '0')]),
+    ev('2', '2026-11-10T23:00Z', 'in', [comp('999', 'home', '40'), comp('2272', 'away', '44')]),
+    ev('3', '2026-11-10T22:00Z', 'post', [comp('998', 'home', '70'), comp('997', 'away', '60')]),
+  ] };
+  const pool = { 150: { name: 'Duke', owners: ['A', 'B'] }, 127: { name: 'Michigan State', owners: ['C'] }, 2272: { name: 'High Point', owners: ['D'] } };
+  const g = T.parseGames(json, pool);
+  assert.deepStrictEqual(g.map((x) => x.id), ['2', '1']); // game 3 has no pool team; live game first
+  assert.deepStrictEqual(g[1].sides.map((x) => x.name), ['Michigan State', 'Duke']); // away first
+  assert.strictEqual(g[0].sides[0].score, 44);
+  assert.strictEqual(g[1].tv, 'ESPN');
+  assert.strictEqual(T.easternDate(0, Date.UTC(2026, 10, 11, 3, 0)), '20261110'); // 10 pm Eastern on Nov 10
+});
+
 console.log(`\n${passed} checks passed.`);

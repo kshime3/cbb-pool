@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261103g">
+<link rel="stylesheet" href="css/style.css?v=20261110a">
 </head>
 <body>
 <header class="hero">
@@ -45,6 +45,18 @@
       <p class="hint">Tap a column heading to sort. Tap a row to see the roster.</p>
       <div class="scroll"><table id="standings" class="grid"></table></div>
       <p class="hint after proj-note">Games left counts all 6 teams. <b>Proj</b> = expected points at the end of the regular season, using ESPN's win odds (BPI) for every scheduled game. Conference tournament games are added once they're scheduled in March.</p>
+    </section>
+  </div>
+
+  <!-- TONIGHT -->
+  <div class="panel" id="tab-tonight" role="tabpanel" aria-labelledby="btn-tonight" hidden>
+    <section class="card night">
+      <h2>Tonight's games <small>pool teams only</small></h2>
+      <div class="night-days" id="night-days" role="group" aria-label="Day"></div>
+      <label class="pick">Show <select id="night-filter"></select></label>
+      <p class="hint" id="night-summary"></p>
+      <div id="night-games" class="night-games" aria-live="polite"></div>
+      <p class="hint after">Scores update every minute while a game is live. Tap a game to see who owns each team. Pool points update the next morning.</p>
     </section>
   </div>
 
@@ -141,11 +153,13 @@
 
 <nav class="tabbar" role="tablist" aria-label="Pages">
   <button role="tab" id="btn-standings" data-tab="standings" aria-controls="tab-standings">🏆<span>Standings</span></button>
+  <button role="tab" id="btn-tonight" data-tab="tonight" aria-controls="tab-tonight">📺<span>Tonight</span></button>
   <button role="tab" id="btn-roster" data-tab="roster" aria-controls="tab-roster">🧢<span>Roster</span></button>
   <button role="tab" id="btn-teams" data-tab="teams" aria-controls="tab-teams">🏀<span>Teams</span></button>
   <button role="tab" id="btn-tourney" data-tab="tourney" aria-controls="tab-tourney">🎟️<span>Tourney</span></button>
   <button role="tab" id="btn-rules" data-tab="rules" aria-controls="tab-rules">📜<span>Rules</span></button>
 </nav>
-<script src="js/app.js?v=20261103g"></script>
+<script src="js/tonight.js?v=20261110a"></script>
+<script src="js/app.js?v=20261110a"></script>
 </body>
 </html>
