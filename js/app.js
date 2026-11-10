@@ -125,7 +125,7 @@
       const lab = neg ? `right:${100 - left + 1}%` : `left:${zero + w + 1.5}%`;
       return `<button type="button" role="listitem" class="bar-row" data-name="${esc(r.name)}" aria-label="${esc(r.name)}: ${r.regPts} points">
         <span class="bar-rank">${rankLabel(r.regRank, rankList)}</span>
-        <span class="bar-name">${esc(r.name)}</span>
+        <span class="bar-name">${esc(r.name)}${r.badges && r.badges.length ? ` <span class="bar-bdg">${emojis(r)}</span>` : ''}</span>
         <span class="bar-track"><span class="bar-zero" style="left:${zero}%"></span>${w ? `<span class="bar${neg ? ' neg' : ''}" style="left:${left}%;width:${w}%"></span>` : ''}<span class="bar-val" style="${lab}">${r.regPts}</span></span>
       </button>`;
     }).join('');
@@ -149,7 +149,7 @@
   function standings() {
     const rr = D.entries.map((e) => e.regRank);
     const cols = [
-      { key: 'name', label: 'Entry', cls: 'l', asc: true, html: (r) => esc(r.name) },
+      { key: 'name', label: 'Entry', cls: 'l', asc: true, html: (r) => esc(r.name) + (r.badges && r.badges.length ? `<span class="bdgs">${chips(r)}</span>` : '') },
       { key: 'regRank', label: 'Rank', asc: true, html: (r) => rankPill(r.regRank, rr) + (D.history ? moveHtml(r.move) : '') },
       ...(D.history ? [{ key: 'gained', label: 'Last<br>day', html: (r) => ptsHtml(r.gained) }] : []),
       { key: 'regPts', label: 'Pts', html: (r) => r.regPts + (r.regPayout && D.gamesPlayed ? badge(r.regPayout) : '') },
@@ -184,6 +184,7 @@
       <tbody>${teams.map(row).join('')}</tbody>
       <tfoot><tr><td class="l">Total <span class="nextg">best 5 · salary ${money(en.salary)}</span></td><td></td><td>${en.regPts}</td>${hasProj() ? `<td>${proj(en.projRegPts)}</td>` : ''}<td>${en.gamesLeft}</td></tr></tfoot>`;
     const rr = D.entries.map((e) => e.regRank);
+    $('roster-badges').innerHTML = chips(en);
     $('roster-summary').innerHTML = `
       <div><b>${rankLabel(en.regRank, rr)}</b><span>of ${D.entries.length}${D.history ? ' ' + moveHtml(en.move) : ''}</span></div>
       <div><b>${en.regPts}</b><span>points${D.history && en.gained ? ` (${signed(en.gained)})` : ''}</span></div>
@@ -260,6 +261,27 @@
       <tfoot><tr><td class="l">Total</td><td></td><td></td><td>${en.tourPts}</td></tr></tfoot>`;
   }
 
+
+  // ---------- Weekly badges (gold LED chips) ----------
+  const BADGE = {
+    leader: { icon: '👑', label: 'LEADER', long: 'Leader', unit: (v) => `${v} PTS` },
+    hot: { icon: '🔥', label: 'HOT', long: 'Hot streak: most points this week', unit: (v) => `+${v} PTS` },
+    mover: { icon: '📈', label: 'MOVER', long: 'Biggest mover: most places climbed this week', unit: (v) => `+${v} PLACE${v > 1 ? 'S' : ''}` },
+  };
+  const chips = (e) => (e.badges || []).map((k) => `<span class="bdg" title="${BADGE[k].long}">${BADGE[k].icon} ${BADGE[k].label}</span>`).join('');
+  const emojis = (e) => (e.badges || []).map((k) => BADGE[k].icon).join('');
+  function weekBoard() {
+    const B = D.badges;
+    if (!B || !D.gamesPlayed) return;
+    const d = (s) => new Date(s + 'T12:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' }).toUpperCase();
+    $('week-dates').textContent = `${d(B.from)} – ${d(B.to)}`;
+    $('week-rows').innerHTML = ['leader', 'hot', 'mover'].map((k) => {
+      const w = B[k];
+      const who = !w.length ? 'NOBODY YET' : w.length <= 2 ? w.map((x) => x.name.toUpperCase()).join(' & ') : `${w.length}-WAY TIE`;
+      return `<div class="wb-row" title="${BADGE[k].long}"><span class="wb-b">${BADGE[k].icon} ${BADGE[k].label}</span><span class="wb-who">${esc(who)}</span><span class="wb-val">${w.length ? BADGE[k].unit(w[0].value) : ''}</span></div>`;
+    }).join('');
+    $('week-card').hidden = false;
+  }
 
   // ---------- Movement: ticker, arrows, rank race ----------
   const sinceLabel = () => {
@@ -477,7 +499,7 @@
     $('tour-pick').onchange = (e) => select(e.target.value);
     $('chart').onclick = (e) => { const b = e.target.closest('.bar-row'); if (b) { select(b.dataset.name); showTab('roster'); } };
     document.body.classList.toggle('no-proj', !hasProj());
-    alerts(); tiles(); chart(); standings(); teamsTable(); tourney(); ticker(); race();
+    alerts(); tiles(); chart(); standings(); teamsTable(); tourney(); ticker(); race(); weekBoard();
     select(selected);
     wireTonight();
     if (!$('tab-tonight').hidden) loadTonight(false);

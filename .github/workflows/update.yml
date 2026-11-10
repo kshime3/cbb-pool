@@ -42,6 +42,12 @@ jobs:
             git commit -m "Scores updated $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
           fi
+      - name: Draw the link-preview picture (top 3 for group chats)
+        continue-on-error: true
+        run: |
+          npm install --silent --no-save --no-package-lock --prefix "$RUNNER_TEMP/pw" playwright-core@1.49.1
+          CHROME_PATH="$(command -v google-chrome || command -v chromium-browser || command -v chromium)" \
+            NODE_PATH="$RUNNER_TEMP/pw/node_modules" node tools/preview.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

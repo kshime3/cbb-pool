@@ -4,7 +4,7 @@
 1. ~~**Tonight's games** tab~~ ✅ done Nov 10 (📺 Tonight: LED scoreboard cards, live scores from ESPN on the phone, Yesterday/Today/Tomorrow, filter by entry, tap for owners)
 2. ~~**Movement since yesterday**~~ ✅ done Nov 10 (LED ticker under the scoreboard, ▲/▼ + "Last day" points in Standings and Roster, "Rank race" bump chart; history rebuilt from ESPN results each run)
 3. **App icon / Add to Home Screen**
-4. **Weekly badges** (🔥 hot streak, 📈 biggest mover, 👑 leader) + group-chat link preview
+4. ~~**Weekly badges** + group-chat link preview~~ ✅ done Nov 10 (gold LED chips + "This week" board; live top-3 preview image drawn each morning)
 
 ## Parked for later
 - **Team logos**: ESPN team data includes logo URLs; show them on Roster, Teams, Tourney and owner chips.

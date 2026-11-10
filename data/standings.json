@@ -1,7 +1,7 @@
 {
  "title": "College Hoops Salary-Cap Pool",
  "season": "2026-27",
- "checkedAt": "2026-11-10T04:27:37.492Z",
+ "checkedAt": "2026-11-10T04:29:55.975Z",
  "entryFee": 25,
  "pot": {
   "total": 450,
@@ -43,7 +43,8 @@
    "tourPayout": 8.33,
    "move": -1,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Matt W.",
@@ -70,7 +71,8 @@
    "tourPayout": 8.33,
    "move": -1,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Jack D.",
@@ -97,7 +99,8 @@
    "tourPayout": 8.33,
    "move": -1,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Tyler B.",
@@ -124,7 +127,8 @@
    "tourPayout": 8.33,
    "move": -1,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Pete H.",
@@ -151,7 +155,8 @@
    "tourPayout": 8.33,
    "move": 0,
    "gained": 2,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "John S.",
@@ -178,7 +183,8 @@
    "tourPayout": 8.33,
    "move": -3,
    "gained": -1,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Kyle S.",
@@ -205,7 +211,8 @@
    "tourPayout": 8.33,
    "move": -1,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Tom B.",
@@ -232,7 +239,10 @@
    "tourPayout": 8.33,
    "move": -1,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": [
+    "mover"
+   ]
   },
   {
    "name": "Sarge M.",
@@ -259,7 +269,8 @@
    "tourPayout": 8.33,
    "move": -3,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Matt C.",
@@ -286,7 +297,8 @@
    "tourPayout": 8.33,
    "move": 4,
    "gained": 2,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Walt S.",
@@ -313,7 +325,10 @@
    "tourPayout": 8.33,
    "move": 8,
    "gained": 4,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": [
+    "mover"
+   ]
   },
   {
    "name": "Andrew S.",
@@ -340,7 +355,8 @@
    "tourPayout": 8.33,
    "move": -1,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Lilly V.",
@@ -367,7 +383,8 @@
    "tourPayout": 8.33,
    "move": 4,
    "gained": 2,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Lucas V.",
@@ -394,7 +411,8 @@
    "tourPayout": 8.33,
    "move": -1,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Dan V.",
@@ -421,7 +439,8 @@
    "tourPayout": 8.33,
    "move": -2,
    "gained": 0,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Jack S.",
@@ -448,7 +467,11 @@
    "tourPayout": 8.33,
    "move": 0,
    "gained": 4,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": [
+    "leader",
+    "hot"
+   ]
   },
   {
    "name": "Rob W.",
@@ -475,7 +498,8 @@
    "tourPayout": 8.33,
    "move": 1,
    "gained": 4,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   },
   {
    "name": "Dan H.",
@@ -502,7 +526,8 @@
    "tourPayout": 8.33,
    "move": 1,
    "gained": 2,
-   "since": "2026-11-08"
+   "since": "2026-11-08",
+   "badges": []
   }
  ],
  "teams": [
@@ -2179,6 +2204,32 @@
     13
    ]
   }
+ },
+ "badges": {
+  "from": "2026-11-02",
+  "to": "2026-11-09",
+  "leader": [
+   {
+    "name": "Jack S.",
+    "value": 28
+   }
+  ],
+  "hot": [
+   {
+    "name": "Jack S.",
+    "value": 20
+   }
+  ],
+  "mover": [
+   {
+    "name": "Tom B.",
+    "value": 12
+   },
+   {
+    "name": "Walt S.",
+    "value": 12
+   }
+  ]
  },
  "notes": [],
  "problems": []

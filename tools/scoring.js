@@ -278,8 +278,34 @@ function movement(history, name) {
   return { move: r[n - 2] - r[n - 1], gained: p[n - 1] - p[n - 2], since: history.days[n - 2] };
 }
 
+// Weekly badges over the last 7 days of the season history:
+//  leader = current 1st place; hot = most points gained; mover = most places climbed.
+// Ties share a badge; hot/mover need a positive number.
+function weeklyBadges(history, entries) {
+  const n = history.days.length;
+  if (!n) return null;
+  const last = history.days[n - 1];
+  const cutoff = new Date(new Date(last + 'T12:00:00Z').getTime() - 7 * 864e5).toISOString().slice(0, 10);
+  let base = -1; // index of the last game day at or before the cutoff (-1 = season start)
+  history.days.forEach((d, i) => { if (d <= cutoff) base = i; });
+  const ptsAt = (name, i) => (i < 0 ? 0 : history.pts[name][i]);
+  const rankAt = (name, i) => (i < 0 ? 1 : history.rank[name][i]);
+  const best = (vals) => {
+    const top = Math.max(...vals.map((v) => v.value));
+    return top > 0 ? vals.filter((v) => v.value === top) : [];
+  };
+  const names = entries.map((e) => e.name);
+  return {
+    from: base < 0 ? history.days[0] : history.days[base],
+    to: last,
+    leader: entries.filter((e) => e.regRank === 1).map((e) => ({ name: e.name, value: e.regPts })),
+    hot: best(names.map((nm) => ({ name: nm, value: ptsAt(nm, n - 1) - ptsAt(nm, base) }))),
+    mover: best(names.map((nm) => ({ name: nm, value: rankAt(nm, base) - rankAt(nm, n - 1) }))),
+  };
+}
+
 module.exports = {
-  easternDay, buildHistory, movement,
+  easternDay, buildHistory, movement, weeklyBadges,
   ROUNDS, ROUND_NAMES, regularRecord, predictorOdds, projectTeam, NON_D1_WIN, tournamentResult, isNcaaTournament, roundFromHeadline,
   regularPoints, tournamentPoints, ranks, payouts, scoreEntries, checkConfig,
 };

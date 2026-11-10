@@ -133,6 +133,10 @@ async function main() {
   const history = S.buildHistory(cfg.entries, Object.fromEntries(teams.map((t) => [t.name, t.played])), cfg);
   teams.forEach((t) => { delete t.played; });
   entries.forEach((e) => Object.assign(e, S.movement(history, e.name)));
+  const badges = S.weeklyBadges(history, entries);
+  entries.forEach((e) => {
+    e.badges = badges ? ['leader', 'hot', 'mover'].filter((k) => badges[k].some((b) => b.name === e.name)) : [];
+  });
 
   const out = {
     title: cfg.title,
@@ -143,7 +147,7 @@ async function main() {
     tournamentStarted: teams.some((t) => t.seed),
     projections,
     gamesPlayed: teams.reduce((s, t) => s + t.w + t.l, 0),
-    entries, teams, history, notes, problems,
+    entries, teams, history, badges, notes, problems,
   };
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, JSON.stringify(out, null, 1) + '\n');

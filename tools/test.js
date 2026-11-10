@@ -191,4 +191,21 @@ test('history: points and rank rebuilt per game day (Eastern dates); movement si
   assert.deepStrictEqual(S.movement(h, 'X'), { move: -1, gained: -1, since: '2026-11-04' });
 });
 
+test('badges: 7-day window, ties share, leader = current 1st', () => {
+  const h = {
+    days: ['2026-11-01', '2026-11-03', '2026-11-08', '2026-11-10'],
+    pts: { X: [2, 4, 6, 8], Y: [0, 2, 10, 12], Z: [4, 4, 4, 4] },
+    rank: { X: [2, 1, 2, 2], Y: [3, 2, 1, 1], Z: [1, 1, 3, 3] },
+  };
+  const entries = [{ name: 'X', regRank: 2, regPts: 8 }, { name: 'Y', regRank: 1, regPts: 12 }, { name: 'Z', regRank: 3, regPts: 4 }];
+  const b = S.weeklyBadges(h, entries);
+  assert.strictEqual(b.from, '2026-11-03'); // last game day on/before Nov 3 (= Nov 10 - 7)
+  assert.deepStrictEqual(b.leader, [{ name: 'Y', value: 12 }]);
+  assert.deepStrictEqual(b.hot, [{ name: 'Y', value: 10 }]);
+  assert.deepStrictEqual(b.mover, [{ name: 'Y', value: 1 }]);
+  const tie = S.weeklyBadges({ days: ['2026-11-10'], pts: { X: [2], Y: [2] }, rank: { X: [1], Y: [1] } }, [{ name: 'X', regRank: 1, regPts: 2 }, { name: 'Y', regRank: 1, regPts: 2 }]);
+  assert.deepStrictEqual(tie.hot.map((x) => x.name), ['X', 'Y']);
+  assert.deepStrictEqual(tie.mover, []); // nobody climbed: no badge
+});
+
 console.log(`\n${passed} checks passed.`);

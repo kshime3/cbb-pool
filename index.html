@@ -7,6 +7,13 @@
 <meta name="theme-color" content="#0f1530">
 <meta property="og:title" content="Hoops Pool 2026-27 🏀">
 <meta property="og:description" content="Salary-cap pool standings, updated every morning.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kshime3.github.io/cbb-pool/">
+<meta property="og:image" content="https://kshime3.github.io/cbb-pool/img/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Hoops Pool: current top 3">
+<meta name="twitter:card" content="summary_large_image">
 <title>Hoops Pool</title>
 <link rel="icon" href="img/favicon-48.png" type="image/png" sizes="48x48">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -18,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261110b">
+<link rel="stylesheet" href="css/style.css?v=20261110d">
 </head>
 <body>
 <header class="hero">
@@ -45,6 +52,10 @@
 
   <!-- STANDINGS (regular season) -->
   <div class="panel" id="tab-standings" role="tabpanel" aria-labelledby="btn-standings">
+    <section class="week-board" id="week-card" hidden aria-label="This week's badges">
+      <div class="wb-head"><span>THIS WEEK</span><span id="week-dates"></span></div>
+      <div id="week-rows"></div>
+    </section>
     <section class="card">
       <h2>Regular-season points <small>best 5 of 6 teams</small></h2>
       <p class="hint">Tap a name to see that roster.</p>
@@ -83,6 +94,7 @@
       <h2>Roster</h2>
       <label class="pick">Entry <select id="entry-pick"></select></label>
       <div id="roster-summary" class="mini-stats"></div>
+      <div id="roster-badges" class="badge-line"></div>
       <div class="scroll"><table id="roster" class="grid"></table></div>
       <p class="hint after">The crossed-out team is the lowest scorer and doesn't count in the regular season. It still counts in the tourney. <span class="proj-note"><b>Proj</b> = expected end-of-regular-season points (ESPN BPI win odds).</span></p>
     </section>
@@ -178,6 +190,6 @@
   <button role="tab" id="btn-rules" data-tab="rules" aria-controls="tab-rules">📜<span>Rules</span></button>
 </nav>
 <script src="js/tonight.js?v=20261110a"></script>
-<script src="js/app.js?v=20261110b"></script>
+<script src="js/app.js?v=20261110d"></script>
 </body>
 </html>

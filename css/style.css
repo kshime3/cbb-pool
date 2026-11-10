@@ -310,3 +310,27 @@ body.no-proj .proj-note { display: none; }
 .race .ln.on .line { stroke: var(--gold-deep); stroke-width: 3; }
 .race .ln.on circle { fill: var(--gold-deep); stroke: #fff; stroke-width: 2; }
 .race .end { font: 400 16px "Bebas Neue", sans-serif; fill: var(--midnight); }
+
+/* ---------- Weekly badges (gold LED chips + This week board) ---------- */
+.bdg {
+  display: inline-block; font: 400 13px/1 "Bebas Neue", sans-serif; letter-spacing: 1px; white-space: nowrap;
+  color: var(--gold); background: #000; border: 1px solid #3a3f56; border-radius: 6px; padding: 3px 6px 2px;
+  text-shadow: 0 0 5px rgba(255,197,61,.7); margin: 3px 4px 0 0;
+}
+.bdgs { display: block; }
+#standings td:first-child { white-space: normal; min-width: 104px; }
+.bar-bdg { font-size: 11px; }
+.badge-line { display: flex; flex-wrap: wrap; gap: 0; margin: -4px 0 10px; }
+.badge-line:empty { display: none; }
+.badge-line .bdg { font-size: 15px; padding: 4px 8px 3px; }
+.week-board {
+  background: #000; border: 3px solid #2a2f44; border-radius: 14px; padding: 10px 12px; margin: 0 0 16px;
+  box-shadow: inset 0 0 22px rgba(255,197,61,.15), var(--shadow); color: #e9edf8;
+}
+.week-board[hidden] { display: none; }
+.wb-head { display: flex; justify-content: space-between; font: 800 10px Inter, sans-serif; letter-spacing: 1.5px; color: #8fa0cc; margin-bottom: 6px; }
+.wb-row { display: grid; grid-template-columns: 92px 1fr auto; gap: 8px; align-items: baseline; padding: 4px 0; border-top: 1px dashed #22283c; }
+.wb-row:first-of-type { border-top: 0; }
+.wb-b { font: 400 18px/1 "Bebas Neue", sans-serif; letter-spacing: 1px; color: #c9d3ef; white-space: nowrap; }
+.wb-who { font: 400 22px/1 "Bebas Neue", sans-serif; letter-spacing: 1px; color: var(--gold); text-shadow: 0 0 8px rgba(255,197,61,.7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wb-val { font: 400 16px/1 "Bebas Neue", sans-serif; letter-spacing: 1px; color: #63e6a0; white-space: nowrap; }

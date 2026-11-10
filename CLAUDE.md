@@ -17,6 +17,9 @@ College basketball salary-cap pool (2026-27, 18 entries × $25). The owner is no
 
 - Movement: `S.buildHistory` rebuilds each entry's points/rank after every game day (Eastern dates) from ESPN results on every run (no saved snapshots); `history` lives in standings.json; movement = last game day vs the one before. Hand overrides in overrides.json don't affect history.
 
+- Weekly badges: `S.weeklyBadges` over the last 7 days of history (👑 leader = current 1st, 🔥 hot = most points gained, 📈 mover = most places climbed; ties share; hot/mover need > 0). Shown as gold LED chips + "This week" board.
+- Link preview: `tools/preview.js` draws `img/preview.png` (1200×630, top 3) each morning in the workflow using GitHub's preinstalled Chrome via playwright-core installed to $RUNNER_TEMP (not into the site). If it fails, the committed preview.png stays. og: tags in index.html.
+
 ## Working rules (owner's standing rules)
 - **Before building anything, give the owner the plan and wait for a go-ahead.**
 - **Whenever images or styles are added or changed, offer three different options to choose from** (with a quick preview/description of each) before building.
