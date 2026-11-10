@@ -111,7 +111,7 @@ async function main() {
       seedPts: tp.seedPts, winPts: tp.winPts, tourPts: tp.total,
       inTournament: !!seed, eliminated: tour.games.some((g) => g.completed && !g.won),
       overridden, next,
-      gamesLeft: rec.left, upcoming: rec.upcoming, projW: null, projL: null, projPts: null,
+      gamesLeft: rec.left, upcoming: rec.upcoming, played: rec.played, projW: null, projL: null, projPts: null,
     };
   });
 
@@ -129,6 +129,11 @@ async function main() {
   const byName = Object.fromEntries(teams.map((t) => [t.name, t]));
   const entries = S.scoreEntries(cfg.entries, byName, cfg);
 
+  // Season history (points and rank after each game day) and movement since the previous game day.
+  const history = S.buildHistory(cfg.entries, Object.fromEntries(teams.map((t) => [t.name, t.played])), cfg);
+  teams.forEach((t) => { delete t.played; });
+  entries.forEach((e) => Object.assign(e, S.movement(history, e.name)));
+
   const out = {
     title: cfg.title,
     season: cfg.seasonLabel,
@@ -138,7 +143,7 @@ async function main() {
     tournamentStarted: teams.some((t) => t.seed),
     projections,
     gamesPlayed: teams.reduce((s, t) => s + t.w + t.l, 0),
-    entries, teams, notes, problems,
+    entries, teams, history, notes, problems,
   };
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, JSON.stringify(out, null, 1) + '\n');

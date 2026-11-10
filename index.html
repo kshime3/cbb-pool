@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20261110a">
+<link rel="stylesheet" href="css/style.css?v=20261110b">
 </head>
 <body>
 <header class="hero">
@@ -27,6 +27,10 @@
       <div class="sb-cell"><div class="sb-label">Entries</div><div class="sb-val" id="t-entries">…</div><div class="sb-sub" id="t-entries-s"></div></div>
       <div class="sb-cell"><div class="sb-label">Pot</div><div class="sb-val" id="t-pot">…</div><div class="sb-sub" id="t-pot-s"></div></div>
     </section>
+    <div class="ticker" id="ticker" aria-label="Movement since the last game day" hidden>
+      <div class="ticker-label" id="ticker-label">MOVERS</div>
+      <div class="ticker-window"><div class="ticker-track" id="ticker-track"></div></div>
+    </div>
   </div>
 </header>
 
@@ -44,7 +48,14 @@
       <h2>Standings</h2>
       <p class="hint">Tap a column heading to sort. Tap a row to see the roster.</p>
       <div class="scroll"><table id="standings" class="grid"></table></div>
+      <p class="hint after"><b>▲/▼</b> = places moved and <b>Last day</b> = points gained since the previous game day (<span id="since-day"></span>).</p>
       <p class="hint after proj-note">Games left counts all 6 teams. <b>Proj</b> = expected points at the end of the regular season, using ESPN's win odds (BPI) for every scheduled game. Conference tournament games are added once they're scheduled in March.</p>
+    </section>
+    <section class="card" id="race-card">
+      <h2>Rank race <small>place after each game day</small></h2>
+      <label class="pick">Highlight <select id="race-pick"></select></label>
+      <div id="race" class="race"></div>
+      <p class="hint after">Each line is one entry. Pick a name (or tap a line) to light it up.</p>
     </section>
   </div>
 
@@ -160,6 +171,6 @@
   <button role="tab" id="btn-rules" data-tab="rules" aria-controls="tab-rules">📜<span>Rules</span></button>
 </nav>
 <script src="js/tonight.js?v=20261110a"></script>
-<script src="js/app.js?v=20261110a"></script>
+<script src="js/app.js?v=20261110b"></script>
 </body>
 </html>

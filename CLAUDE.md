@@ -15,6 +15,8 @@ College basketball salary-cap pool (2026-27, 18 entries × $25). The owner is no
 - **The page is shared with the whole pool (owner's standing rule).** Keep it neutral: no highlighting or defaulting to the owner's entry (the owner is just another entry), no owner-only wording, nothing private on the page. Roster/Bracket open on the viewer's last pick (saved on their own phone), else the regular-season leader. Before any change, check it reads right for every friend in the pool.
 - Projections: ESPN Matchup Predictor (BPI) from `site.api.espn.com/.../summary?event=<id>` → `predictor.homeTeam/awayTeam.gameProjection` (percent). Saved in `data/odds.json`; games within 14 days re-checked twice a day max, others weekly. Non-D1 opponents (not in ESPN's D-I team list) count at 95%; other missing odds 50/50; >25% missing hides projections. Projected pts = current + Σ(3p−1); entry = best 5 projected. Conference tourneys excluded until scheduled. Barttorvik was tried first (owner's choice) but its CloudFront blocks GitHub's servers (HTTP 403), so the owner chose ESPN instead.
 
+- Movement: `S.buildHistory` rebuilds each entry's points/rank after every game day (Eastern dates) from ESPN results on every run (no saved snapshots); `history` lives in standings.json; movement = last game day vs the one before. Hand overrides in overrides.json don't affect history.
+
 ## Working rules (owner's standing rules)
 - **Before building anything, give the owner the plan and wait for a go-ahead.**
 - **Whenever images or styles are added or changed, offer three different options to choose from** (with a quick preview/description of each) before building.

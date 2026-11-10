@@ -1,7 +1,7 @@
 {
  "title": "College Hoops Salary-Cap Pool",
  "season": "2026-27",
- "checkedAt": "2026-11-10T04:13:46.713Z",
+ "checkedAt": "2026-11-10T04:16:24.358Z",
  "entryFee": 25,
  "pot": {
   "total": 450,
@@ -40,7 +40,10 @@
    "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Matt W.",
@@ -64,7 +67,10 @@
    "regRank": 14,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Jack D.",
@@ -88,7 +94,10 @@
    "regRank": 16,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Tyler B.",
@@ -112,7 +121,10 @@
    "regRank": 16,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Pete H.",
@@ -136,7 +148,10 @@
    "regRank": 15,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": 0,
+   "gained": 2,
+   "since": "2026-11-08"
   },
   {
    "name": "John S.",
@@ -160,7 +175,10 @@
    "regRank": 18,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -3,
+   "gained": -1,
+   "since": "2026-11-08"
   },
   {
    "name": "Kyle S.",
@@ -184,7 +202,10 @@
    "regRank": 4,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Tom B.",
@@ -208,7 +229,10 @@
    "regRank": 4,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Sarge M.",
@@ -232,7 +256,10 @@
    "regRank": 11,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -3,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Matt C.",
@@ -256,7 +283,10 @@
    "regRank": 4,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": 4,
+   "gained": 2,
+   "since": "2026-11-08"
   },
   {
    "name": "Walt S.",
@@ -280,7 +310,10 @@
    "regRank": 4,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": 8,
+   "gained": 4,
+   "since": "2026-11-08"
   },
   {
    "name": "Andrew S.",
@@ -304,7 +337,10 @@
    "regRank": 4,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Lilly V.",
@@ -328,7 +364,10 @@
    "regRank": 4,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": 4,
+   "gained": 2,
+   "since": "2026-11-08"
   },
   {
    "name": "Lucas V.",
@@ -352,7 +391,10 @@
    "regRank": 4,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Dan V.",
@@ -376,7 +418,10 @@
    "regRank": 3,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": -2,
+   "gained": 0,
+   "since": "2026-11-08"
   },
   {
    "name": "Jack S.",
@@ -400,7 +445,10 @@
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 200,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": 0,
+   "gained": 4,
+   "since": "2026-11-08"
   },
   {
    "name": "Rob W.",
@@ -424,7 +472,10 @@
    "regRank": 2,
    "tourRank": 1,
    "regPayout": 100,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": 1,
+   "gained": 4,
+   "since": "2026-11-08"
   },
   {
    "name": "Dan H.",
@@ -448,7 +499,10 @@
    "regRank": 13,
    "tourRank": 1,
    "regPayout": 0,
-   "tourPayout": 8.33
+   "tourPayout": 8.33,
+   "move": 1,
+   "gained": 2,
+   "since": "2026-11-08"
   }
  ],
  "teams": [
@@ -1713,6 +1767,419 @@
    "ptsPerDollar": 3
   }
  ],
+ "history": {
+  "days": [
+   "2026-11-01",
+   "2026-11-02",
+   "2026-11-03",
+   "2026-11-04",
+   "2026-11-05",
+   "2026-11-06",
+   "2026-11-07",
+   "2026-11-08",
+   "2026-11-09"
+  ],
+  "pts": {
+   "Rich K.": [
+    2,
+    10,
+    10,
+    12,
+    12,
+    12,
+    17,
+    19,
+    19
+   ],
+   "Matt W.": [
+    0,
+    10,
+    10,
+    10,
+    12,
+    13,
+    17,
+    17,
+    17
+   ],
+   "Jack D.": [
+    0,
+    4,
+    4,
+    4,
+    8,
+    14,
+    14,
+    14,
+    14
+   ],
+   "Tyler B.": [
+    0,
+    10,
+    10,
+    10,
+    12,
+    13,
+    12,
+    14,
+    14
+   ],
+   "Pete H.": [
+    0,
+    8,
+    10,
+    10,
+    12,
+    15,
+    14,
+    14,
+    16
+   ],
+   "John S.": [
+    0,
+    7,
+    7,
+    7,
+    11,
+    12,
+    14,
+    14,
+    13
+   ],
+   "Kyle S.": [
+    2,
+    10,
+    10,
+    12,
+    16,
+    16,
+    22,
+    22,
+    22
+   ],
+   "Tom B.": [
+    0,
+    6,
+    10,
+    10,
+    12,
+    20,
+    20,
+    22,
+    22
+   ],
+   "Sarge M.": [
+    0,
+    10,
+    10,
+    10,
+    10,
+    14,
+    18,
+    20,
+    20
+   ],
+   "Matt C.": [
+    0,
+    10,
+    10,
+    10,
+    14,
+    16,
+    20,
+    20,
+    22
+   ],
+   "Walt S.": [
+    0,
+    6,
+    10,
+    10,
+    12,
+    18,
+    18,
+    18,
+    22
+   ],
+   "Andrew S.": [
+    2,
+    10,
+    10,
+    12,
+    14,
+    18,
+    20,
+    22,
+    22
+   ],
+   "Lilly V.": [
+    0,
+    8,
+    10,
+    10,
+    14,
+    18,
+    20,
+    20,
+    22
+   ],
+   "Lucas V.": [
+    2,
+    10,
+    10,
+    12,
+    14,
+    16,
+    20,
+    22,
+    22
+   ],
+   "Dan V.": [
+    2,
+    10,
+    10,
+    14,
+    16,
+    16,
+    24,
+    24,
+    24
+   ],
+   "Jack S.": [
+    2,
+    8,
+    10,
+    12,
+    12,
+    18,
+    20,
+    24,
+    28
+   ],
+   "Rob W.": [
+    2,
+    10,
+    10,
+    12,
+    14,
+    18,
+    22,
+    22,
+    26
+   ],
+   "Dan H.": [
+    2,
+    10,
+    10,
+    12,
+    16,
+    16,
+    16,
+    16,
+    18
+   ]
+  },
+  "rank": {
+   "Rich K.": [
+    1,
+    1,
+    1,
+    2,
+    9,
+    17,
+    12,
+    11,
+    12
+   ],
+   "Matt W.": [
+    9,
+    1,
+    1,
+    9,
+    9,
+    15,
+    12,
+    13,
+    14
+   ],
+   "Jack D.": [
+    9,
+    18,
+    18,
+    18,
+    18,
+    13,
+    15,
+    15,
+    16
+   ],
+   "Tyler B.": [
+    9,
+    1,
+    1,
+    9,
+    9,
+    15,
+    18,
+    15,
+    16
+   ],
+   "Pete H.": [
+    9,
+    12,
+    1,
+    9,
+    9,
+    12,
+    15,
+    15,
+    15
+   ],
+   "John S.": [
+    9,
+    15,
+    17,
+    17,
+    16,
+    17,
+    15,
+    15,
+    18
+   ],
+   "Kyle S.": [
+    1,
+    1,
+    1,
+    2,
+    1,
+    7,
+    2,
+    3,
+    4
+   ],
+   "Tom B.": [
+    9,
+    16,
+    1,
+    9,
+    9,
+    1,
+    4,
+    3,
+    4
+   ],
+   "Sarge M.": [
+    9,
+    1,
+    1,
+    9,
+    17,
+    13,
+    10,
+    8,
+    11
+   ],
+   "Matt C.": [
+    9,
+    1,
+    1,
+    9,
+    4,
+    7,
+    4,
+    8,
+    4
+   ],
+   "Walt S.": [
+    9,
+    16,
+    1,
+    9,
+    9,
+    2,
+    10,
+    12,
+    4
+   ],
+   "Andrew S.": [
+    1,
+    1,
+    1,
+    2,
+    4,
+    2,
+    4,
+    3,
+    4
+   ],
+   "Lilly V.": [
+    9,
+    12,
+    1,
+    9,
+    4,
+    2,
+    4,
+    8,
+    4
+   ],
+   "Lucas V.": [
+    1,
+    1,
+    1,
+    2,
+    4,
+    7,
+    4,
+    3,
+    4
+   ],
+   "Dan V.": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    7,
+    1,
+    1,
+    3
+   ],
+   "Jack S.": [
+    1,
+    12,
+    1,
+    2,
+    9,
+    2,
+    4,
+    1,
+    1
+   ],
+   "Rob W.": [
+    1,
+    1,
+    1,
+    2,
+    4,
+    2,
+    2,
+    3,
+    2
+   ],
+   "Dan H.": [
+    1,
+    1,
+    1,
+    2,
+    1,
+    7,
+    14,
+    14,
+    13
+   ]
+  }
+ },
  "notes": [],
  "problems": []
 }

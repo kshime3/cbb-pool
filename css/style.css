@@ -271,3 +271,42 @@ body.no-proj .proj-note { display: none; }
 .g-owners { margin-top: 8px; padding: 10px; border-radius: 10px; background: var(--hl); color: var(--ink); cursor: default; }
 .g-owners .owners-head { margin: 6px 0; }
 .g-owners .owners-head:first-child { margin-top: 0; }
+
+/* ---------- Movement: LED ticker, arrows, rank race ---------- */
+.ticker {
+  display: flex; align-items: stretch; margin-top: 8px; background: #000; border: 3px solid #2a2f44;
+  border-radius: 10px; overflow: hidden; text-align: left;
+}
+.ticker[hidden] { display: none; }
+.ticker-label {
+  flex: 0 0 auto; font: 800 10px Inter, sans-serif; letter-spacing: 1.2px; color: var(--midnight);
+  background: var(--gold); padding: 0 8px; display: flex; align-items: center;
+}
+.ticker-window { flex: 1; overflow: hidden; position: relative; }
+.ticker-track { display: inline-flex; white-space: nowrap; animation: tick var(--dur, 20s) linear infinite; }
+.tk-run { display: inline-flex; align-items: center; padding: 5px 0; }
+.tk { font: 400 19px/1 "Bebas Neue", monospace; letter-spacing: 1px; color: var(--gold); text-shadow: 0 0 6px rgba(255,197,61,.7); padding: 0 6px; }
+.tk.up { color: #63e6a0; text-shadow: 0 0 6px rgba(99,230,160,.6); }
+.tk.down { color: #ff7b76; text-shadow: 0 0 6px rgba(255,123,118,.6); }
+.tk-sep { color: #4a5272; padding: 0 2px; }
+@keyframes tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track { animation: none; white-space: normal; flex-wrap: wrap; }
+  .tk-run[aria-hidden] { display: none; }
+}
+.mv { display: inline-block; margin-left: 5px; font: 800 11px Inter, sans-serif; min-width: 22px; text-align: left; }
+.mv.up { color: #11804b; }
+.mv.down { color: var(--red); }
+.mv.same { color: #a3abbf; }
+.mini-stats .mv { margin-left: 2px; min-width: 0; }
+.mini-stats .mv.up { color: #63e6a0; }
+.mini-stats .mv.down { color: #ff7b76; }
+.race svg { width: 100%; height: auto; display: block; }
+.race .rg { stroke: var(--line); stroke-width: 1; }
+.race .rl { font: 600 10px Inter, sans-serif; fill: var(--muted); }
+.race .line { fill: none; stroke: #c3c9da; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+.race .hit { fill: none; stroke: transparent; stroke-width: 12; cursor: pointer; }
+.race .ln:hover .line { stroke: #8f98b3; }
+.race .ln.on .line { stroke: var(--gold-deep); stroke-width: 3; }
+.race .ln.on circle { fill: var(--gold-deep); stroke: #fff; stroke-width: 2; }
+.race .end { font: 400 16px "Bebas Neue", sans-serif; fill: var(--midnight); }

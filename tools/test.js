@@ -175,4 +175,20 @@ test('tonight: scoreboard -> only games with pool teams, live first, away team l
   assert.strictEqual(T.easternDate(0, Date.UTC(2026, 10, 11, 3, 0)), '20261110'); // 10 pm Eastern on Nov 10
 });
 
+test('history: points and rank rebuilt per game day (Eastern dates); movement since the previous day', () => {
+  const mini = { scoring: Object.assign({}, cfg.scoring, { countBest: 1 }) };
+  const entries = [{ name: 'X', teams: ['A'] }, { name: 'Y', teams: ['B'] }];
+  const played = {
+    A: [{ date: '2026-11-04T00:00Z', won: true }, { date: '2026-11-06T01:00Z', won: false }], // Nov 3 and Nov 5 Eastern
+    B: [{ date: '2026-11-04T23:00Z', won: true }, { date: '2026-11-06T00:30Z', won: true }], // Nov 4 and Nov 5 Eastern
+  };
+  const h = S.buildHistory(entries, played, mini);
+  assert.deepStrictEqual(h.days, ['2026-11-03', '2026-11-04', '2026-11-05']);
+  assert.deepStrictEqual(h.pts.X, [2, 2, 1]);
+  assert.deepStrictEqual(h.pts.Y, [0, 2, 4]);
+  assert.deepStrictEqual(h.rank.X, [1, 1, 2]);
+  assert.deepStrictEqual(S.movement(h, 'Y'), { move: 0, gained: 2, since: '2026-11-04' }); // was tied for 1st, still 1st
+  assert.deepStrictEqual(S.movement(h, 'X'), { move: -1, gained: -1, since: '2026-11-04' });
+});
+
 console.log(`\n${passed} checks passed.`);

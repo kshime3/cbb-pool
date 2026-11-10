@@ -150,7 +150,8 @@
     const rr = D.entries.map((e) => e.regRank);
     const cols = [
       { key: 'name', label: 'Entry', cls: 'l', asc: true, html: (r) => esc(r.name) },
-      { key: 'regRank', label: 'Rank', asc: true, html: (r) => rankPill(r.regRank, rr) },
+      { key: 'regRank', label: 'Rank', asc: true, html: (r) => rankPill(r.regRank, rr) + (D.history ? moveHtml(r.move) : '') },
+      ...(D.history ? [{ key: 'gained', label: 'Last<br>day', html: (r) => ptsHtml(r.gained) }] : []),
       { key: 'regPts', label: 'Pts', html: (r) => r.regPts + (r.regPayout && D.gamesPlayed ? badge(r.regPayout) : '') },
       ...(hasProj() ? [
         { key: 'projRegPts', label: 'Proj<br>pts', html: (r) => `<span class="proj">${proj(r.projRegPts)}</span>` },
@@ -184,8 +185,8 @@
       <tfoot><tr><td class="l">Total <span class="nextg">best 5 · salary ${money(en.salary)}</span></td><td></td><td>${en.regPts}</td>${hasProj() ? `<td>${proj(en.projRegPts)}</td>` : ''}<td>${en.gamesLeft}</td></tr></tfoot>`;
     const rr = D.entries.map((e) => e.regRank);
     $('roster-summary').innerHTML = `
-      <div><b>${rankLabel(en.regRank, rr)}</b><span>of ${D.entries.length}</span></div>
-      <div><b>${en.regPts}</b><span>points</span></div>
+      <div><b>${rankLabel(en.regRank, rr)}</b><span>of ${D.entries.length}${D.history ? ' ' + moveHtml(en.move) : ''}</span></div>
+      <div><b>${en.regPts}</b><span>points${D.history && en.gained ? ` (${signed(en.gained)})` : ''}</span></div>
       <div><b>${en.gamesLeft}</b><span>games left</span></div>
       ${hasProj() ? `<div><b>${rankLabel(en.projRank, D.entries.map((e) => e.projRank))}</b><span>proj. finish</span></div>` : ''}`;
   }
@@ -257,6 +258,58 @@
       <tbody>${teams.map((t) => `<tr><td class="l">${esc(t.name)}<span class="under">${status(t)}</span></td><td>${seedHtml(t.seed)}</td><td class="l wins">${wins(t)}</td>
         <td title="Seed ${t.seedPts} + wins ${t.winPts}">${t.tourPts}</td></tr>`).join('')}</tbody>
       <tfoot><tr><td class="l">Total</td><td></td><td></td><td>${en.tourPts}</td></tr></tfoot>`;
+  }
+
+
+  // ---------- Movement: ticker, arrows, rank race ----------
+  const sinceLabel = () => {
+    const d = D.entries[0] && D.entries[0].since;
+    return d ? new Date(d + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' }) : '';
+  };
+  const moveHtml = (m) => (m > 0 ? `<span class="mv up">▲${m}</span>` : m < 0 ? `<span class="mv down">▼${-m}</span>` : '<span class="mv same">–</span>');
+  function ticker() {
+    if (!D.history || D.history.days.length < 2) return;
+    const movers = D.entries.filter((e) => e.move).sort((a, b) => Math.abs(b.move) - Math.abs(a.move) || b.gained - a.gained || a.name.localeCompare(b.name));
+    const day = new Date(D.entries[0].since + 'T12:00:00').toLocaleDateString(undefined, { weekday: 'short' }).toUpperCase();
+    $('ticker-label').textContent = 'SINCE ' + day;
+    const items = movers.length
+      ? movers.map((e) => `<span class="tk ${e.move > 0 ? 'up' : 'down'}">${e.move > 0 ? '▲' : '▼'} ${esc(e.name.toUpperCase())} ${e.move > 0 ? '+' : '−'}${Math.abs(e.move)}</span>`)
+      : [`<span class="tk">NO PLACE CHANGES</span>`];
+    const one = items.join('<span class="tk-sep">·</span>') + '<span class="tk-sep">·</span>';
+    $('ticker-track').innerHTML = `<span class="tk-run">${one}</span><span class="tk-run" aria-hidden="true">${one}</span>`;
+    $('ticker-track').style.setProperty('--dur', Math.max(12, movers.length * 2.6) + 's');
+    $('ticker').hidden = false;
+    $('since-day').textContent = sinceLabel();
+  }
+
+  let raceSel = '';
+  function race() {
+    const H = D.history;
+    if (!H || H.days.length < 2) { $('race-card').hidden = true; return; }
+    const names = D.entries.map((e) => e.name).sort();
+    const sel = $('race-pick');
+    sel.innerHTML = `<option value="">Nobody</option>` + names.map((n) => `<option${n === raceSel ? ' selected' : ''}>${esc(n)}</option>`).join('');
+    sel.onchange = (e) => { raceSel = e.target.value; race(); };
+    const W = 340, Hh = 290, L = 30, R = 40, T = 10, B = 26;
+    const n = H.days.length, N = D.entries.length;
+    const x = (i) => L + (n === 1 ? 0 : (i / (n - 1)) * (W - L - R));
+    const y = (r) => T + ((r - 1) / Math.max(1, N - 1)) * (Hh - T - B);
+    const path = (name) => H.rank[name].map((r, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(r).toFixed(1)}`).join(' ');
+    const ord = (k) => k + (k % 10 === 1 && k !== 11 ? 'st' : k % 10 === 2 && k !== 12 ? 'nd' : k % 10 === 3 && k !== 13 ? 'rd' : 'th');
+    const grid = [1, 6, 12, N].map((r) => `<line class="rg" x1="${L}" x2="${W - R}" y1="${y(r)}" y2="${y(r)}"/><text class="rl" x="${L - 6}" y="${y(r) + 4}" text-anchor="end">${ord(r)}</text>`).join('');
+    const dfmt = (d) => new Date(d + 'T12:00:00').toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+    const xl = [0, Math.floor((n - 1) / 2), n - 1].filter((v, i, a) => a.indexOf(v) === i)
+      .map((i) => `<text class="rl" x="${x(i)}" y="${Hh - 6}" text-anchor="${i === 0 ? 'start' : i === n - 1 ? 'end' : 'middle'}">${dfmt(H.days[i])}</text>`).join('');
+    const others = names.filter((nm) => nm !== raceSel).map((nm) => `<g class="ln" data-name="${esc(nm)}"><title>${esc(nm)}: now ${ord(H.rank[nm][n - 1])}</title><path class="hit" d="${path(nm)}"/><path class="line" d="${path(nm)}"/></g>`).join('');
+    let hi = '';
+    if (raceSel && H.rank[raceSel]) {
+      const last = H.rank[raceSel][n - 1];
+      hi = `<g class="ln on" data-name="${esc(raceSel)}"><path class="line" d="${path(raceSel)}"/>
+        ${H.rank[raceSel].map((r, i) => `<circle cx="${x(i)}" cy="${y(r)}" r="3.5"/>`).join('')}
+        <text class="end" x="${x(n - 1) + 8}" y="${y(last) + 4}">${ord(last)}</text></g>`;
+    }
+    $('race').innerHTML = `<svg viewBox="0 0 ${W} ${Hh}" role="img" aria-label="Rank of every entry after each game day${raceSel ? ', ' + esc(raceSel) + ' highlighted' : ''}">${grid}${xl}${others}${hi}</svg>`;
+    $('race').onclick = (e) => { const g = e.target.closest('.ln'); if (g) { raceSel = g.dataset.name === raceSel ? '' : g.dataset.name; race(); } };
   }
 
   // ---------- Tonight tab ----------
@@ -424,7 +477,7 @@
     $('tour-pick').onchange = (e) => select(e.target.value);
     $('chart').onclick = (e) => { const b = e.target.closest('.bar-row'); if (b) { select(b.dataset.name); showTab('roster'); } };
     document.body.classList.toggle('no-proj', !hasProj());
-    alerts(); tiles(); chart(); standings(); teamsTable(); tourney();
+    alerts(); tiles(); chart(); standings(); teamsTable(); tourney(); ticker(); race();
     select(selected);
     wireTonight();
     if (!$('tab-tonight').hidden) loadTonight(false);

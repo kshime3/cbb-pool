@@ -2,7 +2,7 @@
 
 ## Planned (in this order)
 1. ~~**Tonight's games** tab~~ ✅ done Nov 10 (📺 Tonight: LED scoreboard cards, live scores from ESPN on the phone, Yesterday/Today/Tomorrow, filter by entry, tap for owners)
-2. **Movement since yesterday**: daily snapshots, ▲/▼ rank change, season points chart
+2. ~~**Movement since yesterday**~~ ✅ done Nov 10 (LED ticker under the scoreboard, ▲/▼ + "Last day" points in Standings and Roster, "Rank race" bump chart; history rebuilt from ESPN results each run)
 3. **App icon / Add to Home Screen**
 4. **Weekly badges** (🔥 hot streak, 📈 biggest mover, 👑 leader) + group-chat link preview
 

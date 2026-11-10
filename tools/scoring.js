@@ -47,6 +47,7 @@ function isNcaaTournament(event) {
 function regularRecord(events, teamId) {
   let w = 0, l = 0, left = 0;
   const upcoming = [];
+  const played = []; // finished games: { date (ISO), won }
   const notes = [];
   for (const e of events) {
     if (e.seasonType && e.seasonType.type !== 2) continue;
@@ -61,12 +62,12 @@ function regularRecord(events, teamId) {
     }
     const { me } = sides(e, teamId);
     if (!me) continue;
-    if (me.winner === true) w++;
-    else if (me.winner === false) l++;
+    if (me.winner === true) { w++; played.push({ date: e.date, won: true }); }
+    else if (me.winner === false) { l++; played.push({ date: e.date, won: false }); }
     else notes.push(`Finished game on ${String(e.date).slice(0, 10)} has no winner; skipped.`);
   }
   upcoming.sort((x, y) => String(x.date).localeCompare(String(y.date)));
-  return { w, l, left, upcoming, notes };
+  return { w, l, left, upcoming, played, notes };
 }
 
 // ---------- projections (ESPN Matchup Predictor / BPI win odds) ----------
@@ -239,7 +240,46 @@ function checkConfig(cfg) {
   return problems;
 }
 
+// ---------- movement / history ----------
+// YYYY-MM-DD of an ISO time in US Eastern (game nights belong to the Eastern date).
+function easternDay(iso) {
+  const parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).formatToParts(new Date(iso));
+  const get = (t) => parts.find((p) => p.type === t).value;
+  return `${get('year')}-${get('month')}-${get('day')}`;
+}
+
+// Rebuilds every entry's regular-season points and rank at the end of each game
+// day, straight from game results (so nothing has to be saved day by day).
+// playedByTeam: { teamName: [{ date, won }] }
+function buildHistory(entries, playedByTeam, cfg) {
+  const days = [...new Set(Object.values(playedByTeam).flat().map((g) => easternDay(g.date)))].sort();
+  const pts = {}, rank = {};
+  entries.forEach((e) => { pts[e.name] = []; rank[e.name] = []; });
+  const teamPts = {};
+  Object.keys(playedByTeam).forEach((n) => { teamPts[n] = 0; });
+  const byDay = {};
+  for (const [name, games] of Object.entries(playedByTeam)) {
+    for (const g of games) (byDay[easternDay(g.date)] = byDay[easternDay(g.date)] || []).push({ name, won: g.won });
+  }
+  for (const d of days) {
+    for (const g of byDay[d]) teamPts[g.name] += g.won ? cfg.scoring.win : cfg.scoring.loss;
+    const totals = entries.map((e) => e.teams.map((n) => teamPts[n] || 0).sort((a, b) => b - a).slice(0, cfg.scoring.countBest).reduce((s, x) => s + x, 0));
+    const r = ranks(totals);
+    entries.forEach((e, i) => { pts[e.name].push(totals[i]); rank[e.name].push(r[i]); });
+  }
+  return { days, pts, rank };
+}
+
+// Change between the last two game days: rank move (+ = up) and points gained.
+function movement(history, name) {
+  const n = history.days.length;
+  if (n < 2) return { move: 0, gained: history.pts[name] ? history.pts[name][n - 1] || 0 : 0, since: null };
+  const r = history.rank[name], p = history.pts[name];
+  return { move: r[n - 2] - r[n - 1], gained: p[n - 1] - p[n - 2], since: history.days[n - 2] };
+}
+
 module.exports = {
+  easternDay, buildHistory, movement,
   ROUNDS, ROUND_NAMES, regularRecord, predictorOdds, projectTeam, NON_D1_WIN, tournamentResult, isNcaaTournament, roundFromHeadline,
   regularPoints, tournamentPoints, ranks, payouts, scoreEntries, checkConfig,
 };
