@@ -1,7 +1,7 @@
 {
  "title": "College Hoops Salary-Cap Pool",
  "season": "2026-27",
- "checkedAt": "2026-11-14T11:54:20.517Z",
+ "checkedAt": "2026-11-15T11:55:09.124Z",
  "entryFee": 25,
  "pot": {
   "total": 450,
@@ -16,7 +16,7 @@
  },
  "tournamentStarted": false,
  "projections": "ESPN Matchup Predictor (BPI)",
- "gamesPlayed": 157,
+ "gamesPlayed": 165,
  "entries": [
   {
    "name": "Rich K.",
@@ -32,18 +32,18 @@
     "VCU"
    ],
    "salary": 99,
-   "regPts": 25,
+   "regPts": 24,
    "tourPts": 0,
-   "gamesLeft": 162,
-   "projRegPts": 207,
+   "gamesLeft": 161,
+   "projRegPts": 204.4,
    "projRank": 6,
-   "regRank": 14,
+   "regRank": 15,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": -2,
-   "gained": 0,
-   "since": "2026-11-12",
+   "move": -1,
+   "gained": -1,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -60,21 +60,19 @@
     "Michigan"
    ],
    "salary": 101,
-   "regPts": 29,
+   "regPts": 30,
    "tourPts": 0,
-   "gamesLeft": 164,
-   "projRegPts": 201,
+   "gamesLeft": 162,
+   "projRegPts": 198.5,
    "projRank": 7,
    "regRank": 11,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": 1,
-   "gained": 4,
-   "since": "2026-11-12",
-   "badges": [
-    "mover"
-   ]
+   "move": 0,
+   "gained": 1,
+   "since": "2026-11-13",
+   "badges": []
   },
   {
    "name": "Jack D.",
@@ -90,18 +88,18 @@
     "Purdue"
    ],
    "salary": 100,
-   "regPts": 23,
+   "regPts": 27,
    "tourPts": 0,
-   "gamesLeft": 165,
+   "gamesLeft": 163,
    "projRegPts": 169.5,
    "projRank": 16,
-   "regRank": 16,
+   "regRank": 14,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": -2,
-   "gained": 2,
-   "since": "2026-11-12",
+   "move": 2,
+   "gained": 4,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -127,9 +125,9 @@
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": -3,
-   "gained": 1,
-   "since": "2026-11-12",
+   "move": 0,
+   "gained": 0,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -155,9 +153,9 @@
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": 2,
-   "gained": 6,
-   "since": "2026-11-12",
+   "move": 0,
+   "gained": 0,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -174,18 +172,18 @@
     "Purdue"
    ],
    "salary": 101,
-   "regPts": 20,
+   "regPts": 22,
    "tourPts": 0,
-   "gamesLeft": 168,
-   "projRegPts": 183.6,
+   "gamesLeft": 167,
+   "projRegPts": 184.4,
    "projRank": 13,
-   "regRank": 18,
+   "regRank": 17,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": -1,
+   "move": 1,
    "gained": 2,
-   "since": "2026-11-12",
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -202,18 +200,18 @@
     "McNeese"
    ],
    "salary": 101,
-   "regPts": 30,
+   "regPts": 31,
    "tourPts": 0,
-   "gamesLeft": 168,
+   "gamesLeft": 166,
    "projRegPts": 234.1,
    "projRank": 1,
-   "regRank": 10,
+   "regRank": 9,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
    "move": 1,
-   "gained": 4,
-   "since": "2026-11-12",
+   "gained": 1,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -237,11 +235,11 @@
    "projRank": 14,
    "regRank": 2,
    "tourRank": 1,
-   "regPayout": 50,
+   "regPayout": 33.33,
    "tourPayout": 8.33,
-   "move": 3,
-   "gained": 6,
-   "since": "2026-11-12",
+   "move": 0,
+   "gained": 0,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -260,19 +258,17 @@
    "salary": 99,
    "regPts": 31,
    "tourPts": 0,
-   "gamesLeft": 165,
-   "projRegPts": 194.2,
+   "gamesLeft": 164,
+   "projRegPts": 191.6,
    "projRank": 9,
    "regRank": 9,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
    "move": 0,
-   "gained": 3,
-   "since": "2026-11-12",
-   "badges": [
-    "mover"
-   ]
+   "gained": 0,
+   "since": "2026-11-13",
+   "badges": []
   },
   {
    "name": "Matt C.",
@@ -288,18 +284,18 @@
     "Gonzaga"
    ],
    "salary": 101,
-   "regPts": 33,
+   "regPts": 32,
    "tourPts": 0,
-   "gamesLeft": 164,
-   "projRegPts": 192.5,
-   "projRank": 10,
-   "regRank": 6,
+   "gamesLeft": 162,
+   "projRegPts": 188.4,
+   "projRank": 11,
+   "regRank": 7,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": 0,
-   "gained": 3,
-   "since": "2026-11-12",
+   "move": -1,
+   "gained": -1,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -321,14 +317,17 @@
    "gamesLeft": 165,
    "projRegPts": 195,
    "projRank": 8,
-   "regRank": 4,
+   "regRank": 5,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": 2,
-   "gained": 6,
-   "since": "2026-11-12",
-   "badges": []
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-13",
+   "badges": [
+    "hot",
+    "mover"
+   ]
   },
   {
    "name": "Andrew S.",
@@ -349,13 +348,13 @@
    "gamesLeft": 165,
    "projRegPts": 186.4,
    "projRank": 12,
-   "regRank": 5,
+   "regRank": 6,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": -2,
-   "gained": 3,
-   "since": "2026-11-12",
+   "move": -1,
+   "gained": 0,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -372,18 +371,18 @@
     "Purdue"
    ],
    "salary": 98,
-   "regPts": 33,
+   "regPts": 32,
    "tourPts": 0,
-   "gamesLeft": 165,
-   "projRegPts": 191.7,
-   "projRank": 11,
-   "regRank": 6,
+   "gamesLeft": 164,
+   "projRegPts": 189.1,
+   "projRank": 10,
+   "regRank": 7,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": 2,
-   "gained": 4,
-   "since": "2026-11-12",
+   "move": -1,
+   "gained": -1,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -400,18 +399,18 @@
     "McNeese"
    ],
    "salary": 99,
-   "regPts": 29,
+   "regPts": 28,
    "tourPts": 0,
-   "gamesLeft": 166,
-   "projRegPts": 229.6,
-   "projRank": 2,
-   "regRank": 11,
+   "gamesLeft": 165,
+   "projRegPts": 226.9,
+   "projRank": 3,
+   "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
    "move": -1,
-   "gained": 2,
-   "since": "2026-11-12",
+   "gained": -1,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -428,18 +427,18 @@
     "Gonzaga"
    ],
    "salary": 100,
-   "regPts": 33,
+   "regPts": 37,
    "tourPts": 0,
-   "gamesLeft": 166,
-   "projRegPts": 219.1,
+   "gamesLeft": 163,
+   "projRegPts": 218.3,
    "projRank": 4,
-   "regRank": 6,
+   "regRank": 2,
    "tourRank": 1,
-   "regPayout": 0,
+   "regPayout": 33.33,
    "tourPayout": 8.33,
-   "move": -3,
-   "gained": 1,
-   "since": "2026-11-12",
+   "move": 4,
+   "gained": 4,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -463,11 +462,11 @@
    "projRank": 15,
    "regRank": 2,
    "tourRank": 1,
-   "regPayout": 50,
+   "regPayout": 33.33,
    "tourPayout": 8.33,
-   "move": -1,
-   "gained": 3,
-   "since": "2026-11-12",
+   "move": 0,
+   "gained": 0,
+   "since": "2026-11-13",
    "badges": []
   },
   {
@@ -484,18 +483,18 @@
     "Duke"
    ],
    "salary": 100,
-   "regPts": 38,
+   "regPts": 40,
    "tourPts": 0,
-   "gamesLeft": 168,
-   "projRegPts": 227.5,
-   "projRank": 3,
+   "gamesLeft": 167,
+   "projRegPts": 227.6,
+   "projRank": 2,
    "regRank": 1,
    "tourRank": 1,
    "regPayout": 200,
    "tourPayout": 8.33,
    "move": 0,
-   "gained": 4,
-   "since": "2026-11-12",
+   "gained": 2,
+   "since": "2026-11-13",
    "badges": [
     "leader",
     "hot"
@@ -512,21 +511,21 @@
     "Oklahoma"
    ],
    "dropped": [
-    "Providence"
+    "VCU"
    ],
    "salary": 101,
-   "regPts": 26,
+   "regPts": 28,
    "tourPts": 0,
-   "gamesLeft": 165,
-   "projRegPts": 208.8,
+   "gamesLeft": 164,
+   "projRegPts": 209.6,
    "projRank": 5,
-   "regRank": 13,
+   "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": 3,
-   "gained": 6,
-   "since": "2026-11-12",
+   "move": 1,
+   "gained": 2,
+   "since": "2026-11-13",
    "badges": []
   }
  ],
@@ -817,8 +816,8 @@
    "salary": 24,
    "espnId": 2250,
    "w": 2,
-   "l": 0,
-   "regPts": 4,
+   "l": 1,
+   "regPts": 3,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -828,16 +827,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-14T20:30Z",
-    "opp": "LSU",
+    "date": "2026-11-18T04:00Z",
+    "opp": "Montana St",
     "home": true
    },
-   "gamesLeft": 27,
-   "projW": 24.1,
-   "projL": 4.9,
-   "projPts": 43.4,
+   "gamesLeft": 26,
+   "projW": 23.3,
+   "projL": 5.7,
+   "projPts": 40.8,
    "owners": 7,
-   "ptsPerDollar": 0.17
+   "ptsPerDollar": 0.13
   },
   {
    "name": "Saint John's",
@@ -928,9 +927,9 @@
    "conf": "B12",
    "salary": 20,
    "espnId": 2641,
-   "w": 3,
+   "w": 4,
    "l": 0,
-   "regPts": 6,
+   "regPts": 8,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -940,16 +939,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-14T18:00Z",
-    "opp": "Stonehill",
+    "date": "2026-11-19T00:30Z",
+    "opp": "LSU N Orleans",
     "home": true
    },
-   "gamesLeft": 26,
+   "gamesLeft": 25,
    "projW": 21.5,
    "projL": 7.5,
    "projPts": 35.6,
    "owners": 1,
-   "ptsPerDollar": 0.3
+   "ptsPerDollar": 0.4
   },
   {
    "name": "Kansas",
@@ -1236,9 +1235,9 @@
    "conf": "BE",
    "salary": 3,
    "espnId": 222,
-   "w": 2,
+   "w": 3,
    "l": 1,
-   "regPts": 3,
+   "regPts": 5,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1248,16 +1247,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-15T00:00Z",
-    "opp": "Rider",
-    "home": true
+    "date": "2026-11-18T00:00Z",
+    "opp": "Pitt",
+    "home": false
    },
-   "gamesLeft": 28,
+   "gamesLeft": 27,
    "projW": 18.2,
    "projL": 12.8,
    "projPts": 23.5,
    "owners": 1,
-   "ptsPerDollar": 1
+   "ptsPerDollar": 1.67
   },
   {
    "name": "Texas A&M",
@@ -1348,9 +1347,9 @@
    "conf": "MWC",
    "salary": 2,
    "espnId": 2253,
-   "w": 3,
+   "w": 4,
    "l": 0,
-   "regPts": 6,
+   "regPts": 8,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1360,16 +1359,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-15T01:00Z",
-    "opp": "UL Monroe",
-    "home": true
+    "date": "2026-11-25T02:30Z",
+    "opp": "Saint Louis",
+    "home": false
    },
-   "gamesLeft": 28,
+   "gamesLeft": 27,
    "projW": 24.4,
    "projL": 6.6,
-   "projPts": 42.2,
+   "projPts": 42.3,
    "owners": 4,
-   "ptsPerDollar": 3
+   "ptsPerDollar": 4
   },
   {
    "name": "Wisconsin",
@@ -1460,9 +1459,9 @@
    "conf": "B12",
    "salary": 2,
    "espnId": 2132,
-   "w": 2,
+   "w": 3,
    "l": 1,
-   "regPts": 3,
+   "regPts": 5,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1472,16 +1471,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-15T00:30Z",
-    "opp": "Dayton",
-    "home": false
+    "date": "2026-11-19T00:30Z",
+    "opp": "Youngstown St",
+    "home": true
    },
-   "gamesLeft": 29,
-   "projW": 21.1,
-   "projL": 10.9,
-   "projPts": 31.3,
+   "gamesLeft": 28,
+   "projW": 21.4,
+   "projL": 10.6,
+   "projPts": 32.1,
    "owners": 1,
-   "ptsPerDollar": 1.5
+   "ptsPerDollar": 2.5
   },
   {
    "name": "Utah State",
@@ -1600,9 +1599,9 @@
    "conf": "WCC",
    "salary": 2,
    "espnId": 2541,
-   "w": 4,
+   "w": 5,
    "l": 0,
-   "regPts": 8,
+   "regPts": 10,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1612,16 +1611,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-15T03:00Z",
-    "opp": "New Mexico",
+    "date": "2026-11-20T03:30Z",
+    "opp": "VCU",
     "home": true
    },
-   "gamesLeft": 28,
-   "projW": 22,
-   "projL": 10,
-   "projPts": 33.9,
+   "gamesLeft": 27,
+   "projW": 22.5,
+   "projL": 9.5,
+   "projPts": 35.6,
    "owners": 1,
-   "ptsPerDollar": 4
+   "ptsPerDollar": 5
   },
   {
    "name": "High Point",
@@ -1675,7 +1674,7 @@
    "gamesLeft": 28,
    "projW": 24.3,
    "projL": 6.7,
-   "projPts": 41.9,
+   "projPts": 41.8,
    "owners": 2,
    "ptsPerDollar": 3
   },
@@ -1685,8 +1684,8 @@
    "salary": 1,
    "espnId": 167,
    "w": 3,
-   "l": 0,
-   "regPts": 6,
+   "l": 1,
+   "regPts": 5,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1696,16 +1695,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-15T03:00Z",
-    "opp": "Santa Clara",
+    "date": "2026-11-21T19:00Z",
+    "opp": "Wichita St",
     "home": false
    },
-   "gamesLeft": 28,
-   "projW": 24,
-   "projL": 7,
-   "projPts": 41,
+   "gamesLeft": 27,
+   "projW": 23.5,
+   "projL": 7.5,
+   "projPts": 39.5,
    "owners": 2,
-   "ptsPerDollar": 6
+   "ptsPerDollar": 5
   },
   {
    "name": "Clemson",
@@ -1740,9 +1739,9 @@
    "conf": "BE",
    "salary": 1,
    "espnId": 2507,
-   "w": 2,
+   "w": 3,
    "l": 1,
-   "regPts": 3,
+   "regPts": 5,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1752,16 +1751,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-14T23:00Z",
-    "opp": "Colorado",
+    "date": "2026-11-18T00:00Z",
+    "opp": "Sacred Heart",
     "home": true
    },
-   "gamesLeft": 27,
-   "projW": 17,
-   "projL": 13,
-   "projPts": 21,
+   "gamesLeft": 26,
+   "projW": 17.3,
+   "projL": 12.7,
+   "projPts": 21.8,
    "owners": 1,
-   "ptsPerDollar": 3
+   "ptsPerDollar": 5
   },
   {
    "name": "Oklahoma",
@@ -1806,7 +1805,8 @@
    "2026-11-10",
    "2026-11-11",
    "2026-11-12",
-   "2026-11-13"
+   "2026-11-13",
+   "2026-11-14"
   ],
   "pts": {
    "Rich K.": [
@@ -1822,7 +1822,8 @@
     21,
     23,
     25,
-    25
+    25,
+    24
    ],
    "Matt W.": [
     0,
@@ -1837,7 +1838,8 @@
     23,
     25,
     25,
-    29
+    29,
+    30
    ],
    "Jack D.": [
     0,
@@ -1852,7 +1854,8 @@
     21,
     21,
     21,
-    23
+    23,
+    27
    ],
    "Tyler B.": [
     0,
@@ -1867,6 +1870,7 @@
     17,
     21,
     21,
+    22,
     22
    ],
    "Pete H.": [
@@ -1882,6 +1886,7 @@
     16,
     18,
     18,
+    24,
     24
    ],
    "John S.": [
@@ -1897,7 +1902,8 @@
     14,
     18,
     18,
-    20
+    20,
+    22
    ],
    "Kyle S.": [
     2,
@@ -1912,7 +1918,8 @@
     22,
     24,
     26,
-    30
+    30,
+    31
    ],
    "Tom B.": [
     0,
@@ -1927,6 +1934,7 @@
     27,
     29,
     31,
+    37,
     37
    ],
    "Sarge M.": [
@@ -1942,6 +1950,7 @@
     22,
     28,
     28,
+    31,
     31
    ],
    "Matt C.": [
@@ -1957,7 +1966,8 @@
     28,
     28,
     30,
-    33
+    33,
+    32
    ],
    "Walt S.": [
     0,
@@ -1972,6 +1982,7 @@
     28,
     28,
     30,
+    36,
     36
    ],
    "Andrew S.": [
@@ -1987,6 +1998,7 @@
     28,
     30,
     32,
+    35,
     35
    ],
    "Lilly V.": [
@@ -2002,7 +2014,8 @@
     25,
     25,
     29,
-    33
+    33,
+    32
    ],
    "Lucas V.": [
     2,
@@ -2017,7 +2030,8 @@
     23,
     25,
     27,
-    29
+    29,
+    28
    ],
    "Dan V.": [
     2,
@@ -2032,7 +2046,8 @@
     24,
     30,
     32,
-    33
+    33,
+    37
    ],
    "Jack S.": [
     2,
@@ -2047,6 +2062,7 @@
     30,
     32,
     34,
+    37,
     37
    ],
    "Rob W.": [
@@ -2062,7 +2078,8 @@
     28,
     30,
     34,
-    38
+    38,
+    40
    ],
    "Dan H.": [
     2,
@@ -2077,7 +2094,8 @@
     18,
     18,
     20,
-    26
+    26,
+    28
    ]
   },
   "rank": {
@@ -2094,7 +2112,8 @@
     13,
     13,
     12,
-    14
+    14,
+    15
    ],
    "Matt W.": [
     9,
@@ -2109,6 +2128,7 @@
     9,
     9,
     12,
+    11,
     11
    ],
    "Jack D.": [
@@ -2124,7 +2144,8 @@
     13,
     14,
     14,
-    16
+    16,
+    14
    ],
    "Tyler B.": [
     9,
@@ -2139,6 +2160,7 @@
     16,
     14,
     14,
+    17,
     17
    ],
    "Pete H.": [
@@ -2154,6 +2176,7 @@
     17,
     16,
     17,
+    15,
     15
    ],
    "John S.": [
@@ -2169,7 +2192,8 @@
     18,
     16,
     17,
-    18
+    18,
+    17
    ],
    "Kyle S.": [
     1,
@@ -2184,7 +2208,8 @@
     11,
     12,
     11,
-    10
+    10,
+    9
    ],
    "Tom B.": [
     9,
@@ -2199,6 +2224,7 @@
     6,
     5,
     5,
+    2,
     2
    ],
    "Sarge M.": [
@@ -2213,6 +2239,7 @@
     11,
     11,
     6,
+    9,
     9,
     9
    ],
@@ -2229,7 +2256,8 @@
     2,
     6,
     6,
-    6
+    6,
+    7
    ],
    "Walt S.": [
     9,
@@ -2244,7 +2272,8 @@
     2,
     6,
     6,
-    4
+    4,
+    5
    ],
    "Andrew S.": [
     1,
@@ -2259,7 +2288,8 @@
     2,
     2,
     3,
-    5
+    5,
+    6
    ],
    "Lilly V.": [
     9,
@@ -2274,7 +2304,8 @@
     7,
     9,
     8,
-    6
+    6,
+    7
    ],
    "Lucas V.": [
     1,
@@ -2289,7 +2320,8 @@
     9,
     9,
     10,
-    11
+    11,
+    12
    ],
    "Dan V.": [
     1,
@@ -2304,7 +2336,8 @@
     8,
     2,
     3,
-    6
+    6,
+    2
    ],
    "Jack S.": [
     1,
@@ -2319,6 +2352,7 @@
     1,
     1,
     1,
+    2,
     2
    ],
    "Rob W.": [
@@ -2333,6 +2367,7 @@
     2,
     2,
     2,
+    1,
     1,
     1
    ],
@@ -2349,33 +2384,34 @@
     15,
     16,
     16,
-    13
+    13,
+    12
    ]
   }
  },
  "badges": {
-  "from": "2026-11-06",
-  "to": "2026-11-13",
+  "from": "2026-11-07",
+  "to": "2026-11-14",
   "leader": [
    {
     "name": "Rob W.",
-    "value": 38
+    "value": 40
    }
   ],
   "hot": [
    {
+    "name": "Walt S.",
+    "value": 18
+   },
+   {
     "name": "Rob W.",
-    "value": 20
+    "value": 18
    }
   ],
   "mover": [
    {
-    "name": "Matt W.",
-    "value": 4
-   },
-   {
-    "name": "Sarge M.",
-    "value": 4
+    "name": "Walt S.",
+    "value": 5
    }
   ]
  },
