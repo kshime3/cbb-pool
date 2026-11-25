@@ -1,4 +1,5 @@
 # Every morning: download scores from ESPN, rescore the pool, publish the page.
+# A backup run mid-morning catches up if GitHub ran the early one late or it failed.
 # Also runs when you press "Run workflow" on the Actions tab, and whenever a file is changed.
 # If the ESPN download fails, nothing is overwritten: the page keeps the last good
 # numbers, this run shows a red X, and GitHub emails you.
@@ -6,6 +7,7 @@ name: Update pool
 on:
   schedule:
     - cron: '17 11 * * *'   # every day at 11:17 UTC = 6:17 am Eastern (7:17 am in summer time)
+    - cron: '47 14 * * *'   # backup: 14:47 UTC = 9:47 am Eastern (10:47 am in summer time)
   workflow_dispatch:
   push:
     branches: [main]
@@ -21,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -40,6 +42,7 @@ jobs:
             git config user.email "41898699+github-actions[bot]@users.noreply.github.com"
             git add data/standings.json data/odds.json
             git commit -m "Scores updated $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git pull --rebase -X theirs origin main   # in case the page code changed since this run started (keeps the new scores)
             git push
           fi
       - name: Draw the link-preview picture (top 3 for group chats)
@@ -52,7 +55,16 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
+      # GitHub's publishing service sometimes can't find the package for a few
+      # seconds after it's made. Try once, wait 30 seconds, then try again.
       - id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - name: Wait 30 seconds before trying to publish again
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+      - id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4
       - name: Report a failed ESPN download (sends you an email)
         if: steps.scores.outcome == 'failure'
