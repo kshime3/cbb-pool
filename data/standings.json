@@ -1,7 +1,7 @@
 {
  "title": "College Hoops Salary-Cap Pool",
  "season": "2026-27",
- "checkedAt": "2026-11-26T20:13:47.045Z",
+ "checkedAt": "2026-11-26T23:22:04.450Z",
  "entryFee": 25,
  "pot": {
   "total": 450,
@@ -16,7 +16,7 @@
  },
  "tournamentStarted": false,
  "projections": "ESPN Matchup Predictor (BPI)",
- "gamesPlayed": 295,
+ "gamesPlayed": 300,
  "entries": [
   {
    "name": "Rich K.",
@@ -34,14 +34,14 @@
    "salary": 99,
    "regPts": 48,
    "tourPts": 0,
-   "gamesLeft": 150,
-   "projRegPts": 218,
+   "gamesLeft": 149,
+   "projRegPts": 216.5,
    "projRank": 5,
-   "regRank": 14,
+   "regRank": 15,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": -2,
+   "move": -3,
    "gained": 0,
    "since": "2026-11-25",
    "badges": []
@@ -62,7 +62,7 @@
    "salary": 101,
    "regPts": 51,
    "tourPts": 0,
-   "gamesLeft": 150,
+   "gamesLeft": 149,
    "projRegPts": 215.7,
    "projRank": 7,
    "regRank": 9,
@@ -90,17 +90,17 @@
     "Purdue"
    ],
    "salary": 100,
-   "regPts": 40,
+   "regPts": 39,
    "tourPts": 0,
-   "gamesLeft": 148,
-   "projRegPts": 155,
+   "gamesLeft": 147,
+   "projRegPts": 153.5,
    "projRank": 17,
    "regRank": 17,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
    "move": 0,
-   "gained": 0,
+   "gained": -1,
    "since": "2026-11-25",
    "badges": []
   },
@@ -120,7 +120,7 @@
    "salary": 101,
    "regPts": 51,
    "tourPts": 0,
-   "gamesLeft": 150,
+   "gamesLeft": 149,
    "projRegPts": 187.7,
    "projRank": 13,
    "regRank": 9,
@@ -146,17 +146,17 @@
     "Maryland"
    ],
    "salary": 101,
-   "regPts": 36,
+   "regPts": 37,
    "tourPts": 0,
-   "gamesLeft": 150,
-   "projRegPts": 140.8,
+   "gamesLeft": 148,
+   "projRegPts": 141.1,
    "projRank": 18,
    "regRank": 18,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
    "move": 0,
-   "gained": 0,
+   "gained": 1,
    "since": "2026-11-25",
    "badges": []
   },
@@ -174,17 +174,17 @@
     "Michigan"
    ],
    "salary": 101,
-   "regPts": 44,
+   "regPts": 43,
    "tourPts": 0,
-   "gamesLeft": 150,
-   "projRegPts": 176,
+   "gamesLeft": 148,
+   "projRegPts": 174,
    "projRank": 16,
    "regRank": 16,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
    "move": 0,
-   "gained": 1,
+   "gained": 0,
    "since": "2026-11-25",
    "badges": []
   },
@@ -318,17 +318,17 @@
     "Purdue"
    ],
    "salary": 92,
-   "regPts": 47,
+   "regPts": 49,
    "tourPts": 0,
-   "gamesLeft": 149,
-   "projRegPts": 188.2,
+   "gamesLeft": 148,
+   "projRegPts": 189.8,
    "projRank": 12,
-   "regRank": 15,
+   "regRank": 12,
    "tourRank": 1,
    "regPayout": 0,
    "tourPayout": 8.33,
-   "move": -1,
-   "gained": 0,
+   "move": 2,
+   "gained": 2,
    "since": "2026-11-25",
    "badges": []
   },
@@ -462,8 +462,8 @@
    "salary": 101,
    "regPts": 55,
    "tourPts": 0,
-   "gamesLeft": 148,
-   "projRegPts": 193.3,
+   "gamesLeft": 147,
+   "projRegPts": 192.4,
    "projRank": 11,
    "regRank": 6,
    "tourRank": 1,
@@ -705,9 +705,9 @@
    "conf": "SEC",
    "salary": 32,
    "espnId": 2633,
-   "w": 6,
+   "w": 7,
    "l": 0,
-   "regPts": 12,
+   "regPts": 14,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -717,16 +717,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-26T20:30Z",
-    "opp": "Iowa State",
-    "home": false
+    "date": "2026-12-02T00:00Z",
+    "opp": "Florida St",
+    "home": true
    },
-   "gamesLeft": 25,
-   "projW": 22.9,
-   "projL": 8.1,
-   "projPts": 37.6,
+   "gamesLeft": 24,
+   "projW": 23.4,
+   "projL": 7.6,
+   "projPts": 39.2,
    "owners": 1,
-   "ptsPerDollar": 0.38
+   "ptsPerDollar": 0.44
   },
   {
    "name": "Virginia",
@@ -873,9 +873,9 @@
    "conf": "ACC",
    "salary": 22,
    "espnId": 2390,
-   "w": 5,
+   "w": 6,
    "l": 2,
-   "regPts": 8,
+   "regPts": 10,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -885,16 +885,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-26T20:30Z",
-    "opp": "Michigan",
-    "home": false
+    "date": "2026-12-03T02:15Z",
+    "opp": "Alabama",
+    "home": true
    },
-   "gamesLeft": 24,
-   "projW": 23.3,
-   "projL": 7.7,
-   "projPts": 38.8,
+   "gamesLeft": 23,
+   "projW": 23.6,
+   "projL": 7.4,
+   "projPts": 39.7,
    "owners": 1,
-   "ptsPerDollar": 0.36
+   "ptsPerDollar": 0.45
   },
   {
    "name": "Iowa State",
@@ -902,8 +902,8 @@
    "salary": 20,
    "espnId": 66,
    "w": 4,
-   "l": 1,
-   "regPts": 7,
+   "l": 2,
+   "regPts": 6,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -913,16 +913,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-26T20:30Z",
-    "opp": "Tennessee",
+    "date": "2026-12-02T01:00Z",
+    "opp": "Alcorn St",
     "home": true
    },
-   "gamesLeft": 26,
-   "projW": 22.8,
-   "projL": 8.2,
-   "projPts": 37.3,
+   "gamesLeft": 25,
+   "projW": 22.3,
+   "projL": 8.7,
+   "projPts": 35.8,
    "owners": 3,
-   "ptsPerDollar": 0.35
+   "ptsPerDollar": 0.3
   },
   {
    "name": "Texas Tech",
@@ -986,8 +986,8 @@
    "salary": 19,
    "espnId": 130,
    "w": 3,
-   "l": 3,
-   "regPts": 3,
+   "l": 4,
+   "regPts": 2,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -997,16 +997,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-26T20:30Z",
-    "opp": "Miami",
+    "date": "2026-12-02T00:00Z",
+    "opp": "Miss Valley St",
     "home": true
    },
-   "gamesLeft": 25,
-   "projW": 16.4,
-   "projL": 14.6,
-   "projPts": 18.1,
+   "gamesLeft": 24,
+   "projW": 16.1,
+   "projL": 14.9,
+   "projPts": 17.2,
    "owners": 5,
-   "ptsPerDollar": 0.16
+   "ptsPerDollar": 0.11
   },
   {
    "name": "Alabama",
@@ -1111,7 +1111,7 @@
    "next": {
     "date": "2026-11-26T22:00Z",
     "opp": "Saint Mary's",
-    "home": true
+    "home": false
    },
    "gamesLeft": 25,
    "projW": 24.6,
@@ -1434,8 +1434,8 @@
    "salary": 2,
    "espnId": 120,
    "w": 3,
-   "l": 3,
-   "regPts": 3,
+   "l": 4,
+   "regPts": 2,
    "seed": null,
    "roundsWon": [],
    "seedPts": 0,
@@ -1445,16 +1445,16 @@
    "eliminated": false,
    "overridden": [],
    "next": {
-    "date": "2026-11-26T18:00Z",
-    "opp": "San Diego St",
-    "home": false
+    "date": "2026-11-27T20:30Z",
+    "opp": "TBD",
+    "home": true
    },
    "gamesLeft": 25,
-   "projW": 15.4,
-   "projL": 15.6,
-   "projPts": 15.3,
+   "projW": 15.9,
+   "projL": 16.1,
+   "projPts": 15.6,
    "owners": 1,
-   "ptsPerDollar": 1.5
+   "ptsPerDollar": 1
   },
   {
    "name": "Cincinnati",
@@ -1503,7 +1503,7 @@
    "next": {
     "date": "2026-11-26T21:30Z",
     "opp": "USC",
-    "home": false
+    "home": true
    },
    "gamesLeft": 26,
    "projW": 24.4,
@@ -1905,7 +1905,7 @@
     34,
     36,
     40,
-    40
+    39
    ],
    "Tyler B.": [
     0,
@@ -1961,7 +1961,7 @@
     36,
     34,
     36,
-    36
+    37
    ],
    "John S.": [
     0,
@@ -1989,7 +1989,7 @@
     38,
     39,
     43,
-    44
+    43
    ],
    "Kyle S.": [
     2,
@@ -2129,7 +2129,7 @@
     46,
     46,
     47,
-    47
+    49
    ],
    "Andrew S.": [
     2,
@@ -2355,7 +2355,7 @@
     16,
     10,
     12,
-    14
+    15
    ],
    "Matt W.": [
     9,
@@ -2635,7 +2635,7 @@
     9,
     10,
     14,
-    15
+    12
    ],
    "Andrew S.": [
     1,
@@ -2865,8 +2865,6 @@
    }
   ]
  },
- "notes": [
-  "ESPN odds missing for 1 game(s); counted as 50/50."
- ],
+ "notes": [],
  "problems": []
 }
